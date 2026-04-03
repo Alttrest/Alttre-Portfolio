@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali Turan | Geliştirici & Robotik Maker Portfolyosu</title>
+    
+    <!-- SEO & Meta Tags -->
+    <meta name="description" content="Antalya Alanya İrfan Bileydi MTAL - 9. Sınıf Öğrencisi. Python, Flask, Robotik ve AI meraklısı bir geliştiricinin portfolyosu.">
+    <meta name="keywords" content="Ali Turan, Alttrest, Portfolyo, Python, Flask, Robotik, Mini Sumo, İrfan Bileydi MTAL, Alanya, Pop!_OS">
+    <meta name="author" content="Ali Turan">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Ali Turan | Geliştirici & Robotik Maker">
+    <meta property="og:description" content="Teknolojiye ve üretmeye tutkulu bir 9. Sınıf öğrencisinin dijital dünyasına hoş geldiniz.">
+    <meta property="og:image" content="{{ url_for('static', filename='images/necati.png') }}">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Fira+Code:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Modern Premium Renk Paleti ve Değişkenler */
+        :root {
+            --bg-color: #0B0E14;
+            /* Daha derin karanlık */
+            --card-bg: rgba(22, 27, 34, 0.5);
+            --primary: #00E6F3;
+            /* Neon Mavi */
+            --primary-glow: rgba(0, 230, 243, 0.4);
+            --secondary: #8A2BE2;
+            /* Siber Mor */
+            --secondary-glow: rgba(138, 43, 226, 0.4);
+            --danger: #FF4757;
+            --text-main: #FFFFFF;
+            --text-muted: #A0AABF;
+            --border-light: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Özel Kaydırma Çubuğu */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(0, 230, 243, 0.07), transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(138, 43, 226, 0.07), transparent 40%);
+            background-attachment: fixed;
+        }
+
+        /* Ambient Mesh */
+        .ambient-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+            background:
+                linear-gradient(45deg, transparent 40%, rgba(0, 230, 243, 0.03) 50%, transparent 60%),
+                linear-gradient(-45deg, transparent 40%, rgba(138, 43, 226, 0.03) 50%, transparent 60%);
+            background-size: 200% 200%;
+            animation: moveGradient 15s ease infinite alternate;
+        }
+
+        @keyframes moveGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* Scroll ile Fade-In */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        /* Navigasyon */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(11, 14, 20, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 15px 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        nav .logo {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        nav .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active-link {
+            color: var(--text-main);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active-link::after {
+            width: 100%;
+        }
+
+        .nav-btn {
+            background: rgba(0, 230, 243, 0.1);
+            color: var(--primary) !important;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 230, 243, 0.3);
+            transition: all 0.3s ease !important;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary);
+            color: #000 !important;
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .nav-btn::after {
+            display: none !important;
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .terminal-window {
+            background: rgba(10, 10, 15, 0.8);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 10px 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-width: 300px;
+        }
+
+        .terminal-header {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 15px;
+            width: 100%;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 10px;
+        }
+
+        .term-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .term-dot.red {
+            background: #FF5F56;
+        }
+
+        .term-dot.yellow {
+            background: #FFBD2E;
+        }
+
+        .term-dot.green {
+            background: #27C93F;
+        }
+
+        .terminal-body {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            color: #E2E8F0;
+        }
+
+        .terminal-body span.prompt {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+
+        .terminal-body span.cmd {
+            color: var(--primary);
+        }
+
+        h1 {
+            font-size: 5.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -2.5px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF 0%, #A0AABF 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 span.gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .typing-text {
+            font-size: 1.6rem;
+            color: var(--text-muted);
+            height: 40px;
+            font-family: 'Fira Code', monospace;
+            font-weight: 400;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 25px;
+            background: var(--primary);
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Ortak Bölümler */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 60px;
+            color: var(--text-main);
+            position: relative;
+            letter-spacing: -1px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title span.number {
+            font-family: 'Fira Code', monospace;
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            font-weight: 400;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-light);
+            margin-left: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        /* Kartlar */
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px 35px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-light);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.05), transparent 40%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            border-color: rgba(0, 230, 243, 0.3);
+        }
+
+        .offline-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--danger);
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            background: rgba(255, 71, 87, 0.1);
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 71, 87, 0.2);
+            width: max-content;
+            letter-spacing: 0.5px;
+        }
+
+        .offline-badge .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--danger);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--danger);
+        }
+
+        .devlog-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--primary);
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            background: rgba(0, 230, 243, 0.1);
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(0, 230, 243, 0.3);
+            width: max-content;
+        }
+
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+            flex-grow: 1;
+            line-height: 1.7;
+        }
+
+        /* Etiketler */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            font-family: 'Fira Code', monospace;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+        }
+
+        .card:hover .tag {
+            border-color: rgba(0, 230, 243, 0.2);
+            background: rgba(0, 230, 243, 0.05);
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--bg-color);
+            background: var(--primary);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: auto;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .card-link svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .card-link:hover {
+            background: #fff;
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .card-link:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Hakkımda İçerik */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .about-text strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .achievement-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: linear-gradient(145deg, rgba(22, 27, 34, 0.8), rgba(11, 14, 20, 0.9));
+            padding: 20px 30px;
+            border-radius: 16px;
+            border: 1px solid var(--border-light);
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-left: 4px solid #FFD700;
+            transition: transform 0.3s;
+        }
+
+        .achievement-badge:hover {
+            transform: scale(1.02);
+            border-color: rgba(255, 215, 0, 0.5);
+        }
+
+        .gaming-badge {
+            border-left: 4px solid var(--secondary);
+            margin-top: 15px;
+        }
+
+        .achievement-icon {
+            font-size: 2.5rem;
+        }
+
+        .achievement-text {
+            color: #E2E8F0;
+            font-size: 1.05rem;
+        }
+
+        /* Footer & /uses Modal */
+        footer {
+            text-align: center;
+            padding: 50px;
+            margin-top: 80px;
+            position: relative;
+            color: var(--text-muted);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+        }
+
+        footer .glow-effect {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 100px;
+            background: var(--primary);
+            filter: blur(100px);
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        footer:hover .glow-effect {
+            opacity: 0.15;
+        }
+
+        .cat-badge {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            border: 2px solid var(--border-light);
+            background-color: var(--card-bg);
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        footer:hover .cat-badge {
+            transform: translateY(-10px) scale(1.05);
+            border-color: var(--secondary);
+            box-shadow: 0 15px 30px var(--secondary-glow);
+        }
+
+        footer p {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        footer:hover p {
+            color: var(--text-main);
+            transform: translateY(-2px);
+        }
+
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 14, 20, 0.9);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-backdrop.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: #11151D;
+            border: 1px solid var(--border-light);
+            padding: 50px;
+            border-radius: 24px;
+            width: 90%;
+            max-width: 650px;
+            position: relative;
+            transform: translateY(40px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+        }
+
+        .modal-backdrop.show .modal-box {
+            transform: translateY(0) scale(1);
+            border-color: rgba(0, 230, 243, 0.2);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-light);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .close-btn:hover {
+            background: var(--danger);
+            color: #fff;
+            border-color: var(--danger);
+            transform: rotate(90deg);
+        }
+
+        .uses-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .uses-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateX(5px);
+        }
+
+        .uses-icon {
+            font-size: 2.2rem;
+            background: rgba(0, 0, 0, 0.3);
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Detail Modal Specific Styles */
+        .source-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            background: rgba(0, 230, 243, 0.05);
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 230, 243, 0.1);
+            transition: all 0.3s;
+        }
+
+        .source-link:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .detail-summary {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .detail-header {
+            font-size: 2rem;
+            color: var(--text-main);
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 900px) {
+            h1 {
+                font-size: 4rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ambient-mesh"></div>
+
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <a href="#" class="logo"><span>Ali</span> Turan</a>
+        <div class="nav-links">
+            <a href="#about">Hakkımda</a>
+            <a href="#experience">Yetkinlikler</a>
+            <a href="#projects">Projeler</a>
+            <a href="#devlog">Devlog</a>
+            <a href="https://github.com/Alttrest" target="_blank" class="nav-btn">GitHub</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="terminal-window reveal">
+            <div class="terminal-header">
+                <div class="term-dot red"></div>
+                <div class="term-dot yellow"></div>
+                <div class="term-dot green"></div>
+            </div>
+            <div class="terminal-body">
+                <span class="prompt">artemis@popos:~$</span> <span class="cmd">whoami</span><br>
+                <span>Ali Turan (Alttrest)</span>
+            </div>
+        </div>
+
+        <h1 class="reveal delay-1">Merhaba, Ben <span class="gradient-text">Ali</span>.</h1>
+        <div class="typing-text reveal delay-2">
+            <span id="typing"></span><span class="typing-cursor"></span>
+        </div>
+    </section>
+
+    <!-- HAKKIMDA -->
+    <section class="container" id="about">
+        <h2 class="section-title reveal"><span class="number">01.</span> Hakkımda</h2>
+        <div class="about-content">
+            <div class="about-text reveal delay-1">
+                <p>
+                    Ben Ali Turan, Antalya'da <strong>İrfan Bileydi MTAL</strong> (9. Sınıf) öğrencisiyim. 
+                    Teknolojiye olan ilgim, sadece yazılım yazmak değil, donanımı da kontrol edebilmek üzerine kurulu.
+                    <br><br>
+                    <strong>Python</strong> ve <strong>Flask</strong> ile backend sistemleri geliştirirken, 
+                    <strong>Ar-Ge</strong> projelerimde robotik ve yapay zeka entegrasyonlarına odaklanıyorum. 
+                    Aynı zamanda <strong>Pop!_OS</strong> üzerinde ileri seviye Linux hakimiyetine sahibim.
+                </p>
+
+                <div class="achievement-badge">
+                    <div class="achievement-icon">🏆</div>
+                    <div class="achievement-text">
+                        <strong>Fibonacci Robotik</strong><br>
+                        Mini Sumo Kategorisi - Jüri Özel Ödülü
+                    </div>
+                </div>
+
+                <div class="achievement-badge gaming-badge">
+                    <div class="achievement-icon">🎮</div>
+                    <div class="achievement-text">
+                        <strong>Gaming Vizyonu</strong><br>
+                        Oyun mekanikleri ve UI analizi tutkunu.
+                    </div>
+                </div>
+            </div>
+            <div class="reveal delay-2">
+                <div style="background: rgba(10, 10, 15, 0.8); border: 1px solid var(--border-light); border-radius: 20px; padding: 35px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); font-family: 'Fira Code', monospace;">
+                    <div style="display: flex; gap: 6px; margin-bottom: 20px; border-bottom: 1px solid var(--border-light); padding-bottom: 12px;">
+                        <div class="term-dot red"></div>
+                        <div class="term-dot yellow"></div>
+                        <div class="term-dot green"></div>
+                        <span style="color: var(--text-muted); font-size: 0.8rem; margin-left: 10px;">~/about.sh</span>
+                    </div>
+                    <div style="font-size: 0.9rem; line-height: 2; color: var(--text-muted);">
+                        <span style="color: var(--primary);">const</span> <span style="color: #E2E8F0;">ali</span> = {<br>
+                        &nbsp;&nbsp;okul: <span style="color: #98C379;">"İrfan Bileydi MTAL"</span>,<br>
+                        &nbsp;&nbsp;sinif: <span style="color: #D19A66;">9</span>,<br>
+                        &nbsp;&nbsp;sehir: <span style="color: #98C379;">"Antalya, Alanya"</span>,<br>
+                        &nbsp;&nbsp;os: <span style="color: #98C379;">"Pop!_OS 24.04 LTS"</span>,<br>
+                        &nbsp;&nbsp;stack: [<span style="color: #98C379;">"Python"</span>, <span style="color: #98C379;">"Flask"</span>, <span style="color: #98C379;">"C++"</span>],<br>
+                        &nbsp;&nbsp;tutku: <span style="color: #98C379;">"Üretmek"</span><br>
+                        };
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YETKİNLİKLER -->
+    <section class="container" id="experience">
+        <h2 class="section-title reveal"><span class="number">02.</span> Neler Yapıyorum?</h2>
+        <div class="grid">
+            <div class="card reveal delay-1">
+                <h3>💻 Yazılım & Backend</h3>
+                <p>Python ve Flask kullanarak ölçeklenebilir, gerçek zamanlı web uygulamaları ve API'ler geliştiriyorum.</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Flask</span>
+                    <span class="tag">WebSockets</span>
+                </div>
+                <a onclick="openDetailModal('software')" class="card-link"
+                    style="margin-top: auto; background: rgba(0, 230, 243, 0.1); color: var(--primary);">Becerileri Gör</a>
+            </div>
+
+            <div class="card reveal delay-2">
+                <h3>🐧 Linux Mastery</h3>
+                <p>Pop!_OS üzerinde terminal otomasyonu, donanım sürücüleri ve sistem mimarisi konularında uzmanlaşıyorum.</p>
+                <div class="tags">
+                    <span class="tag">Pop!_OS</span>
+                    <span class="tag">Bash</span>
+                    <span class="tag">Zsh</span>
+                </div>
+                <a onclick="openDetailModal('linux')" class="card-link"
+                    style="margin-top: auto; background: rgba(0, 230, 243, 0.1); color: var(--primary);">Becerileri Gör</a>
+            </div>
+
+            <div class="card reveal delay-3">
+                <h3>⚙️ Donanım & Maker</h3>
+                <p>Kendi PCB tasarımlarımı yapıyor, mikrodenetleyicilerle özel robotik çözümler üretiyorum.</p>
+                <div class="tags">
+                    <span class="tag">Arduino</span>
+                    <span class="tag">PCB Design</span>
+                    <span class="tag">C++</span>
+                </div>
+                <a onclick="openDetailModal('hardware')" class="card-link"
+                    style="margin-top: auto; background: rgba(0, 230, 243, 0.1); color: var(--primary);">Becerileri Gör</a>
+            </div>
+
+            <div class="card reveal delay-1">
+                <h3>🛡️ Siber Güvenlik</h3>
+                <p>Ağ yapılandırmaları ve ofansif/defansif güvenlik konseptlerini kod geliştirme süreçlerime dahil ediyorum.</p>
+                <div class="tags">
+                    <span class="tag">V2Ray</span>
+                    <span class="tag">Network</span>
+                </div>
+                <a onclick="openDetailModal('cyber')" class="card-link"
+                    style="margin-top: auto; background: rgba(0, 230, 243, 0.1); color: var(--primary);">Becerileri Gör</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJELER -->
+    <section class="container" id="projects">
+        <h2 class="section-title reveal"><span class="number">03.</span> Seçilmiş Projeler</h2>
+        <div class="grid">
+            <div class="card reveal delay-1">
+                <span class="offline-badge"><span class="dot"></span> Beta Sürüm</span>
+                <h3>🚀 AlttreHub</h3>
+                <p>Tamamen Flask-SocketIO mimarisi ile baştan yazılmış, gerçek zamanlı bir ekosistem ve mesajlaşma platformu.</p>
+                <div class="tags">
+                    <span class="tag">Socket.io</span>
+                    <span class="tag">Real-time</span>
+                </div>
+                <a onclick="openDetailModal('alttrehub')" class="card-link">İncele</a>
+            </div>
+
+            <div class="card reveal delay-2">
+                <h3>🏋️ Athletixfitness</h3>
+                <p>Alanya spor dünyası için geliştirilen, modern UI ve güçlü backend yapısına sahip kurumsal web çözümü.</p>
+                <div class="tags">
+                    <span class="tag">CMS</span>
+                    <span class="tag">Frontend</span>
+                </div>
+                <a onclick="openDetailModal('athletix')" class="card-link">İncele</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- AR-GE VE ROBOTİK -->
+    <section class="container">
+        <h2 class="section-title reveal"><span class="number">04.</span> Ar-Ge & Robotik</h2>
+        <div class="grid">
+            <div class="card reveal delay-1">
+                <h3>🤖 Mini Sumo Robot</h3>
+                <p>Otonom savaş algoritmaları ve 3D tasarımı bana ait olan ödüllü yarışma robotu.</p>
+                <div class="tags">
+                    <span class="tag">Arduino</span>
+                    <span class="tag">C++</span>
+                </div>
+                <a onclick="openDetailModal('minisumo')" class="card-link"
+                    style="margin-top: auto; background: rgba(0, 230, 243, 0.1); color: var(--primary);">Detayları Gör</a>
+            </div>
+
+            <div class="card reveal delay-2">
+                <h3>🚁 Teknofest VTOL İHA</h3>
+                <p>Hibrit uçuş kabiliyetine sahip, dikey kalkış ve yatay uçuş yapabilen İHA projesi.</p>
+                <div class="tags">
+                    <span class="tag">Pixhawk</span>
+                    <span class="tag">Aerodinamik</span>
+                </div>
+                <a onclick="openDetailModal('vtol')" class="card-link"
+                    style="margin-top: auto; background: rgba(0, 230, 243, 0.1); color: var(--primary);">Detayları Gör</a>
+            </div>
+
+            <div class="card reveal delay-3">
+                <h3>🧠 Masaüstü AI Asistanı</h3>
+                <p>Pop!_OS sistem komutlarını sesli ve metinle yönetebilen, yerel çalışan AI ajanı.</p>
+                <div class="tags">
+                    <span class="tag">Llama</span>
+                    <span class="tag">Automation</span>
+                </div>
+                <a onclick="openDetailModal('ai_agent')" class="card-link"
+                    style="margin-top: auto; background: rgba(0, 230, 243, 0.1); color: var(--primary);">Detayları Gör</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG / NOTLAR KÖŞESİ -->
+    <section class="container" id="devlog">
+        <h2 class="section-title reveal"><span class="number">05.</span> Devlog: Çözümler & Notlar</h2>
+        <div class="grid">
+            <div class="card reveal delay-1">
+                <span class="devlog-badge">📝 İşletim Sistemi</span>
+                <h3>Pop!_OS Optimizasyonu</h3>
+                <p>Donanım sürücüleri ve sistem mimarisi üzerine teknik notlar.</p>
+                <a onclick="openDetailModal('devlog_popos')" class="card-link"
+                    style="margin-top: auto; background: rgba(0, 230, 243, 0.1); color: var(--primary);">Özeti Oku</a>
+            </div>
+            <div class="card reveal delay-2">
+                <span class="devlog-badge">⚡ Backend</span>
+                <h3>WebSocket Mimarisi</h3>
+                <p>Real-time veri transferinde Polling'den Socket.io'ya geçiş süreci.</p>
+                <a onclick="openDetailModal('devlog_alttre')" class="card-link"
+                    style="margin-top: auto; background: rgba(0, 230, 243, 0.1); color: var(--primary);">Özeti Oku</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer title="Çalışma ortamımı görmek için tıkla!" onclick="toggleUsesModal()">
+        <div class="glow-effect"></div>
+        <p>Built with <span style="color: var(--primary);">💻</span> & <span style="color: #D4A373;">☕</span> on Pop!_OS by Ali</p>
+    </footer>
+
+    <!-- /USES MODAL (EASTER EGG) -->
+    <div id="uses-modal" class="modal-backdrop">
+        <div class="modal-box">
+            <button class="close-btn" onclick="toggleUsesModal(event)">✕</button>
+
+            <div style="text-align: center; margin-bottom: 30px;">
+                <div style="
+                    width: 120px; height: 120px; 
+                    margin: 0 auto 15px; 
+                    border-radius: 50%; 
+                    border: 3px solid var(--primary); 
+                    background-image: url('{{ url_for('static', filename='images/necati.png') }}'); 
+                    background-size: cover; 
+                    background-position: center;
+                    box-shadow: 0 0 20px var(--primary-glow);
+                "></div>
+                <h3 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 5px;">Necati</h3>
+                <p style="color: var(--primary); font-family: 'Fira Code', monospace; font-size: 0.9rem;">Chief Debugging Officer (CDO)</p>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 25px; border-top: 1px solid var(--border-light); padding-top: 25px;">
+                <div class="term-dot red"></div>
+                <div class="term-dot yellow"></div>
+                <div class="term-dot green"></div>
+                <span style="font-family: 'Fira Code', monospace; color: var(--text-muted); font-size: 0.9rem; margin-left: 10px;">~ /uses.txt</span>
+            </div>
+
+            <p style="color: var(--text-muted); margin-bottom: 35px; line-height: 1.7;">
+                İşte "Chief Debugging Officer Necati" ile birlikte kullandığımız donanım ve yazılım ekosistemimizin detayları:
+            </p>
+
+            <div class="uses-item">
+                <div class="uses-icon">🖥️</div>
+                <div>
+                    <h4 style="color: var(--primary); margin-bottom: 5px; font-size: 1.1rem;">İşlemci (CPU)</h4>
+                    <p style="color: var(--text-main); font-family: 'Fira Code', monospace; font-size: 0.95rem;">Intel Core i5-8300H @ 2.30GHz (8 Çekirdek)</p>
+                </div>
+            </div>
+
+            <div class="uses-item">
+                <div class="uses-icon">🎮</div>
+                <div>
+                    <h4 style="color: var(--primary); margin-bottom: 5px; font-size: 1.1rem;">Ekran Kartı (GPU)</h4>
+                    <p style="color: var(--text-main); font-size: 0.95rem;">NVIDIA GeForce GTX 1050 Ti Mobile<br>Intel UHD Graphics 630</p>
+                </div>
+            </div>
+
+            <div class="uses-item">
+                <div class="uses-icon">🧠</div>
+                <div>
+                    <h4 style="color: var(--primary); margin-bottom: 5px; font-size: 1.1rem;">Bellek (RAM)</h4>
+                    <p style="color: var(--text-main); font-size: 0.95rem;">16 GB DDR4 Dual-Channel</p>
+                </div>
+            </div>
+
+            <div class="uses-item">
+                <div class="uses-icon">🐧</div>
+                <div>
+                    <h4 style="color: var(--primary); margin-bottom: 5px; font-size: 1.1rem;">İşletim Sistemi</h4>
+                    <p style="color: var(--text-main); font-size: 0.95rem;">Pop!_OS 24.04 LTS (Artemis Environment)</p>
+                </div>
+            </div>
+
+            <div class="uses-item">
+                <div class="uses-icon">🎧</div>
+                <div>
+                    <h4 style="color: var(--primary); margin-bottom: 5px; font-size: 1.1rem;">Donanım & Ses</h4>
+                    <p style="color: var(--text-main); font-size: 0.95rem;">Razer BlackShark V2 Pro <br> SteelSeries Arctis Nova 3</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 35px; color: var(--primary); font-size: 0.9rem; font-family: 'Fira Code', monospace; text-align: center; opacity: 0.8;">
+                > System running flawlessly.
+            </p>
+        </div>
+    </div>
+
+    <!-- DETAIL MODAL -->
+    <div id="detail-modal" class="modal-backdrop">
+        <div class="modal-box">
+            <button class="close-btn" onclick="closeDetailModal()">✕</button>
+            <div id="modal-header" class="detail-header">Proje Başlığı</div>
+            <div id="modal-summary" class="detail-summary">Proje özeti buraya gelecek...</div>
+            <div style="font-family: 'Fira Code', monospace; color: var(--text-muted); margin-bottom: 15px; font-size: 0.9rem;">$ cat sources.txt</div>
+            <div id="modal-sources" style="display: flex; flex-wrap: wrap;"></div>
+        </div>
+    </div>
+
+    <!-- JS SCRIPTS -->
+    <script>
+        const projectData = {
+            "fibonacci": {
+                title: "Fibonacci Robotik Yarışması 🏆",
+                summary: "İstanbul Okan Üniversitesi'nde düzenlenen uluslararası robot olimpiyatlarında, Antalya Alanya İrfan Bileydi MTAL adına Mini Sumo kategorisinde yarıştım. Geliştirdiğim otonom yazılım ve kompakt tasarım ile <b>Jüri Özel Ödülü</b> kazanarak önemli bir başarıya imza attık.",
+                sources: [{ name: "Fibonacci Türkiye", url: "https://fibonacciturkiye.com" }]
+            },
+            "alttrehub": {
+                title: "AlttreHub: Gerçek Zamanlı Mesajlaşma 🚀",
+                summary: "<b>Polling'den WebSockets'e Geçiş</b><br><br>Geleneksel HTTP Polling modelini bırakıp gerçek zamanlı <b>Flask-SocketIO</b> mimarisine geçerek sunucu yükünü %80 azalttık. Sistem artık anlık veri transferi sunuyor.",
+                sources: [{ name: "GitHub Reposu", url: "https://github.com/Alttrest" }]
+            },
+            "software": {
+                title: "Yazılım & Framework Yetkinliği 💻",
+                summary: "Python ve Flask ekosisteminde uzmanlaşıyorum. Backend geliştirmede RESTful API prensiplerini ve veritabanı yönetimini (SQLite/PostgreSQL) aktif olarak kullanıyorum.",
+                sources: [{ name: "GitHub", url: "https://github.com/Alttrest" }]
+            },
+            "linux": {
+                title: "İleri Seviye Linux Hakimiyeti 🐧",
+                summary: "Pop!_OS üzerinde her türlü donanım sürücüsünü terminalden yönetebilen, Bash scriptleri ile günlük işlerini otomatize eden bir kullanıcıyım.",
+                sources: [{ name: "Dotfiles", url: "https://github.com/Alttrest" }]
+            },
+            "hardware": {
+                title: "Donanım & Donanım Mühendisliği ⚙️",
+                summary: "KiCad üzerinden şematik çizimler yapıyor, SMD komponentlerini havyayla monte ederek kompakt elektronik devreler oluşturabiliyorum.",
+                sources: [{ name: "Proje Dosyaları", url: "https://github.com/Alttrest" }]
+            },
+            "athletix": {
+                title: "Athletixfitness: Kurumsal Backend 🏋️",
+                summary: "Alanya bölgesindeki spor salonları için geliştirilen bu sistemde, dinamik bir CMS tasarlandı. Yönetici paneli üzerinden tüm veriler güncellenebiliyor.",
+                sources: [{ name: "Demo", url: "https://github.com/Alttrest" }]
+            },
+            "minisumo": {
+                title: "Mini Sumo Robot Projesi 🤖",
+                summary: "Arduino Nano tabanlı, 5x MZ80 sensörlü ve C++ otonom algoritmaya sahip robotik projem.",
+                sources: [{ name: "Kodlar", url: "https://github.com/Alttrest" }]
+            },
+            "vtol": {
+                title: "Teknofest VTOL İHA 🚁",
+                summary: "Dikey kalkış ve yatay uçuş yapan hibrit İHA projesi. Pixhawk konfigürasyonu ve aerodinamik hesaplamalar üzerine çalıştım.",
+                sources: [{ name: "Teknofest", url: "https://teknofest.org" }]
+            },
+            "ai_agent": {
+                title: "Masaüstü AI Asistanı 🧠",
+                summary: "Llama modellerini subprocess modülü ile konuşturarak bilgisayarımda sesli komut çalıştırma yeteneği sağladım.",
+                sources: [{ name: "GitHub", url: "https://github.com/Alttrest" }]
+            },
+            "devlog_popos": {
+                title: "Pop!_OS Optimizasyonu 📝",
+                summary: "NVIDIA sürücü yönetimi ve Razer/SteelSeries çevre birimlerinin Linux uyumu üzerine teknik dökümantasyon.",
+                sources: [{ name: "Blog", url: "https://pop.system76.com" }]
+            },
+            "devlog_alttre": {
+                title: "WebSocket Mimarisi ⚡",
+                summary: "Polling'den Socket.io'ya geçiş sürecinin teknik analizi ve performans karşılaştırmaları.",
+                sources: [{ name: "Socket.io", url: "https://socket.io" }]
+            },
+            "cyber": {
+                title: "Siber Güvenlik & Ağ 🛡️",
+                summary: "V2Ray yapılandırmaları ve ofansif güvenlik konseptlerini anlama çalışmaları.",
+                sources: [{ name: "Rehber", url: "https://v2ray.com" }]
+            },
+            "gaming": {
+                title: "İlham Kaynağı: Gaming 🎮",
+                summary: "Oyun dünyası benim için sadece bir eğlence değil; teknik bir merak konusu. Valorant, Fortnite ve Minecraft gibi oyunların arka planındaki sunucu-istemci mimarilerini analiz ediyorum.",
+                sources: [{ name: "Minecraft Devlog", url: "https://minecraft.net" }]
+            }
+        };
+
+        function openDetailModal(id) {
+            const data = projectData[id];
+            if (!data) return;
+            document.getElementById('modal-header').innerText = data.title;
+            document.getElementById('modal-summary').innerHTML = data.summary;
+            const sourcesContainer = document.getElementById('modal-sources');
+            sourcesContainer.innerHTML = '';
+            data.sources.forEach(src => {
+                const a = document.createElement('a'); a.className = 'source-link';
+                a.href = src.url; a.target = '_blank';
+                a.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> ${src.name}`;
+                sourcesContainer.appendChild(a);
+            });
+            document.getElementById('detail-modal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDetailModal() {
+            document.getElementById('detail-modal').classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); } });
+        }, { threshold: 0.05, rootMargin: '0px 0px -10px 0px' });
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+        // Sayfa yüklendiğinde viewport'ta olan elemanları hemen göster
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.reveal').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    el.classList.add('active');
+                }
+            });
+        });
+
+        const addMouseTracker = (containers) => {
+            containers.forEach(container => {
+                const cards = container.querySelectorAll('.card');
+                container.addEventListener('mousemove', e => {
+                    for (const card of cards) {
+                        const rect = card.getBoundingClientRect();
+                        card.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
+                        card.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
+                    }
+                });
+            });
+        }
+        addMouseTracker([document.body]);
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) { document.getElementById('navbar').classList.add('scrolled'); } 
+            else { document.getElementById('navbar').classList.remove('scrolled'); }
+        });
+
+        const textElement = document.getElementById('typing');
+        const phrases = ["Siber Güvenlik Uzmanı", "Ar-Ge & Maker", "Yapay Zeka Meraklısı", "Python Geliştiricisi", "Pop!_OS Power User"];
+        let pIdx = 0; let cIdx = 0; let isDel = false;
+        function type() {
+            const cur = phrases[pIdx];
+            textElement.innerText = isDel ? cur.substring(0, cIdx--) : cur.substring(0, cIdx++);
+            let speed = isDel ? 50 : 100;
+            if (!isDel && cIdx > cur.length) { speed = 2000; isDel = true; }
+            else if (isDel && cIdx < 0) { isDel = false; pIdx = (pIdx + 1) % phrases.length; speed = 500; }
+            setTimeout(type, speed);
+        }
+        type();
+
+        function toggleUsesModal(e) {
+            if (e) e.stopPropagation();
+            const modal = document.getElementById('uses-modal');
+            if (modal.classList.contains('show')) { modal.classList.remove('show'); document.body.style.overflow = 'auto'; } 
+            else { modal.classList.add('show'); document.body.style.overflow = 'hidden'; }
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-backdrop')) { 
+                closeDetailModal(); 
+                const usesModal = document.getElementById('uses-modal');
+                if (event.target === usesModal) toggleUsesModal();
+            }
+        }
+    </script>
+</body>
+
+</html>
