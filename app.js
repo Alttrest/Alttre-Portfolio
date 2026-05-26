@@ -1978,8 +1978,8 @@ if (themeToggleBtn) {
 // Initial Theme Setup & Persistency Load
 window.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
-    const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-    const isLight = savedTheme === 'light' || (!savedTheme && systemPrefersLight);
+    // Default strictly to dark siberpunk brand theme, unless explicitly chosen light theme
+    const isLight = savedTheme === 'light';
     
     if (isLight) {
         document.body.classList.add('light-theme');
