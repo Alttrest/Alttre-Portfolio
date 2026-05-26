@@ -1,0 +1,7 @@
+{
+    "title": "Type-C Donanım Yükseltmeleri Devlog-2",
+    "badge": "⚙️ Donanım Modu",
+    "badgeClass": "dev",
+    "summary": "CC1 ve CC2 pinlerine 5.1kΩ pull-down dirençleri bağlayarak USB-C PD şarj desteği kazandırdık.",
+    "content": "Buraya modalın içinde açılacak uzun detaylı metni veya HTML etiketlerini yazabilirsiniz..."
+}

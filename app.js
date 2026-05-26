@@ -134,26 +134,60 @@ function handleTyping() {
 const termInput = document.getElementById('terminal-input');
 const termBody = document.getElementById('term-body');
 const terminalWindow = document.getElementById('terminal');
+const termCmdList = ['help', 'neofetch', 'skills', 'projects', 'logic', 'matrix', 'clear'];
 
-// Active border feedback on terminal click
-termInput.addEventListener('focus', () => terminalWindow.classList.add('focused'));
-termInput.addEventListener('blur', () => terminalWindow.classList.remove('focused'));
+function bindTerminalInputListeners(inputEl, suggestEl) {
+    inputEl.addEventListener('focus', () => terminalWindow.classList.add('focused'));
+    inputEl.addEventListener('blur', () => terminalWindow.classList.remove('focused'));
 
-termInput.addEventListener('keydown', (e) => {
-    playKeyClick();
-    if (e.key === 'Enter') {
-        const cmdText = termInput.value.trim();
-        termInput.value = '';
-        if (cmdText) {
-            executeTermCmd(cmdText);
+    inputEl.addEventListener('keydown', (e) => {
+        playKeyClick();
+        if (e.key === 'Enter') {
+            const cmdText = inputEl.value.trim();
+            inputEl.value = '';
+            suggestEl.innerHTML = '';
+            if (cmdText) {
+                executeTermCmd(cmdText);
+            }
         }
-    }
-});
+        if (e.key === 'Tab' || e.key === 'ArrowRight') {
+            const val = inputEl.value;
+            const match = termCmdList.find(cmd => cmd.startsWith(val.toLowerCase()));
+            if (match && match !== val.toLowerCase()) {
+                e.preventDefault(); // Prevent tab focus change
+                inputEl.value = match;
+                suggestEl.innerHTML = '';
+                if (state.audioEnabled) playKeyClick();
+            }
+        }
+    });
+
+    inputEl.addEventListener('input', () => {
+        const val = inputEl.value;
+        if (!val) {
+            suggestEl.innerText = '';
+            return;
+        }
+        const match = termCmdList.find(cmd => cmd.startsWith(val.toLowerCase()));
+        if (match && match !== val.toLowerCase()) {
+            suggestEl.innerHTML = `<span style="opacity: 0; pointer-events: none;">${val}</span>${match.substring(val.length)}`;
+        } else {
+            suggestEl.innerText = '';
+        }
+    });
+}
+
+// Bind initial input suggestion listeners
+const termSuggest = document.getElementById('term-suggest-txt');
+if (termInput && termSuggest) {
+    bindTerminalInputListeners(termInput, termSuggest);
+}
 
 function appendTermLine(htmlContent, delay = 0) {
     const p = document.createElement('p');
     p.innerHTML = htmlContent;
-    termBody.insertBefore(p, termInput.parentElement);
+    const currentInput = document.getElementById('terminal-input');
+    termBody.insertBefore(p, currentInput.parentElement.parentElement);
     termBody.scrollTop = termBody.scrollHeight;
 }
 
@@ -165,7 +199,7 @@ function executeTermCmd(cmd) {
         appendTermLine("[SİSTEM] Matrix dijital yağmuru sonlandırıldı.");
     }
 
-    appendTermLine(`<span class="term-prompt">alttre@arch</span>:<span class="term-dir">~</span>$ ${cmd}`);
+    appendTermLine(`<span class="term-prompt">alttre@nebula</span>:<span class="term-dir">~</span>$ ${cmd}`);
     
     const lowerCmd = cmd.toLowerCase().trim();
     
@@ -185,9 +219,10 @@ function executeTermCmd(cmd) {
             
         case 'neofetch':
             appendTermLine(`
+<pre style="font-family: inherit; margin: 0; white-space: pre-wrap; line-height: 1.45;">
 <span class="term-cyan">       /\         </span>   <span class="term-prompt">Alttre</span>
 <span class="term-cyan">      /  \\        </span>   -------------------
-<span class="term-cyan">     /\\   \\       </span>   <span class="term-cyan">OS</span>: Arch Linux x86_64 / Pop!_OS Dual Setup
+<span class="term-cyan">     /\\   \\       </span>   <span class="term-cyan">OS</span>: Custom Linux x86_64 / Pop!_OS Dual Setup
 <span class="term-cyan">    /  __  \\      </span>   <span class="term-cyan">WM</span>: Hyprland v0.41.2 (Wayland)
 <span class="term-cyan">   /  (  )  \\     </span>   <span class="term-cyan">Shell</span>: zsh 5.9
 <span class="term-cyan">  /  ______  \\    </span>   <span class="term-cyan">CPU</span>: Ryzen 7 7600 (Desktop) | i5-8300H (Mobile)
@@ -195,6 +230,7 @@ function executeTermCmd(cmd) {
                      <span class="term-cyan">RAM</span>: 32GB DDR5 / 16GB DDR4
                      <span class="term-cyan">CDO</span>: Necati (Chief Debugging Fluffy Cat 🐈)
                      <span class="term-cyan">Tutku</span>: Yapay Zeka, Gömülü Sistemler, Lojik Devreler
+</pre>
             `);
             break;
             
@@ -234,25 +270,22 @@ function executeTermCmd(cmd) {
             
         case 'clear':
             termBody.innerHTML = `
-                <p><span class="term-prompt">alttre@arch</span>:<span class="term-dir">~</span>$ clear</p>
+                <p><span class="term-prompt">alttre@nebula</span>:<span class="term-dir">~</span>$ clear</p>
                 <div id="terminal-interactive-content"></div>
-                <div style="display: flex; align-items: center; margin-top: 10px;">
-                    <span class="term-prompt">alttre@arch</span>:<span class="term-dir">~</span>$&nbsp;
-                    <input type="text" id="terminal-input" class="term-input" placeholder="yardım almak için 'help' yazın..." autocomplete="off">
+                <div style="display: flex; align-items: center; margin-top: 10px; width: 100%;">
+                    <span class="term-prompt">alttre@nebula</span>:<span class="term-dir">~</span>$&nbsp;
+                    <div class="term-input-wrapper">
+                        <input type="text" id="terminal-input" class="term-input" placeholder="yardım almak için 'help' yazın..." autocomplete="off" style="width: 100%;">
+                        <span class="term-suggestion" id="term-suggest-txt"></span>
+                    </div>
                 </div>
             `;
             // Re-fetch input reference and bind listeners
             const newInput = document.getElementById('terminal-input');
-            newInput.addEventListener('keydown', (e) => {
-                playKeyClick();
-                if (e.key === 'Enter') {
-                    const cmdText = newInput.value.trim();
-                    newInput.value = '';
-                    if (cmdText) executeTermCmd(cmdText);
-                }
-            });
-            newInput.addEventListener('focus', () => terminalWindow.classList.add('focused'));
-            newInput.addEventListener('blur', () => terminalWindow.classList.remove('focused'));
+            const newSuggest = document.getElementById('term-suggest-txt');
+            if (newInput && newSuggest) {
+                bindTerminalInputListeners(newInput, newSuggest);
+            }
             newInput.focus();
             break;
             
@@ -1366,9 +1399,30 @@ const observer = new IntersectionObserver((entries) => {
             entry.target.classList.add('active');
         }
     });
-}, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+}, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-skew').forEach((el) => observer.observe(el));
+
+// --- 11.5. Active Navigation Link Highlighting on Scroll (Scroll Spy) ---
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a:not(.nav-btn)');
+
+const scrollSpyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === `#${id}`) {
+                    link.classList.add('active-link');
+                } else {
+                    link.classList.remove('active-link');
+                }
+            });
+        }
+    });
+}, { threshold: 0.15, rootMargin: '-20% 0px -50% 0px' });
+
+sections.forEach(sec => scrollSpyObserver.observe(sec));
 
 // --- 12. Init Systems ---
 window.addEventListener('DOMContentLoaded', () => {
@@ -1380,7 +1434,7 @@ window.addEventListener('DOMContentLoaded', () => {
     
     // Check elements already visible in viewport
     setTimeout(() => {
-        document.querySelectorAll('.reveal').forEach(el => {
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-skew').forEach(el => {
             const rect = el.getBoundingClientRect();
             if (rect.top < window.innerHeight && rect.bottom > 0) {
                 el.classList.add('active');
@@ -1389,13 +1443,74 @@ window.addEventListener('DOMContentLoaded', () => {
     }, 150);
 });
 
-// Scroll Listener for Glass navbar transition
+// High-Performance requestAnimationFrame Scroll Actions Loop
+const scrollProgressBar = document.getElementById('scroll-progress');
+const scrollToTopBtn = document.getElementById('scroll-to-top');
+const progressCircle = document.querySelector('.progress-ring-circle');
+const glowOrb = document.querySelector('.glow-orb');
+const ambientMesh = document.querySelector('.ambient-mesh');
+
+// Bind Scroll to Top Click Action
+if (scrollToTopBtn) {
+    scrollToTopBtn.addEventListener('click', () => {
+        playKeyClick();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
 window.addEventListener('scroll', () => {
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // 1. Glass Navbar transition
     const nav = document.getElementById('navbar');
-    if (window.scrollY > 40) {
+    if (scrollY > 40) {
         nav.classList.add('scrolled');
     } else {
         nav.classList.remove('scrolled');
+    }
+    
+    // 2. Scroll Progress Bar & Circle Loader calculation
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    const scrollableHeight = documentHeight - windowHeight;
+    
+    if (scrollableHeight > 0) {
+        const ratio = scrollY / scrollableHeight;
+        const percent = ratio * 100;
+        
+        // Update top bar
+        if (scrollProgressBar) {
+            scrollProgressBar.style.width = `${percent}%`;
+        }
+        
+        // Update SVG circle loader
+        if (progressCircle) {
+            // Circumference of r=23 is 144
+            const offset = 144 - (ratio * 144);
+            progressCircle.style.strokeDashoffset = offset;
+        }
+    }
+    
+    // 3. Scroll to top button visibility toggle
+    if (scrollToTopBtn) {
+        if (scrollY > 300) {
+            scrollToTopBtn.classList.add('show');
+        } else {
+            scrollToTopBtn.classList.remove('show');
+        }
+    }
+    
+    // 4. Parallax Background & Orb movements
+    if (glowOrb) {
+        // Move the orb down slower than scroll speed
+        glowOrb.style.top = `${-200 + scrollY * 0.18}px`;
+    }
+    if (ambientMesh) {
+        // Shift grid positioning slightly to create depth grid scroll
+        ambientMesh.style.backgroundPositionY = `${scrollY * 0.25}px`;
     }
 });
 
@@ -1403,3 +1518,434 @@ window.addEventListener('scroll', () => {
 window.openDetailModal = openDetailModal;
 window.closeDetailModal = closeDetailModal;
 window.executeTermCmd = executeTermCmd;
+
+// Secure contact form submission handler with animated terminal logs
+window.handleFormSubmit = function(e) {
+    e.preventDefault();
+    playKeyClick();
+    
+    const form = document.getElementById('contact-form-el');
+    const nameVal = document.getElementById('form-name').value;
+    const emailVal = document.getElementById('form-email').value;
+    const subjectVal = document.getElementById('form-subject').value;
+    const messageVal = document.getElementById('form-message').value;
+    const originalContent = form.innerHTML;
+    
+    // Replace form with mock terminal output during upload
+    form.innerHTML = `
+        <div style="background: #05070a; border: 1.5px solid var(--card-border); border-radius: 12px; padding: 25px; font-family: var(--font-mono); font-size: 0.82rem; color: #fff; text-align: left; min-height: 280px; display: flex; flex-direction: column; justify-content: space-between; border-color: var(--arch-cyan); box-shadow: 0 0 15px var(--arch-cyan-glow);">
+            <div>
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--card-border); padding-bottom: 8px; margin-bottom: 15px; color: var(--text-muted);">
+                    <span>nebula-secure-uploader.sh</span>
+                    <span style="color: var(--term-green);" id="upload-status-badge">● BAĞLANTI AKTİF</span>
+                </div>
+                <div id="upload-logs" style="line-height: 1.8;">
+                    <p style="color: var(--text-muted); margin-bottom: 4px;">[SYS] Güvenli tünel kuruluyor...</p>
+                </div>
+            </div>
+            <div style="text-align: right; color: var(--arch-cyan); font-size: 0.75rem; font-weight: bold;" id="upload-progress-percent">0% tamamlandı</div>
+        </div>
+    `;
+    
+    const logs = document.getElementById('upload-logs');
+    const badge = document.getElementById('upload-status-badge');
+    const percent = document.getElementById('upload-progress-percent');
+    
+    const addLog = (text) => {
+        if (!logs) return;
+        const p = document.createElement('p');
+        p.innerHTML = text;
+        p.style.marginBottom = "4px";
+        logs.appendChild(p);
+        logs.scrollTop = logs.scrollHeight;
+        if (state.audioEnabled) playKeyClick();
+    };
+
+    // Sequential simulation steps matched to actual API request status
+    setTimeout(() => {
+        addLog("<span style='color: var(--hypr-purple);'>[CRYPT]</span> Mesaj içeriği AES-256 ile şifrelendi.");
+        if (percent) percent.innerText = "25% tamamlandı";
+    }, 600);
+
+    setTimeout(() => {
+        addLog("<span style='color: var(--arch-cyan);'>[NET]</span> Web3Forms API sunucusu aranıyor...");
+        if (percent) percent.innerText = "50% tamamlandı";
+        
+        // Start actual API call
+        fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                access_key: "cbadadce-65e4-4430-a85a-6aef0ca05bf3",
+                name: nameVal,
+                email: emailVal,
+                subject: `Alttre Portfolio - ${subjectVal}`,
+                message: messageVal
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                setTimeout(() => {
+                    addLog("<span style='color: var(--term-green);'>[NET]</span> API Bağlantısı başarılı. SID: SEC-8921a");
+                    if (percent) percent.innerText = "75% tamamlandı";
+                }, 400);
+
+                setTimeout(() => {
+                    addLog("<span style='color: var(--award-gold);'>[SYS]</span> E-posta teslimatı yapılıyor (ali-turan-@outlook.com)...");
+                    if (percent) percent.innerText = "90% tamamlandı";
+                }, 1000);
+
+                setTimeout(() => {
+                    addLog("<span style='color: var(--term-green);'>[OK]</span> BAŞARILI! Mesajınız Web3Forms ile iletildi. En kısa sürede döneceğiz.");
+                    if (percent) percent.innerText = "100% tamamlandı";
+                    if (badge) {
+                        badge.innerText = "● GÖNDERİLDİ";
+                        badge.style.color = "var(--award-gold)";
+                    }
+                    playConfirmChime();
+                    
+                    // Add reset button
+                    const btn = document.createElement('button');
+                    btn.className = "sumo-btn";
+                    btn.style.width = "100%";
+                    btn.style.marginTop = "15px";
+                    btn.style.borderColor = "var(--arch-cyan)";
+                    btn.style.color = "var(--arch-cyan)";
+                    btn.style.background = "rgba(0, 210, 255, 0.05)";
+                    btn.innerText = "Yeni Mesaj Gönder";
+                    btn.onclick = () => {
+                        playKeyClick();
+                        form.innerHTML = originalContent;
+                    };
+                    logs.appendChild(btn);
+                }, 1600);
+            } else {
+                addLog(`<span style='color: var(--danger-red);'>[HATA]</span> Sunucu yanıtı başarısız: ${data.message}`);
+                if (badge) {
+                    badge.innerText = "● HATA OLUŞTU";
+                    badge.style.color = "var(--danger-red)";
+                }
+            }
+        })
+        .catch(err => {
+            addLog("<span style='color: var(--danger-red);'>[HATA]</span> Ağ hatası: Bağlantı kurulamadı.");
+            if (badge) {
+                badge.innerText = "● HATA OLUŞTU";
+                badge.style.color = "var(--danger-red)";
+            }
+        });
+
+    }, 1200);
+};
+
+// --- 13. Custom Floating Cursor Logo Follower Logic ---
+const cursorPanel = document.getElementById('cursor-selector-panel');
+const cursorToggle = document.getElementById('cursor-panel-toggle');
+const cursorFollower = document.getElementById('custom-cursor-follower');
+
+let selectedCursorLogo = null;
+let currentMouseX = 0, currentMouseY = 0;
+let followerX = 0, followerY = 0;
+let isFollowerActive = false;
+
+// Expand/Collapse Sidebar
+cursorToggle.addEventListener('click', () => {
+    cursorPanel.classList.toggle('expanded');
+    playKeyClick();
+});
+
+// Cursor Selector function
+window.selectCursorLogo = function(logo) {
+    playKeyClick();
+    
+    // Clear active states
+    document.querySelectorAll('.cursor-choice-btn').forEach(btn => btn.classList.remove('active'));
+    
+    if (logo === 'reset') {
+        selectedCursorLogo = null;
+        cursorFollower.style.display = 'none';
+        isFollowerActive = false;
+        document.body.style.cursor = 'auto';
+        
+        // Save choice in localStorage
+        localStorage.removeItem('selectedCursorLogo');
+    } else {
+        selectedCursorLogo = logo;
+        cursorFollower.innerText = logo;
+        cursorFollower.style.display = 'flex';
+        
+        if (!isFollowerActive) {
+            isFollowerActive = true;
+        }
+        
+        // Add active style to selected button
+        const btnList = document.querySelectorAll('.cursor-choice-btn');
+        btnList.forEach(btn => {
+            if (btn.innerText === logo) btn.classList.add('active');
+        });
+        
+        // Save choice in localStorage
+        localStorage.setItem('selectedCursorLogo', logo);
+    }
+};
+
+// Mouse move tracking
+window.addEventListener('mousemove', (e) => {
+    currentMouseX = e.clientX;
+    currentMouseY = e.clientY;
+});
+
+// Organic Spring-Damping Cursor Follower Physics
+let velX = 0, velY = 0;
+const stiffness = 0.08; // spring constant
+const damping = 0.72;   // friction/damping factor
+
+function updateCursorFollower() {
+    if (isFollowerActive && selectedCursorLogo) {
+        const targetX = currentMouseX - 15;
+        const targetY = currentMouseY - 15;
+        
+        // Spring physics: force is proportional to distance
+        const forceX = (targetX - followerX) * stiffness;
+        const forceY = (targetY - followerY) * stiffness;
+        
+        velX += forceX;
+        velY += forceY;
+        
+        // Damping slows it down
+        velX *= damping;
+        velY *= damping;
+        
+        followerX += velX;
+        followerY += velY;
+        
+        // Advanced details: rotate based on speed and scale based on velocity!
+        const rotation = Math.max(-28, Math.min(28, velX * 1.6));
+        const speed = Math.sqrt(velX * velX + velY * velY);
+        const scaleX = Math.max(0.72, 1 - speed * 0.01);
+        const scaleY = Math.min(1.28, 1 + speed * 0.01);
+        
+        cursorFollower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0) rotate(${rotation}deg) scale(${scaleX}, ${scaleY})`;
+    }
+    requestAnimationFrame(updateCursorFollower);
+}
+
+// Start organic spring loop
+requestAnimationFrame(updateCursorFollower);
+
+// --- 14. Premium 3D Tilt & Dynamic Spotlight Glow for Cards ---
+function initCard3DTilt() {
+    const tiltElements = document.querySelectorAll('.card, .skill-card, .team-card, .retro-badge');
+    
+    tiltElements.forEach(el => {
+        el.addEventListener('mousemove', (e) => {
+            const rect = el.getBoundingClientRect();
+            const x = e.clientX - rect.left; // cursor coordinates relative to card
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            // Calculate tilt angle based on distance from center (max 8 degrees for clean look)
+            const tiltX = ((centerY - y) / centerY) * 8;
+            const tiltY = ((x - centerX) / centerX) * 8;
+            
+            // Apply 3D perspective transform
+            // We combine tilt rotation with a slight elevate translate-y for cards
+            if (el.classList.contains('card') || el.classList.contains('team-card')) {
+                el.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-8px)`;
+            } else if (el.classList.contains('retro-badge')) {
+                el.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.02)`;
+            } else {
+                el.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-4px)`;
+            }
+            
+            // Set css variables for neon radial-gradient spotlight glow coordinate tracking
+            el.style.setProperty('--mouse-x', `${x}px`);
+            el.style.setProperty('--mouse-y', `${y}px`);
+        });
+        
+        el.style.willChange = 'transform';
+        el.style.transformStyle = 'preserve-3d';
+        
+        el.addEventListener('mouseleave', () => {
+            // Smoothly reset tilt
+            el.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)';
+            el.style.removeProperty('--mouse-x');
+            el.style.removeProperty('--mouse-y');
+        });
+    });
+}
+
+// Load previous choice & init tilts from DOMContentLoaded
+window.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('selectedCursorLogo');
+    if (saved) {
+        selectCursorLogo(saved);
+    }
+    
+    // Initialize 3D Card tilting spotlights
+    setTimeout(initCard3DTilt, 100);
+});
+
+// --- 15. Dynamic Auto-loading Devlogs Mechanic ---
+// Scans devlog-posts folder and fetches dynamic JSON posts automatically!
+async function loadExternalDevlogs() {
+    const devlogGrid = document.querySelector('#devlog .grid');
+    if (!devlogGrid) return;
+    
+    const loadedFiles = new Set();
+    
+    // Helper to fetch and load a single post JSON file
+    const loadPostFile = async (url) => {
+        try {
+            const res = await fetch(url);
+            if (res.ok) {
+                const data = await res.json();
+                appendDevlogCard(data, devlogGrid);
+                return true;
+            }
+        } catch (e) {
+            console.warn("Could not load devlog file:", url, e);
+        }
+        return false;
+    };
+    
+    // Fallback 1: Local index list posts.json (guarantees offline/file-protocol compatibility)
+    try {
+        const indexRes = await fetch('devlog-posts/posts.json');
+        if (indexRes.ok) {
+            const list = await indexRes.json();
+            for (const file of list) {
+                const fileUrl = `devlog-posts/${file}`;
+                if (!loadedFiles.has(fileUrl)) {
+                    const ok = await loadPostFile(fileUrl);
+                    if (ok) loadedFiles.add(fileUrl);
+                }
+            }
+        }
+    } catch(e) {}
+    
+    // Fallback 2: Local directory listing parsing (runs locally on python server)
+    try {
+        const localRes = await fetch('devlog-posts/');
+        if (localRes.ok) {
+            const html = await localRes.text();
+            const regex = /href="([^"]+\.json)"/g;
+            let match;
+            const localFiles = [];
+            while ((match = regex.exec(html)) !== null) {
+                if (match[1] !== 'posts.json') {
+                    localFiles.push(`devlog-posts/${match[1]}`);
+                }
+            }
+            
+            for (const fileUrl of localFiles) {
+                if (!loadedFiles.has(fileUrl)) {
+                    const ok = await loadPostFile(fileUrl);
+                    if (ok) loadedFiles.add(fileUrl);
+                }
+            }
+        }
+    } catch(e) {}
+    
+    // Primary: GitHub Contents API (works in production Vercel/GitHub pages)
+    try {
+        const apiRes = await fetch('https://api.github.com/repos/Alttrest/Alttre-Portfolio/contents/devlog-posts');
+        if (apiRes.ok) {
+            const files = await apiRes.json();
+            const jsonFiles = files.filter(f => f.name.endsWith('.json') && f.name !== 'posts.json');
+            
+            for (const file of jsonFiles) {
+                if (!loadedFiles.has(file.name)) {
+                    const ok = await loadPostFile(file.download_url);
+                    if (ok) loadedFiles.add(file.name);
+                }
+            }
+        }
+    } catch (e) {}
+}
+
+function appendDevlogCard(data, gridEl) {
+    if (!data.title) return;
+    
+    // Prevent duplicate rendering
+    const existingTitles = Array.from(gridEl.querySelectorAll('h3')).map(h3 => h3.innerText.trim());
+    if (existingTitles.includes(data.title.trim())) return;
+    
+    const card = document.createElement('div');
+    
+    // Pick visual reveal classes based on current card counts for staggered entry
+    const cardCount = gridEl.children.length;
+    const delayClass = `delay-${(cardCount % 4) + 1}`;
+    const revealClass = cardCount % 2 === 0 ? 'reveal-skew' : 'reveal-blur';
+    
+    card.className = `card ${revealClass} ${delayClass}`;
+    
+    const badgeClass = data.badgeClass || 'dev';
+    const badgeText = data.badge || 'Yeni Devlog';
+    const titleText = data.title || 'Yeni Geliştirme Notu';
+    const summaryText = data.summary || '';
+    const detailsKey = data.detailsKey || '';
+    
+    let linkHTML = '';
+    if (detailsKey) {
+        linkHTML = `<a onclick="openDetailModal('${detailsKey}')" class="card-link card-link-sec">Özeti Oku</a>`;
+    } else if (data.externalUrl) {
+        linkHTML = `<a href="${data.externalUrl}" target="_blank" class="card-link card-link-sec">Özeti Oku</a>`;
+    } else {
+        // Embed data in inline JS click handler
+        const safeData = JSON.stringify(data).replace(/"/g, '&quot;');
+        linkHTML = `<a onclick="openDynamicDevlogModal(${safeData})" class="card-link card-link-sec">Özeti Oku</a>`;
+    }
+    
+    card.innerHTML = `
+        <span class="badge ${badgeClass}">${badgeText}</span>
+        <h3>${titleText}</h3>
+        <p>${summaryText}</p>
+        ${linkHTML}
+    `;
+    
+    gridEl.appendChild(card);
+    
+    // Register card in intersection observer dynamically
+    if (typeof observer !== 'undefined') {
+        observer.observe(card);
+    }
+    
+    // Re-init card 3D spotlight tilts
+    if (typeof initCard3DTilt !== 'undefined') {
+        setTimeout(initCard3DTilt, 150);
+    }
+}
+
+window.openDynamicDevlogModal = function(data) {
+    playKeyClick();
+    const detailModal = document.getElementById('detail-modal');
+    const modalHeader = document.getElementById('modal-header');
+    const modalSummary = document.getElementById('modal-summary');
+    const modalInteractiveWidget = document.getElementById('modal-interactive-widget');
+    const modalSources = document.getElementById('modal-sources');
+    
+    if (!detailModal) return;
+    
+    modalHeader.innerHTML = `${data.badge ? data.badge + ' | ' : ''}${data.title}`;
+    modalSummary.innerHTML = data.content || data.summary;
+    
+    // Clear interactive structures for custom devlogs
+    modalInteractiveWidget.innerHTML = '';
+    modalSources.innerHTML = '';
+    
+    detailModal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+};
+
+// Bind additional loaders to window load list
+window.addEventListener('load', () => {
+    // Load external devlog files from folder
+    setTimeout(loadExternalDevlogs, 200);
+});

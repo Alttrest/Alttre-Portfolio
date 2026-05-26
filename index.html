@@ -9,30 +9,54 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Alanya'da yaşayan bilişim öğrencisi. Otonom yapay zeka ajanları (Venus AI), rekabetçi robotik (Fibonacci Sumo Ödülü), Type-C donanım modifikasyonları ve Arch Linux / Hyprland dotfiles geliştiricisi.">
-    <meta name="keywords" content="Alttre, Alttrest, Portfolyo, Arch Linux, Hyprland, Python, Flask, Robotik, Mini Sumo, Maker, Donanım Modifikasyonu, Type-C, Venus AI, Nebula Team">
+    <meta name="description" content="Alanya'da yaşayan bilişim öğrencisi. Otonom yapay zeka ajanları (Venus AI), rekabetçi robotik (Fibonacci Sumo Ödülü), Type-C donanım modifikasyonları ve Custom Linux / Hyprland dotfiles geliştiricisi.">
+    <meta name="keywords" content="Alttre, Alttrest, Portfolyo, Linux, Hyprland, Python, Flask, Robotik, Mini Sumo, Maker, Donanım Modifikasyonu, Type-C, Venus AI, Nebula Team">
     <meta name="author" content="Alttre">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://alttre-portfolio.vercel.app/">
     
     <!-- Open Graph Metadata -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Alttre | Bilişim Teknolojisi Öğrencisi & Robotik Maker">
-    <meta property="og:description" content="Yazılım ve donanımın kesişiminde, Arch Linux üzerinde üreten bir maker'ın teknoloji dünyası.">
-    <meta property="og:image" content="assets/necati.png">
+    <meta property="og:title" content="Alttre | Bilişim Teknoloji Öğrencisi & Robotik Maker">
+    <meta property="og:description" content="Yazılım ve donanımın kesişiminde, Custom Linux üzerinde üreten bir maker'ın teknoloji dünyası.">
+    <meta property="og:image" content="https://alttre-portfolio.vercel.app/assets/necati.png">
+    <meta property="og:url" content="https://alttre-portfolio.vercel.app/">
+
+    <!-- JSON-LD Structured Data for Search Engine Rich Snippet -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Alttre",
+      "alternateName": "Alttrest",
+      "url": "https://alttre-portfolio.vercel.app/",
+      "image": "https://alttre-portfolio.vercel.app/assets/necati.png",
+      "description": "Alanya'da yaşayan bilişim öğrencisi, otonom yapay zeka ajanları (Venus AI), rekabetçi robotik ve Custom Linux dotfiles geliştiricisi.",
+      "jobTitle": "Bilişim Teknolojileri Öğrencisi, Geliştirici & Maker",
+      "knowsAbout": ["Python", "C++", "Linux", "Robotics", "Artificial Intelligence"],
+      "sameAs": [
+        "https://github.com/Alttrest"
+      ]
+    }
+    </script>
 
     <!-- Tailwind is NOT used, vanilla CSS is located in style.css -->
     <link rel="stylesheet" href="style.css?v=1.0.3">
 </head>
 
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="scroll-progress"></div>
+    </div>
+
     <!-- Ambient Grids & Glows -->
     <div class="ambient-mesh"></div>
     <div class="glow-orb"></div>
 
     <!-- Navigation Header -->
     <nav id="navbar">
-        <a href="#" class="logo">
-            <span class="cyan">Alt</span><span class="purple">tre</span>
-        </a>
+        <a href="#" class="logo">Alttre</a>
         <div class="nav-links">
             <a href="#about" class="active-link">Hakkımda</a>
             <a href="#skills">Yetenekler</a>
@@ -40,6 +64,7 @@
             <a href="#robotics">Ar-Ge & Robotik</a>
             <a href="#team">Nebula Team</a>
             <a href="#devlog">Devlog</a>
+            <a href="#contact">İletişim</a>
             <a href="https://github.com/Alttrest" target="_blank" class="nav-btn">GitHub</a>
         </div>
     </nav>
@@ -47,7 +72,7 @@
     <!-- Hero & Interactive Terminal Section -->
     <section class="hero">
         <!-- Interactive Terminal Mock (Alacritty / Kitty Style) -->
-        <div class="terminal-window reveal" id="terminal">
+        <div class="terminal-window reveal" id="terminal" data-nosnippet>
             <div class="terminal-header">
                 <div class="terminal-controls">
                     <div class="term-dot red"></div>
@@ -66,15 +91,30 @@
             </div>
             
             <div class="terminal-body" id="term-body">
-                <p><span class="term-prompt">alttre@arch</span>:<span class="term-dir">~</span>$ whoami</p>
+                <p><span class="term-prompt">alttre@nebula</span>:<span class="term-dir">~</span>$ whoami</p>
                 <p>Alttre (Alttrest)</p>
-                <p><span class="term-prompt">alttre@arch</span>:<span class="term-dir">~</span>$ cat welcome.txt</p>
+                <p><span class="term-prompt">alttre@nebula</span>:<span class="term-dir">~</span>$ cat welcome.txt</p>
                 <p class="term-cyan">"Yazılım ve donanımın kesiştiği noktalarda üretiyorum. Hoş geldiniz!"</p>
-                <p><span class="term-prompt">alttre@arch</span>:<span class="term-dir">~</span>$ <span class="term-success">neofetch</span></p>
+                <p><span class="term-prompt">alttre@nebula</span>:<span class="term-dir">~</span>$ <span class="term-success">neofetch</span></p>
+                <pre style="font-family: inherit; margin: 0 0 10px 0; white-space: pre-wrap; line-height: 1.45; color: #e2e8f0;">
+<span class="term-cyan">       /\         </span>   <span class="term-prompt">Alttre</span>
+<span class="term-cyan">      /  \        </span>   -------------------
+<span class="term-cyan">     /\   \       </span>   <span class="term-cyan">OS</span>: Custom Linux x86_64 / Pop!_OS Dual Setup
+<span class="term-cyan">    /  __  \      </span>   <span class="term-cyan">WM</span>: Hyprland v0.41.2 (Wayland)
+<span class="term-cyan">   /  (  )  \     </span>   <span class="term-cyan">Shell</span>: zsh 5.9
+<span class="term-cyan">  /  ______  \    </span>   <span class="term-cyan">CPU</span>: Ryzen 7 7600 (Desktop) | i5-8300H (Mobile)
+<span class="term-cyan"> /_ /      \ _\   </span>   <span class="term-cyan">GPU</span>: RTX 5060 8GB | GTX 1050 Ti
+                     <span class="term-cyan">RAM</span>: 32GB DDR5 / 16GB DDR4
+                     <span class="term-cyan">CDO</span>: Necati (Chief Debugging Fluffy Cat 🐈)
+                     <span class="term-cyan">Tutku</span>: Yapay Zeka, Gömülü Sistemler, Lojik Devreler
+                </pre>
                 <div id="terminal-interactive-content"></div>
-                <div style="display: flex; align-items: center; margin-top: 10px;">
-                    <span class="term-prompt">alttre@arch</span>:<span class="term-dir">~</span>$&nbsp;
-                    <input type="text" id="terminal-input" class="term-input" placeholder="yardım almak için 'help' yazın..." autocomplete="off">
+                <div style="display: flex; align-items: center; margin-top: 10px; width: 100%;">
+                    <span class="term-prompt">alttre@nebula</span>:<span class="term-dir">~</span>$&nbsp;
+                    <div class="term-input-wrapper">
+                        <input type="text" id="terminal-input" class="term-input" placeholder="yardım almak için 'help' yazın..." autocomplete="off" style="width: 100%;">
+                        <span class="term-suggestion" id="term-suggest-txt"></span>
+                    </div>
                 </div>
             </div>
             
@@ -102,9 +142,9 @@
             <span class="number">01</span> Hakkımda
         </h2>
         <div class="about-wrapper">
-            <div class="about-text-content reveal delay-1">
+            <div class="about-text-content reveal-blur delay-1">
                 <p>
-                    Ben Alttre, Alanya'da yaşayan bir <strong>Bilişim Teknolojileri</strong> öğrencisiyim. Geliştirme ortamı olarak <strong>Arch Linux (Hyprland)</strong> kullanıyor, sistem mimarilerini kendi ihtiyaçlarıma göre tamamen özelleştiriyorum. 
+                    Ben Alttre, Alanya'da yaşayan bir <strong>Bilişim Teknolojileri</strong> öğrencisiyim. Geliştirme ortamı olarak <strong>Custom Linux (Hyprland)</strong> kullanıyor, sistem mimarilerini kendi ihtiyaçlarıma göre tamamen özelleştiriyorum. 
                 </p>
                 <p>
                     Yazılım ve donanımın kesiştiği noktalarda çalışmayı seviyorum. Boş zamanlarımda elektronik donanım modifikasyonları (normal cihazları Type-C portlarına dönüştürmek gibi) ve gömülü sistemler üzerine çalışmalar gerçekleştiriyorum. 
@@ -126,7 +166,7 @@
                         <span class="retro-badge-icon">🧠</span>
                         <div class="retro-badge-info">
                             <h4>Otonom Yapay Zeka Ajanları</h4>
-                            <p><strong>Venus AI</strong> & <strong>Flux/Antigravity</strong> ReAct döngülü akıllı sistem operatörleri.</p>
+                            <p><strong>Venus AI</strong> & <strong>Flux</strong> ReAct döngülü akıllı sistem operatörleri.</p>
                         </div>
                     </div>
                 </div>
@@ -146,7 +186,7 @@
                         &nbsp;&nbsp;ad: <span class="string">"Alttre"</span>,<br>
                         &nbsp;&nbsp;rol: <span class="string">"Bilişim Öğrencisi & Maker"</span>,<br>
                         &nbsp;&nbsp;konum: <span class="string">"Alanya / Antalya"</span>,<br>
-                        &nbsp;&nbsp;ortam: <span class="string">"Arch Linux (Hyprland WM)"</span>,<br>
+                        &nbsp;&nbsp;ortam: <span class="string">"Custom Linux (Hyprland WM)"</span>,<br>
                         &nbsp;&nbsp;ekip: <span class="string">"Nebula Team (Kurucu)"</span>,<br>
                         &nbsp;&nbsp;donanimMod: [<span class="string">"Li-Po Entegrasyonu"</span>, <span class="string">"Type-C Upgrade"</span>],<br>
                         &nbsp;&nbsp;robotikSumo: <span class="keyword">true</span>,<br>
@@ -163,8 +203,8 @@
         <h2 class="section-title reveal">
             <span class="number">02</span> Yetenekler ve Teknolojiler
         </h2>
-        <div class="skills-grid reveal delay-1">
-            <div class="skill-card">
+        <div class="skills-grid">
+            <div class="skill-card reveal-left delay-1">
                 <h4><span>💻</span> Diller & Framework'ler</h4>
                 <ul class="skill-list-items">
                     <li>Python (Flask, WebSockets)</li>
@@ -173,7 +213,7 @@
                     <li>Nebula Team Altyapıları</li>
                 </ul>
             </div>
-            <div class="skill-card">
+            <div class="skill-card reveal-skew delay-2">
                 <h4><span>🧠</span> Yapay Zeka (AI)</h4>
                 <ul class="skill-list-items">
                     <li>LLM API Entegrasyonları</li>
@@ -182,16 +222,16 @@
                     <li>Venus AI Entegrasyonu</li>
                 </ul>
             </div>
-            <div class="skill-card">
+            <div class="skill-card reveal-scale delay-3">
                 <h4><span>🐧</span> Sistem & Araçlar</h4>
                 <ul class="skill-list-items">
-                    <li>Linux (Arch / Custom Dotfiles)</li>
+                    <li>Linux (Custom Dotfiles)</li>
                     <li>Git & GitHub Versiyon Kontrolü</li>
                     <li>Playwright & Otomasyon</li>
                     <li>Bash / Zsh Scripting</li>
                 </ul>
             </div>
-            <div class="skill-card">
+            <div class="skill-card reveal-right delay-4">
                 <h4><span>⚙️</span> Donanım & Maker</h4>
                 <ul class="skill-list-items">
                     <li>Devre Tasarımı & Şeması</li>
@@ -208,9 +248,9 @@
         <h2 class="section-title reveal">
             <span class="number">03</span> Seçilmiş Projeler
         </h2>
-        <div class="grid reveal delay-1">
+        <div class="grid">
             <!-- Venus AI Agent -->
-            <div class="card">
+            <div class="card reveal-left">
                 <span class="badge dev">Otonom Ajan</span>
                 <h3>🤖 Venus AI v3.0 & Flux</h3>
                 <p>Windows ortamında çalışabilen, Reasoning and Acting (ReAct) döngülerini aktif kullanan otonom sistem operatörü.</p>
@@ -223,10 +263,10 @@
             </div>
 
             <!-- AlttreHub -->
-            <div class="card">
+            <div class="card reveal-scale delay-1">
                 <span class="badge beta">Beta Sürüm</span>
                 <h3>🚀 AlttreHub</h3>
-                <p>Tamamen Flask-SocketIO mimarisi ile sıfırdan yazılmış, gerçek zamanlı bir ekosistem ve mesajlaşma platformu.</p>
+                <p>Tamamen Flask-SocketIO mimarisi ile sıfırdan yazılmış, GERÇEK zamanlı bir ekosistem ve mesajlaşma platformu.</p>
                 <div class="tags">
                     <span class="tag">Flask</span>
                     <span class="tag">Socket.io</span>
@@ -236,7 +276,7 @@
             </div>
 
             <!-- Athletixfitness -->
-            <div class="card">
+            <div class="card reveal-right delay-2">
                 <span class="badge success">Tamamlandı</span>
                 <h3>🏋️ Athletixfitness</h3>
                 <p>Alanya spor dünyası için geliştirilen, modern kullanıcı arayüzü ve güçlü backend yönetim yapısına sahip web çözümü.</p>
@@ -255,9 +295,9 @@
         <h2 class="section-title reveal">
             <span class="number">04</span> Ar-Ge & Robotik
         </h2>
-        <div class="grid reveal delay-1">
+        <div class="grid">
             <!-- Mini Sumo -->
-            <div class="card">
+            <div class="card reveal-left">
                 <span class="badge gold">Jüri Özel Ödülü</span>
                 <h3>🤖 Mini Sumo Robot</h3>
                 <p>Fibonacci Robotik yarışmasında ödül alan, otonom savaş algoritmaları ve gömülü C++ motor sürücü kodlaması.</p>
@@ -270,7 +310,7 @@
             </div>
 
             <!-- Hardware Modding -->
-            <div class="card">
+            <div class="card reveal-scale delay-1">
                 <span class="badge dev">Donanım Modu</span>
                 <h3>⚙️ Gömülü Modifikasyonlar</h3>
                 <p>Arduino Nano tabanlı sistemlere Li-Po şarj devreleri entegre ederek cihazları Type-C standartlarına yükseltme.</p>
@@ -283,7 +323,7 @@
             </div>
 
             <!-- Teknofest VTOL -->
-            <div class="card">
+            <div class="card reveal-scale delay-2">
                 <span class="badge dev">R&D İHA</span>
                 <h3>🚁 Teknofest VTOL İHA</h3>
                 <p>Hibrit uçuş kabiliyetine sahip, otonom kalkış yapıp yatay seyir moduna geçebilen gömülü havacılık projesi hazırlığı.</p>
@@ -296,10 +336,10 @@
             </div>
 
             <!-- Desktop AI Agent -->
-            <div class="card">
+            <div class="card reveal-right delay-3">
                 <span class="badge success">Yerel Yapay Zeka</span>
                 <h3>🧠 Masaüstü AI Asistanı</h3>
-                <p>Pop!_OS ve Arch sistem komutlarını sesli ve metinle yönetebilen, tamamen lokal çalışan AI ajanı.</p>
+                <p>Pop!_OS ve Linux sistem komutlarını sesli ve metinle yönetebilen, tamamen lokal çalışan AI ajanı.</p>
                 <div class="tags">
                     <span class="tag">Llama</span>
                     <span class="tag">Subprocess API</span>
@@ -315,9 +355,9 @@
         <h2 class="section-title reveal">
             <span class="number">05</span> Nebula Team Arkadaşları
         </h2>
-        <div class="team-grid reveal delay-1">
+        <div class="team-grid">
             <!-- Alttre -->
-            <div class="team-card alttre-card">
+            <div class="team-card alttre-card reveal-scale">
                 <div class="team-avatar">🚀</div>
                 <h3>Alttre</h3>
                 <p class="team-role">Kurucu Üye | Ar-Ge & Robotik & Python</p>
@@ -329,7 +369,7 @@
             </div>
 
             <!-- Nezbat -->
-            <a href="https://nevzat-portfolio.vercel.app/" target="_blank" class="team-card nezbat-card external-link-card" style="text-decoration: none; color: inherit;">
+            <a href="https://nevzat-portfolio.vercel.app/" target="_blank" class="team-card nezbat-card external-link-card reveal-scale delay-1" style="text-decoration: none; color: inherit;">
                 <div class="team-avatar">👾</div>
                 <h3>Nezbat 
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -345,7 +385,7 @@
             </a>
 
             <!-- Bulut -->
-            <a href="https://bulut-portfolio.vercel.app/" target="_blank" class="team-card bulut-card external-link-card" style="text-decoration: none; color: inherit;">
+            <a href="https://bulut-portfolio.vercel.app/" target="_blank" class="team-card bulut-card external-link-card reveal-scale delay-2" style="text-decoration: none; color: inherit;">
                 <div class="team-avatar">☁️</div>
                 <h3>Bulut 
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -367,14 +407,14 @@
         <h2 class="section-title reveal">
             <span class="number">06</span> Devlog: Çözümler & Notlar
         </h2>
-        <div class="grid reveal delay-1">
-            <div class="card">
+        <div class="grid">
+            <div class="card reveal-skew delay-1">
                 <span class="badge dev">🐧 İşletim Sistemi</span>
-                <h3>Arch Linux (Hyprland) Modifikasyonları</h3>
+                <h3>Custom Linux (Hyprland) Modifikasyonları</h3>
                 <p>Özelleştirilmiş dotfile yapılandırmaları, donanım sürücülerinin optimizasyonu ve WM yapıları üzerine blog notlarım.</p>
                 <a onclick="openDetailModal('devlog_arch')" class="card-link card-link-sec">Özeti Oku</a>
             </div>
-            <div class="card">
+            <div class="card reveal-blur delay-2">
                 <span class="badge success">⚡ Backend</span>
                 <h3>WebSocket & SocketIO Mimarisi</h3>
                 <p>Gerçek zamanlı sunucu-istemci veri transferinde Polling yönteminden Socket.io'ya geçiş süreci ve performans analizi.</p>
@@ -383,11 +423,67 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
+    <section class="container" id="contact">
+        <h2 class="section-title reveal">
+            <span class="number">07</span> İletişim & Bağlantı
+        </h2>
+        <div class="contact-wrapper reveal delay-1">
+            <div class="contact-info">
+                <h3>Nebula İletişim Protokolü</h3>
+                <p>
+                    Projelerim hakkında konuşmak, yeni bir fikir geliştirmek veya Nebula Team ekosistemine dahil olmak için bana ulaşın.
+                </p>
+                <div class="contact-details-list">
+                    <div class="contact-detail-item">
+                        <span class="detail-icon">📧</span>
+                        <div class="detail-text">
+                            <h4>E-posta</h4>
+                            <p>ali-turan-@outlook.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail-item">
+                        <span class="detail-icon">🌐</span>
+                        <div class="detail-text">
+                            <h4>GitHub</h4>
+                            <a href="https://github.com/Alttrest" target="_blank" style="color: var(--arch-cyan); text-decoration: none; font-family: var(--font-mono);">github.com/Alttrest</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <form class="contact-form" id="contact-form-el" onsubmit="handleFormSubmit(event)">
+                <input type="hidden" name="access_key" value="cbadadce-65e4-4430-a85a-6aef0ca05bf3">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="form-name">Ad Soyad</label>
+                        <input type="text" id="form-name" name="name" required placeholder="Geliştirici / Misafir">
+                    </div>
+                    <div class="form-group">
+                        <label for="form-email">E-posta</label>
+                        <input type="email" id="form-email" name="email" required placeholder="geliştirici@nebula.team">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="form-subject">Konu</label>
+                    <input type="text" id="form-subject" name="subject" required placeholder="Proje entegrasyonu hakkında...">
+                </div>
+                <div class="form-group">
+                    <label for="form-message">Mesaj</label>
+                    <textarea id="form-message" name="message" required rows="5" placeholder="Mesajınızı buraya yazın..."></textarea>
+                </div>
+                <button type="submit" class="card-link" style="width: 100%; border: none;">
+                    Gönder (Secure Signal)
+                </button>
+            </form>
+        </div>
+    </section>
+
     <!-- Footer with /uses trigger (CDO Necati focus) -->
     <footer onclick="openUsesModal()" title="Çalışma ve Test Donanım Sistemlerimi Görmek İçin Tıklayın!">
         <div class="footer-glow"></div>
         <div class="footer-cat-badge" style="background-image: url('assets/necati.png')"></div>
-        <p>Built with <span style="color: var(--arch-cyan);">💻</span> on Arch Linux (Hyprland) by Alttre</p>
+        <p>Built with <span style="color: var(--arch-cyan);">💻</span> on Custom Linux (Hyprland) by Alttre</p>
     </footer>
 
     <!-- Uses Workspace Hardware Spec Modal -->
@@ -483,7 +579,7 @@
                     <div class="uses-icon">🐧</div>
                     <div class="uses-details">
                         <h4>İşletim Sistemi</h4>
-                        <p>Arch Linux (Hyprland Tiling Window Manager)</p>
+                        <p>Custom Linux (Hyprland Tiling Window Manager)</p>
                     </div>
                 </div>
                 <div class="uses-item">
@@ -516,6 +612,35 @@
             <div id="modal-sources" class="source-links"></div>
         </div>
     </div>
+
+    <!-- Floating Cursor Picker Side Panel -->
+    <div id="cursor-selector-panel" class="cursor-panel-collapsed">
+        <button id="cursor-panel-toggle" title="İmleç Logo Seçici">🎨</button>
+        <div class="cursor-panel-content">
+            <h4>İmleç Logosu</h4>
+            <div class="cursor-grid">
+                <button class="cursor-choice-btn" onclick="selectCursorLogo('🚀')">🚀</button>
+                <button class="cursor-choice-btn" onclick="selectCursorLogo('👾')">👾</button>
+                <button class="cursor-choice-btn" onclick="selectCursorLogo('☁️')">☁️</button>
+                <button class="cursor-choice-btn" onclick="selectCursorLogo('🐈')">🐈</button>
+                <button class="cursor-choice-btn" onclick="selectCursorLogo('💻')">💻</button>
+                <button class="cursor-choice-btn" onclick="selectCursorLogo('🧠')">🧠</button>
+                <button class="cursor-choice-btn" onclick="selectCursorLogo('⚙️')">⚙️</button>
+                <button class="cursor-choice-btn reset-btn" onclick="selectCursorLogo('reset')" title="Varsayılan İmleç">✕</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button with Circular Progress -->
+    <button id="scroll-to-top" class="scroll-to-top-btn" title="Yukarı Çık">
+        <svg class="progress-ring" width="48" height="48">
+            <circle class="progress-ring-circle" cx="24" cy="24" r="23"/>
+        </svg>
+        <span class="arrow-icon">▲</span>
+    </button>
+
+    <!-- Custom Cursor Follower Element -->
+    <div id="custom-cursor-follower" style="display: none;">🚀</div>
 
     <!-- App Logic Script -->
     <script src="app.js?v=1.0.3"></script>
