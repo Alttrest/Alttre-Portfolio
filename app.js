@@ -1949,3 +1949,43 @@ window.addEventListener('load', () => {
     // Load external devlog files from folder
     setTimeout(loadExternalDevlogs, 200);
 });
+
+// --- 16. Karanlık / Aydınlık Tema Geçiş Sistemi (Theme Toggle) ---
+const themeToggleBtn = document.getElementById('theme-toggle');
+const sunIcon = document.querySelector('#theme-toggle .sun-icon');
+const moonIcon = document.querySelector('#theme-toggle .moon-icon');
+
+function updateThemeIcons(isLight) {
+    if (!sunIcon || !moonIcon) return;
+    if (isLight) {
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+    } else {
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+    }
+}
+
+if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+        playKeyClick();
+        const isLight = document.body.classList.toggle('light-theme');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        updateThemeIcons(isLight);
+    });
+}
+
+// Initial Theme Setup & Persistency Load
+window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    const isLight = savedTheme === 'light' || (!savedTheme && systemPrefersLight);
+    
+    if (isLight) {
+        document.body.classList.add('light-theme');
+        updateThemeIcons(true);
+    } else {
+        document.body.classList.remove('light-theme');
+        updateThemeIcons(false);
+    }
+});

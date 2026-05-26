@@ -1762,3 +1762,149 @@ footer:hover p {
     z-index: 1;
     white-space: pre;
 }
+
+/* Theme Toggle Button Style */
+.theme-toggle-btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--card-border);
+    color: var(--text-muted);
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+    margin-left: 10px;
+}
+
+.theme-toggle-btn:hover {
+    background: rgba(0, 210, 255, 0.08);
+    color: var(--arch-cyan);
+    border-color: var(--arch-cyan);
+    box-shadow: 0 0 12px var(--arch-cyan-glow);
+    transform: translateY(-2px);
+}
+
+/* Premium Light Theme Variable Overrides */
+body.light-theme {
+    --bg-color: #f5f7fa; /* Soft luxury silver light background */
+    --card-bg: rgba(255, 255, 255, 0.85); /* Clean light card background */
+    --card-border: rgba(0, 0, 0, 0.07); /* Darker borders for contrast */
+    
+    /* Clean darker HSL colors for outstanding light theme readability */
+    --arch-cyan: #007bb8;
+    --arch-cyan-glow: rgba(0, 123, 184, 0.12);
+    
+    --hypr-purple: #7a4ad1;
+    --hypr-purple-glow: rgba(122, 74, 209, 0.12);
+    
+    --term-green: #15803d;
+    --term-green-glow: rgba(21, 128, 61, 0.12);
+    
+    --award-gold: #b45309;
+    --award-gold-glow: rgba(180, 83, 9, 0.12);
+    
+    --text-main: #1f2937; /* Clean charcoal dark gray for readability */
+    --text-muted: #57657a; /* Clean slate for descriptions */
+    --text-white: #0b0f17; /* Very dark slate for prominent texts */
+}
+
+/* Light Theme Aesthetic Modulations */
+body.light-theme {
+    background-image:
+        radial-gradient(circle at 5% 15%, rgba(0, 123, 184, 0.04), transparent 35%),
+        radial-gradient(circle at 95% 85%, rgba(122, 74, 209, 0.04), transparent 35%);
+}
+
+body.light-theme .glow-orb {
+    background: radial-gradient(circle, rgba(0, 123, 184, 0.04) 0%, transparent 70%);
+}
+
+body.light-theme .ambient-mesh {
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+
+/* Light Theme Navigation overrides */
+body.light-theme nav {
+    background: rgba(245, 247, 252, 0.7);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme nav.scrolled {
+    background: rgba(245, 247, 252, 0.85);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+body.light-theme .nav-btn {
+    background: rgba(0, 123, 184, 0.06);
+}
+
+body.light-theme .nav-btn:hover {
+    background: var(--arch-cyan) !important;
+    color: #fff !important;
+}
+
+body.light-theme .theme-toggle-btn {
+    background: rgba(0, 0, 0, 0.03);
+    color: var(--text-muted);
+}
+
+body.light-theme .theme-toggle-btn:hover {
+    background: rgba(0, 123, 184, 0.08);
+    color: var(--arch-cyan);
+    border-color: var(--arch-cyan);
+}
+
+/* Modals adaptation for Light Theme */
+body.light-theme .modal-box {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.12);
+}
+
+body.light-theme .close-btn {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+body.light-theme .close-btn:hover {
+    background: var(--danger-red);
+    color: #ffffff;
+    border-color: var(--danger-red);
+}
+
+body.light-theme .code-board {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.06);
+}
+
+body.light-theme .form-group input,
+body.light-theme .form-group textarea {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.08);
+    color: var(--text-main);
+}
+
+body.light-theme .form-group input:focus,
+body.light-theme .form-group textarea:focus {
+    border-color: var(--arch-cyan);
+    background: #ffffff;
+}
+
+/* Mobile Cursor & Panel Hiding Rules */
+@media (max-width: 960px) {
+    #cursor-selector-panel {
+        display: none !important;
+    }
+    #custom-cursor-follower {
+        display: none !important;
+    }
+    .theme-toggle-btn {
+        margin-left: 0;
+    }
+}
