@@ -1,666 +1,371 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alttre | Bilişim Teknolojileri Öğrencisi, Geliştirici & Maker</title>
-    
-    <!-- Tab Icon (Dynamic svg rocket) -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
-
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Alanya'da yaşayan bilişim öğrencisi. Otonom yapay zeka ajanları (Venus AI), rekabetçi robotik (Fibonacci Sumo Ödülü), Type-C donanım modifikasyonları ve Custom Linux / Hyprland dotfiles geliştiricisi.">
-    <meta name="keywords" content="Alttre, Alttrest, Portfolyo, Linux, Hyprland, Python, Flask, Robotik, Mini Sumo, Maker, Donanım Modifikasyonu, Type-C, Venus AI, Nebula Team">
-    <meta name="author" content="Alttre">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://alttre-portfolio.vercel.app/">
-    
-    <!-- Open Graph Metadata -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Alttre | Bilişim Teknoloji Öğrencisi & Robotik Maker">
-    <meta property="og:description" content="Yazılım ve donanımın kesişiminde, Custom Linux üzerinde üreten bir maker'ın teknoloji dünyası.">
-    <meta property="og:image" content="https://alttre-portfolio.vercel.app/assets/necati.png">
-    <meta property="og:url" content="https://alttre-portfolio.vercel.app/">
-
-    <!-- JSON-LD Structured Data for Search Engine Rich Snippet -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Alttre",
-      "alternateName": "Alttrest",
-      "url": "https://alttre-portfolio.vercel.app/",
-      "image": "https://alttre-portfolio.vercel.app/assets/necati.png",
-      "description": "Alanya'da yaşayan bilişim öğrencisi, otonom yapay zeka ajanları (Venus AI), rekabetçi robotik ve Custom Linux dotfiles geliştiricisi.",
-      "jobTitle": "Bilişim Teknolojileri Öğrencisi, Geliştirici & Maker",
-      "knowsAbout": ["Python", "C++", "Linux", "Robotics", "Artificial Intelligence"],
-      "sameAs": [
-        "https://github.com/Alttrest"
-      ]
-    }
-    </script>
-
-    <!-- Tailwind is NOT used, vanilla CSS is located in style.css -->
-    <link rel="stylesheet" href="style.css?v=1.2.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ali Turan (Alttre) — Bilişim Teknolojileri Öğrencisi, Geliştirici ve Maker. Yazılımdan donanıma, yapay zekadan robotiğe.">
+  <meta name="theme-color" content="#111318">
+  <title>Ali Turan — Geliştirici & Maker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress-container">
-        <div class="scroll-progress-bar" id="scroll-progress"></div>
-    </div>
+  <a href="#main-content" class="skip-link">İçeriğe geç</a>
 
-    <!-- Ambient Grids & Glows -->
-    <div class="ambient-mesh"></div>
-    <div class="glow-orb"></div>
-
-    <!-- Navigation Header -->
-    <nav id="navbar">
-        <a href="#" class="logo">Alttre</a>
-        <div class="nav-links">
-            <a href="#about" class="active-link">Hakkımda</a>
-            <a href="#skills">Yetenekler</a>
-            <a href="#projects">Projeler</a>
-            <a href="#robotics">Ar-Ge & Robotik</a>
-            <a href="#team">Nebula Team</a>
-            <a href="#devlog">Devlog</a>
-            <a href="#contact">İletişim</a>
-            <a href="https://github.com/Alttrest" target="_blank" class="nav-btn">GitHub</a>
-            
-            <!-- Theme Toggle Switch -->
-            <button id="theme-toggle" class="theme-toggle-btn" title="Karanlık/Aydınlık Tema Geçişi">
-                <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-                <svg class="moon-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
-            </button>
-        </div>
+  <!-- Navigation -->
+  <header class="site-header" id="site-header">
+    <nav class="nav" aria-label="Ana navigasyon">
+      <div class="nav__inner">
+        <a href="#hero" class="nav__logo" aria-label="Ana sayfa">
+          <span class="nav__logo-name">Alttre</span>
+        </a>
+        <button class="nav__toggle" aria-label="Menüyü aç" aria-expanded="false" aria-controls="nav-menu" type="button">
+          <span class="nav__toggle-bar"></span>
+          <span class="nav__toggle-bar"></span>
+          <span class="nav__toggle-bar"></span>
+        </button>
+        <ul class="nav__menu" id="nav-menu" role="list">
+          <li><a href="#projeler" class="nav__link">Projeler</a></li>
+          <li><a href="#vitrin" class="nav__link">Vitrin</a></li>
+          <li><a href="#yetenekler" class="nav__link">Yetenekler</a></li>
+          <li><a href="#ekip" class="nav__link">Ekip</a></li>
+          <li><a href="#iletisim" class="nav__link">İletişim</a></li>
+        </ul>
+      </div>
     </nav>
+  </header>
 
-    <!-- Hero & Interactive Terminal Section -->
-    <section class="hero">
-        <!-- Interactive Terminal Mock (Alacritty / Kitty Style) -->
-        <div class="terminal-window reveal" id="terminal" data-nosnippet>
-            <div class="terminal-header">
-                <div class="terminal-controls">
-                    <div class="term-dot red"></div>
-                    <div class="term-dot yellow"></div>
-                    <div class="term-dot green"></div>
-                </div>
-                <div class="terminal-title">Alttre</div>
-                
-                <!-- Audio Toggle Switch (OFF by default) -->
-                <div class="audio-toggle" id="audio-btn" title="Klavye Ses Efektleri (Varsayılan: KAPALI)">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM12 4L9.91 6.09 12 8.18V4zm-8 8H6l5 5v-4.18L4.41 10.4 4 12zm16.42.22l1.42 1.42C22.47 12.87 23 11.5 23 10c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71 0 1.25-.33 2.42-.92 3.44zM19 12c0-1.1-.63-2.68-1.5-3.5L16 10l1.5 1.5c.35.35.5.85.5 1.5 0 .5-.15 1-.5 1.5l1.5 1.5c.68-.82 1-2.18 1-3.5z"/>
-                    </svg>
-                    <span class="audio-status" id="audio-status-txt">Audio: OFF</span>
-                </div>
-            </div>
-            
-            <div class="terminal-body" id="term-body">
-                <p><span class="term-prompt">alttre@nebula</span>:<span class="term-dir">~</span>$ whoami</p>
-                <p>Alttre (Alttrest)</p>
-                <p><span class="term-prompt">alttre@nebula</span>:<span class="term-dir">~</span>$ cat welcome.txt</p>
-                <p class="term-cyan">"Yazılım ve donanımın kesiştiği noktalarda üretiyorum. Hoş geldiniz!"</p>
-                <p><span class="term-prompt">alttre@nebula</span>:<span class="term-dir">~</span>$ <span class="term-success">neofetch</span></p>
-                <pre style="font-family: inherit; margin: 0 0 10px 0; white-space: pre-wrap; line-height: 1.45; color: #e2e8f0;">
-<span class="term-cyan">       /\         </span>   <span class="term-prompt">Alttre</span>
-<span class="term-cyan">      /  \        </span>   -------------------
-<span class="term-cyan">     /\   \       </span>   <span class="term-cyan">OS</span>: Custom Linux x86_64 / Pop!_OS Dual Setup
-<span class="term-cyan">    /  __  \      </span>   <span class="term-cyan">WM</span>: Hyprland v0.41.2 (Wayland)
-<span class="term-cyan">   /  (  )  \     </span>   <span class="term-cyan">Shell</span>: zsh 5.9
-<span class="term-cyan">  /  ______  \    </span>   <span class="term-cyan">CPU</span>: Ryzen 7 7600 (Desktop) | i5-8300H (Mobile)
-<span class="term-cyan"> /_ /      \ _\   </span>   <span class="term-cyan">GPU</span>: RTX 5060 8GB | GTX 1050 Ti
-                     <span class="term-cyan">RAM</span>: 32GB DDR5 / 16GB DDR4
-                     <span class="term-cyan">CDO</span>: Necati (Chief Debugging Fluffy Cat 🐈)
-                     <span class="term-cyan">Tutku</span>: Yapay Zeka, Gömülü Sistemler, Lojik Devreler
-                </pre>
-                <div id="terminal-interactive-content"></div>
-                <div style="display: flex; align-items: center; margin-top: 10px; width: 100%;">
-                    <span class="term-prompt">alttre@nebula</span>:<span class="term-dir">~</span>$&nbsp;
-                    <div class="term-input-wrapper">
-                        <input type="text" id="terminal-input" class="term-input" placeholder="yardım almak için 'help' yazın..." autocomplete="off" style="width: 100%;">
-                        <span class="term-suggestion" id="term-suggest-txt"></span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Quick Command Shortcuts -->
-            <div class="terminal-shortcuts">
-                <button class="shortcut-btn" onclick="executeTermCmd('help')">help</button>
-                <button class="shortcut-btn" onclick="executeTermCmd('neofetch')">neofetch</button>
-                <button class="shortcut-btn" onclick="executeTermCmd('skills')">skills</button>
-                <button class="shortcut-btn" onclick="executeTermCmd('projects')">projects</button>
-                <button class="shortcut-btn" onclick="executeTermCmd('logic')">logic</button>
-                <button class="shortcut-btn" onclick="executeTermCmd('matrix')">matrix</button>
-                <button class="shortcut-btn" onclick="executeTermCmd('clear')">clear</button>
-            </div>
-        </div>
+  <!-- Mobile menu overlay -->
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
 
-        <h1 class="hero-title reveal delay-1">Merhaba, Ben <span class="glow-cyan">Alttre</span>.</h1>
-        <div class="typing-sub reveal delay-2">
-            <span id="typing-hook"></span><span class="cursor-blink"></span>
+  <main id="main-content">
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero" aria-label="Tanıtım">
+      <div class="hero__canvas" aria-hidden="true">
+        <div class="hero__grid-lines"></div>
+        <div class="hero__glow"></div>
+      </div>
+      <div class="hero__content">
+        <div class="hero__intro">
+          <p class="hero__greeting">Merhaba, ben</p>
+          <h1 class="hero__name">Ali Turan</h1>
+          <p class="hero__alias">/ Alttre</p>
         </div>
+        <p class="hero__title">Bilişim Teknolojileri Öğrencisi, Geliştirici & Maker</p>
+        <p class="hero__tagline">Yazılımdan donanıma, yapay zekadan robotiğe: fikirlerimi çalışan sistemlere dönüştürüyorum.</p>
+        <div class="hero__actions">
+          <a href="#projeler" class="btn btn--primary">Projelerimi Gör</a>
+          <a href="#iletisim" class="btn btn--ghost">İletişime Geç</a>
+        </div>
+        <div class="hero__badge">
+          <span class="hero__badge-icon">🐱</span>
+          <span class="hero__badge-text">Necati — Chief Debugging Officer</span>
+        </div>
+      </div>
+      <div class="hero__scroll-hint" aria-hidden="true">
+        <span class="hero__scroll-line"></span>
+      </div>
     </section>
 
-    <!-- About Me Section -->
-    <section class="container" id="about">
-        <h2 class="section-title reveal">
-            <span class="number">01</span> Hakkımda
-        </h2>
-        <div class="about-wrapper">
-            <div class="about-text-content reveal-blur delay-1">
-                <p>
-                    Ben Alttre, Alanya'da yaşayan bir <strong>Bilişim Teknolojileri</strong> öğrencisiyim. Geliştirme ortamı olarak <strong>Custom Linux (Hyprland)</strong> kullanıyor, sistem mimarilerini kendi ihtiyaçlarıma göre tamamen özelleştiriyorum. 
-                </p>
-                <p>
-                    Yazılım ve donanımın kesiştiği noktalarda çalışmayı seviyorum. Boş zamanlarımda elektronik donanım modifikasyonları (normal cihazları Type-C portlarına dönüştürmek gibi) ve gömülü sistemler üzerine çalışmalar gerçekleştiriyorum. 
-                </p>
-                <p>
-                    Aynı zamanda yapay zeka ve modern web teknolojileri üzerine yenilikçi projeler üreten <strong>Nebula Team</strong>'in kurucu üyelerinden biriyim.
-                </p>
+    <!-- Projects Section -->
+    <section class="section projects" id="projeler" aria-label="Projeler">
+      <div class="section__inner">
+        <h2 class="section__heading">Projeler</h2>
+        <p class="section__subtext">Fikir aşamasından çalışan sisteme kadar uçtan uca geliştirdiğim projeler.</p>
 
-                <!-- Custom Achievements / Focus Badges -->
-                <div class="achievement-row">
-                    <div class="retro-badge gold-border">
-                        <span class="retro-badge-icon">🏆</span>
-                        <div class="retro-badge-info">
-                            <h4>Fibonacci Robot Yarışması</h4>
-                            <p>Mini Sumo Kategorisinde otonom taktik yazılımımla <strong>Jüri Özel Ödülü</strong>.</p>
-                        </div>
-                    </div>
-                    <div class="retro-badge purple-border">
-                        <span class="retro-badge-icon">🧠</span>
-                        <div class="retro-badge-info">
-                            <h4>Otonom Yapay Zeka Ajanları</h4>
-                            <p><strong>Venus AI</strong> & <strong>Flux</strong> ReAct döngülü akıllı sistem operatörleri.</p>
-                        </div>
-                    </div>
-                </div>
+        <div class="projects__grid" id="projects-grid">
+          <!-- Project 1: FluxMobile — Featured -->
+          <article class="project project--featured js-reveal">
+            <div class="project__image-wrap">
+              <img src="images/venus-ai.png" alt="FluxMobile yapay zeka asistanı" class="project__image" loading="lazy">
             </div>
+            <div class="project__body">
+              <h3 class="project__title">FluxMobile (NexusAI-PhoneAgent)</h3>
+              <p class="project__desc">React Native ve Expo tabanlı mobil yapay zeka asistanı. Cepten erişilebilir otonom yapay zeka gücü.</p>
+              <ul class="project__tags" role="list">
+                <li>React Native</li><li>Expo</li><li>AI</li><li>Mobile</li>
+              </ul>
+            </div>
+          </article>
 
-            <!-- Arch Spec JSON Visualizer Card -->
-            <div class="reveal delay-2">
-                <div class="code-board">
-                    <div class="code-board-header">
-                        <div class="term-dot red"></div>
-                        <div class="term-dot yellow"></div>
-                        <div class="term-dot green"></div>
-                        <span class="code-board-title">~/config/hypr/about.json</span>
-                    </div>
-                    <div class="code-board-body">
-                        <span class="keyword">const</span> <span style="color: var(--arch-cyan);">developer</span> = {<br>
-                        &nbsp;&nbsp;ad: <span class="string">"Alttre"</span>,<br>
-                        &nbsp;&nbsp;rol: <span class="string">"Bilişim Öğrencisi & Maker"</span>,<br>
-                        &nbsp;&nbsp;konum: <span class="string">"Alanya / Antalya"</span>,<br>
-                        &nbsp;&nbsp;ortam: <span class="string">"Custom Linux (Hyprland WM)"</span>,<br>
-                        &nbsp;&nbsp;ekip: <span class="string">"Nebula Team (Kurucu)"</span>,<br>
-                        &nbsp;&nbsp;donanimMod: [<span class="string">"Li-Po Entegrasyonu"</span>, <span class="string">"Type-C Upgrade"</span>],<br>
-                        &nbsp;&nbsp;robotikSumo: <span class="keyword">true</span>,<br>
-                        &nbsp;&nbsp;aiAjanlar: [<span class="string">"Venus AI"</span>, <span class="string">"Flux"</span>] <span class="comment">// ReAct döngüsü</span><br>
-                        };
-                    </div>
-                </div>
+          <!-- Project 2: AI-POST Ekosistemi — Featured -->
+          <article class="project project--featured js-reveal">
+            <div class="project__image-wrap">
+              <img src="images/postx.png" alt="AI-POST sosyal medya otomasyonu" class="project__image" loading="lazy">
             </div>
+            <div class="project__body">
+              <h3 class="project__title">AI-POST Ekosistemi</h3>
+              <p class="project__desc">Yapay zeka destekli sosyal medya gönderi, otomasyon ve yönetim araçları bütünü.</p>
+              <ul class="project__tags" role="list">
+                <li>AI</li><li>Automation</li><li>Social Media</li><li>Bot</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Project 3: NexusAI-Agent -->
+          <article class="project js-reveal">
+            <div class="project__body" style="padding: var(--space-xl) var(--space-lg);">
+              <h3 class="project__title">NexusAI-Agent</h3>
+              <p class="project__desc">Electron ve React tabanlı gelişmiş masaüstü yapay zeka operatörü. Flux-Agent serisinin en güncel evrimi.</p>
+              <ul class="project__tags" role="list">
+                <li>Electron</li><li>React</li><li>Desktop App</li><li>AI</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Project 4: Ven-s-Finder -->
+          <article class="project js-reveal">
+            <div class="project__body" style="padding: var(--space-xl) var(--space-lg);">
+              <h3 class="project__title">Ven-s-Finder</h3>
+              <p class="project__desc">Groq AI ve DuckDuckGo arama API'sini kullanan akıllı ve hızlı kişi arama motoru.</p>
+              <ul class="project__tags" role="list">
+                <li>Groq AI</li><li>DuckDuckGo</li><li>Search Engine</li><li>Python</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Project 5: FBMTAL Chat & AlttreHub — Featured -->
+          <article class="project project--featured js-reveal">
+            <div class="project__image-wrap">
+              <img src="images/alttrehub.png" alt="Gerçek zamanlı sohbet altyapısı" class="project__image" loading="lazy">
+            </div>
+            <div class="project__body">
+              <h3 class="project__title">FBMTAL Chat & AlttreHub</h3>
+              <p class="project__desc">Okul veya belirli bir topluluk için geliştirilmiş gerçek zamanlı sohbet altyapıları ve iletişim kanalı platformu.</p>
+              <ul class="project__tags" role="list">
+                <li>WebSockets</li><li>Socket.io</li><li>Flask</li><li>Real-time</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Project 6: Mini Sumo Robot -->
+          <article class="project js-reveal">
+            <div class="project__body" style="padding: var(--space-xl) var(--space-lg);">
+              <h3 class="project__title">Mini Sumo Robot</h3>
+              <p class="project__desc">Fibonacci Robot Yarışması'nda Jüri Özel Ödülü alan, C ile yazılmış otonom mini sumo robotu. Sensör füzyonu ve strateji algoritmaları.</p>
+              <ul class="project__tags" role="list">
+                <li>Arduino</li><li>C</li><li>Robotik</li><li>🏆 Ödüllü</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Project 7: Hype-NEWS -->
+          <article class="project js-reveal">
+            <div class="project__body" style="padding: var(--space-xl) var(--space-lg);">
+              <h3 class="project__title">Hype-NEWS</h3>
+              <p class="project__desc">İnteraktif ve yapay zeka destekli haber istasyonu platformu.</p>
+              <ul class="project__tags" role="list">
+                <li>AI</li><li>News</li><li>Interactive</li><li>Web</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Project 8: Teknofest VTOL İHA — Featured -->
+          <article class="project project--featured js-reveal">
+            <div class="project__image-wrap">
+              <img src="images/vtol-drone.png" alt="Teknofest VTOL İHA prototipi" class="project__image" loading="lazy">
+            </div>
+            <div class="project__body">
+              <h3 class="project__title">Teknofest VTOL İHA</h3>
+              <p class="project__desc">Pixhawk ve ArduPilot tabanlı dikey kalkışlı insansız hava aracı prototipi.</p>
+              <ul class="project__tags" role="list">
+                <li>Pixhawk</li><li>ArduPilot</li><li>VTOL</li><li>Teknofest</li>
+                <li style="background: oklch(0.20 0.04 165); color: var(--accent); border: 1px solid var(--accent-dim);">⏳ Gelecekte</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Project 9: Donanım Laboratuvarı -->
+          <article class="project js-reveal">
+            <div class="project__image-wrap">
+              <img src="images/hardware-mod.png" alt="Donanım laboratuvarı" class="project__image" loading="lazy">
+            </div>
+            <div class="project__body">
+              <h3 class="project__title">Donanım Laboratuvarı</h3>
+              <p class="project__desc">Standart cihazları Type-C ve Li-Po pillerle güncelleme. Arduino tabanlı özel devre tasarımları.</p>
+              <ul class="project__tags" role="list">
+                <li>Hardware</li><li>Type-C</li><li>Li-Po</li><li>Maker</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Project 10: Nebula & Web Müşteri İşleri -->
+          <article class="project js-reveal">
+            <div class="project__body" style="padding: var(--space-xl) var(--space-lg);">
+              <h3 class="project__title">Web, Portfolyo ve Ekip İşleri</h3>
+              <p class="project__desc">Nebula Team Ekosistemi (ekip portfolyoları) ve müşteri/bağımsız web projeleri (Fatma-Turan-Website, freela-website, honeyflow-admin).</p>
+              <ul class="project__tags" role="list">
+                <li>Frontend</li><li>UI/UX</li><li>CMS</li><li>Freelance</li>
+              </ul>
+            </div>
+          </article>
         </div>
+      </div>
+    </section>
+
+    <!-- Showcase Section -->
+    <section class="section showcase" id="vitrin" aria-label="Vitrin">
+      <div class="section__inner">
+        <h2 class="section__heading">Vitrin</h2>
+        <p class="section__subtext">Canlı projelere göz atın.</p>
+        <div class="showcase__grid">
+
+          <a href="https://sefa-muhendislik.vercel.app/" target="_blank" rel="noopener noreferrer" class="showcase__card js-reveal" aria-label="Sefa Mühendislik web sitesini aç (yeni sekmede)">
+            <div class="showcase__card-header">
+              <span class="showcase__type">Kurumsal Web Sitesi</span>
+              <svg class="showcase__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            </div>
+            <h3 class="showcase__title">Sefa Mühendislik</h3>
+            <p class="showcase__desc">Profesyonel mühendislik firması için tasarlanan kurumsal web sitesi.</p>
+          </a>
+
+          <a href="https://3dprof.netlify.app/" target="_blank" rel="noopener noreferrer" class="showcase__card showcase__card--accent js-reveal" aria-label="3DProf web deneyimini aç (yeni sekmede)">
+            <div class="showcase__card-header">
+              <span class="showcase__type">3D Web Deneyimi</span>
+              <svg class="showcase__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            </div>
+            <h3 class="showcase__title">3DProf</h3>
+            <p class="showcase__desc">İnteraktif 3D deneyim sunan yenilikçi web uygulaması.</p>
+          </a>
+
+          <a href="https://www.instagram.com/net.postx/" target="_blank" rel="noopener noreferrer" class="showcase__card js-reveal" aria-label="PostX Instagram sayfasını aç (yeni sekmede)">
+            <div class="showcase__card-header">
+              <div style="display: flex; gap: 8px; align-items: center;">
+                <span class="showcase__type">Otomasyon Aracı</span>
+                <span style="font-size: var(--text-xs); color: oklch(0.65 0.15 20); background: oklch(0.20 0.05 20); padding: 2px 8px; border-radius: var(--radius-pill); font-weight: 600;">Devre Dışı</span>
+              </div>
+              <svg class="showcase__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            </div>
+            <h3 class="showcase__title">PostX</h3>
+            <p class="showcase__desc">Otomatik Instagram post zamanlayıcı ve göndericisi. İçerik planlaması ve toplu paylaşım sistemi.</p>
+            <img src="images/postx.png" alt="PostX otomasyon dashboard arayüzü" class="showcase__preview" loading="lazy">
+          </a>
+
+        </div>
+      </div>
     </section>
 
     <!-- Skills Section -->
-    <section class="container" id="skills">
-        <h2 class="section-title reveal">
-            <span class="number">02</span> Yetenekler ve Teknolojiler
-        </h2>
-        <div class="skills-grid">
-            <div class="skill-card reveal-left delay-1">
-                <h4><span>💻</span> Diller & Framework'ler</h4>
-                <ul class="skill-list-items">
-                    <li>Python (Flask, WebSockets)</li>
-                    <li>C++ (Embedded & Arduino)</li>
-                    <li>HTML5 / CSS3 / JavaScript</li>
-                    <li>Nebula Team Altyapıları</li>
-                </ul>
+    <section class="section skills" id="yetenekler" aria-label="Yetenekler">
+      <div class="section__inner">
+        <h2 class="section__heading">Yetenekler</h2>
+        <div class="skills__layout">
+
+          <div class="skills__group js-reveal">
+            <h3 class="skills__label">Diller</h3>
+            <div class="skills__items">
+              <span>Python</span><span>C++</span><span>JavaScript</span><span>HTML5</span><span>CSS3</span><span>Bash/Zsh</span>
             </div>
-            <div class="skill-card reveal-skew delay-2">
-                <h4><span>🧠</span> Yapay Zeka (AI)</h4>
-                <ul class="skill-list-items">
-                    <li>LLM API Entegrasyonları</li>
-                    <li>Prompt Mühendisliği</li>
-                    <li>ReAct Ajan Mimarileri</li>
-                    <li>Venus AI Entegrasyonu</li>
-                </ul>
+          </div>
+
+          <div class="skills__group js-reveal">
+            <h3 class="skills__label">Framework & Kütüphaneler</h3>
+            <div class="skills__items">
+              <span>Flask</span><span>Socket.io</span><span>WebSockets</span><span>Playwright</span>
             </div>
-            <div class="skill-card reveal-scale delay-3">
-                <h4><span>🐧</span> Sistem & Araçlar</h4>
-                <ul class="skill-list-items">
-                    <li>Linux (Custom Dotfiles)</li>
-                    <li>Git & GitHub Versiyon Kontrolü</li>
-                    <li>Playwright & Otomasyon</li>
-                    <li>Bash / Zsh Scripting</li>
-                </ul>
+          </div>
+
+          <div class="skills__group js-reveal">
+            <h3 class="skills__label">Yapay Zeka</h3>
+            <div class="skills__items">
+              <span>LLM API (Gemini, Qwen, Llama)</span><span>Prompt Mühendisliği</span><span>ReAct Ajan Mimarileri</span>
             </div>
-            <div class="skill-card reveal-right delay-4">
-                <h4><span>⚙️</span> Donanım & Maker</h4>
-                <ul class="skill-list-items">
-                    <li>Devre Tasarımı & Şeması</li>
-                    <li>Mikrodenetleyici (Arduino)</li>
-                    <li>Lehimleme & Modifikasyon</li>
-                    <li>Li-Po Şarj Entegrasyonları</li>
-                </ul>
+          </div>
+
+          <div class="skills__group js-reveal">
+            <h3 class="skills__label">Donanım & Elektronik</h3>
+            <div class="skills__items">
+              <span>Arduino</span><span>Devre Tasarımı</span><span>Lehimleme</span><span>Li-Po & Type-C</span>
             </div>
+          </div>
+
+          <div class="skills__group js-reveal">
+            <h3 class="skills__label">Araçlar & Sistem</h3>
+            <div class="skills__items">
+              <span>Git / GitHub</span><span>Linux (Hyprland)</span><span>Docker</span><span>zsh</span>
+            </div>
+          </div>
+
         </div>
+
+        <!-- Setup Cards -->
+        <div class="setup" id="setup">
+          <h3 class="setup__heading">Çalışma Ortamı</h3>
+          <div class="setup__grid">
+            <div class="setup__card js-reveal">
+              <span class="setup__card-label">Mobil Setup</span>
+              <p class="setup__card-specs">Intel i5-8300H · 16 GB DDR4 · GTX 1050 Ti Mobile</p>
+              <p class="setup__card-os">Pop!_OS 24.04 LTS</p>
+            </div>
+            <div class="setup__card js-reveal">
+              <span class="setup__card-label">Masaüstü Setup</span>
+              <p class="setup__card-specs">Ryzen 7 7600 · 32 GB DDR5 · RTX 5060 8GB</p>
+              <p class="setup__card-os">Custom Linux · Hyprland WM</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Selected Projects Section -->
-    <section class="container" id="projects">
-        <h2 class="section-title reveal">
-            <span class="number">03</span> Seçilmiş Projeler
-        </h2>
-        <div class="grid">
-            <!-- Venus AI Agent -->
-            <div class="card reveal-left">
-                <span class="badge dev">Otonom Ajan</span>
-                <h3>🤖 Venus AI v3.0 & Flux</h3>
-                <p>Windows ortamında çalışabilen, Reasoning and Acting (ReAct) döngülerini aktif kullanan otonom sistem operatörü.</p>
-                <div class="tags">
-                    <span class="tag">Gemini/Qwen API</span>
-                    <span class="tag">Playwright</span>
-                    <span class="tag">ReAct Mimarisi</span>
-                </div>
-                <a onclick="openDetailModal('venus_ai')" class="card-link">Gelişmiş İnceleme</a>
-            </div>
-
-            <!-- AlttreHub -->
-            <div class="card reveal-scale delay-1">
-                <span class="badge beta">Beta Sürüm</span>
-                <h3>🚀 AlttreHub</h3>
-                <p>Tamamen Flask-SocketIO mimarisi ile sıfırdan yazılmış, GERÇEK zamanlı bir ekosistem ve mesajlaşma platformu.</p>
-                <div class="tags">
-                    <span class="tag">Flask</span>
-                    <span class="tag">Socket.io</span>
-                    <span class="tag">WebSockets</span>
-                </div>
-                <a onclick="openDetailModal('alttrehub')" class="card-link">Platformu İncele</a>
-            </div>
-
-            <!-- Athletixfitness -->
-            <div class="card reveal-right delay-2">
-                <span class="badge success">Tamamlandı</span>
-                <h3>🏋️ Athletixfitness</h3>
-                <p>Alanya spor dünyası için geliştirilen, modern kullanıcı arayüzü ve güçlü backend yönetim yapısına sahip web çözümü.</p>
-                <div class="tags">
-                    <span class="tag">Dinamik CMS</span>
-                    <span class="tag">Frontend</span>
-                    <span class="tag">Web Yönetimi</span>
-                </div>
-                <a onclick="openDetailModal('athletix')" class="card-link">Projeyi Gör</a>
-            </div>
+    <!-- Team Section -->
+    <section class="section team" id="ekip" aria-label="Ekip">
+      <div class="section__inner">
+        <h2 class="section__heading">Nebula Team</h2>
+        <p class="section__subtext">Birlikte inşa ediyoruz.</p>
+        <div class="team__grid">
+          <div class="team__member js-reveal">
+            <div class="team__avatar team__avatar--ali">AT</div>
+            <h3 class="team__name">Ali Turan</h3>
+            <p class="team__role">Ar-Ge & Python</p>
+            <span class="team__badge">Kurucu Üye</span>
+          </div>
+          <div class="team__member js-reveal">
+            <div class="team__avatar team__avatar--nezbat">NZ</div>
+            <h3 class="team__name">Nezbat</h3>
+            <p class="team__role">Game Design & Backend</p>
+          </div>
+          <div class="team__member js-reveal">
+            <div class="team__avatar team__avatar--bulut">BL</div>
+            <h3 class="team__name">Bulut</h3>
+            <p class="team__role">UI/UX & Frontend</p>
+          </div>
         </div>
-    </section>
-
-    <!-- R&D and Robotics Section -->
-    <section class="container" id="robotics">
-        <h2 class="section-title reveal">
-            <span class="number">04</span> Ar-Ge & Robotik
-        </h2>
-        <div class="grid">
-            <!-- Mini Sumo -->
-            <div class="card reveal-left">
-                <span class="badge gold">Jüri Özel Ödülü</span>
-                <h3>🤖 Mini Sumo Robot</h3>
-                <p>Fibonacci Robotik yarışmasında ödül alan, otonom savaş algoritmaları ve gömülü C++ motor sürücü kodlaması.</p>
-                <div class="tags">
-                    <span class="tag">Taktiksel C++</span>
-                    <span class="tag">Sensör Kalibrasyonu</span>
-                    <span class="tag">Arduino</span>
-                </div>
-                <a onclick="openDetailModal('minisumo')" class="card-link">Simülatör & Detaylar</a>
-            </div>
-
-            <!-- Hardware Modding -->
-            <div class="card reveal-scale delay-1">
-                <span class="badge dev">Donanım Modu</span>
-                <h3>⚙️ Gömülü Modifikasyonlar</h3>
-                <p>Arduino Nano tabanlı sistemlere Li-Po şarj devreleri entegre ederek cihazları Type-C standartlarına yükseltme.</p>
-                <div class="tags">
-                    <span class="tag">Devre Tasarımı</span>
-                    <span class="tag">Lehimleme</span>
-                    <span class="tag">Type-C Standartı</span>
-                </div>
-                <a onclick="openDetailModal('hardware_mods')" class="card-link">Şematik Rehberi</a>
-            </div>
-
-            <!-- Teknofest VTOL -->
-            <div class="card reveal-scale delay-2">
-                <span class="badge dev">R&D İHA</span>
-                <h3>🚁 Teknofest VTOL İHA</h3>
-                <p>Hibrit uçuş kabiliyetine sahip, otonom kalkış yapıp yatay seyir moduna geçebilen gömülü havacılık projesi hazırlığı.</p>
-                <div class="tags">
-                    <span class="tag">Pixhawk</span>
-                    <span class="tag">Aerodinamik</span>
-                    <span class="tag">ArduPilot</span>
-                </div>
-                <a onclick="openDetailModal('vtol')" class="card-link">Detayları Gör</a>
-            </div>
-
-            <!-- Desktop AI Agent -->
-            <div class="card reveal-right delay-3">
-                <span class="badge success">Yerel Yapay Zeka</span>
-                <h3>🧠 Masaüstü AI Asistanı</h3>
-                <p>Pop!_OS ve Linux sistem komutlarını sesli ve metinle yönetebilen, tamamen lokal çalışan AI ajanı.</p>
-                <div class="tags">
-                    <span class="tag">Llama</span>
-                    <span class="tag">Subprocess API</span>
-                    <span class="tag">Bash Otomasyon</span>
-                </div>
-                <a onclick="openDetailModal('ai_agent')" class="card-link">Detayları Gör</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Nebula Team Section -->
-    <section class="container" id="team">
-        <h2 class="section-title reveal">
-            <span class="number">05</span> Nebula Team Arkadaşları
-        </h2>
-        <div class="team-grid">
-            <!-- Alttre -->
-            <div class="team-card alttre-card reveal-scale">
-                <div class="team-avatar">🚀</div>
-                <h3>Alttre</h3>
-                <p class="team-role">Kurucu Üye | Ar-Ge & Robotik & Python</p>
-                <p class="team-desc">Otonom sistemler, mini sumo C++ algoritmaları ve donanımları web dünyasıyla entegre eden geliştirici.</p>
-                <div class="tags" style="justify-content: center;">
-                    <span class="tag">Embedded</span>
-                    <span class="tag">AI Operatörü</span>
-                </div>
-            </div>
-
-            <!-- Nezbat -->
-            <a href="https://nevzat-portfolio.vercel.app/" target="_blank" class="team-card nezbat-card external-link-card reveal-scale delay-1" style="text-decoration: none; color: inherit;">
-                <div class="team-avatar">👾</div>
-                <h3>Nezbat 
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
-                    </svg>
-                </h3>
-                <p class="team-role">Game Designer & Backend Developer</p>
-                <p class="team-desc">Oyun mekaniklerini ve arka plan sunucu servislerini tasarlayan, altyapı mimarisini yöneten ana motor.</p>
-                <div class="tags" style="justify-content: center;">
-                    <span class="tag">Game Design</span>
-                    <span class="tag">Backend</span>
-                </div>
-            </a>
-
-            <!-- Bulut -->
-            <a href="https://bulut-portfolio.vercel.app/" target="_blank" class="team-card bulut-card external-link-card reveal-scale delay-2" style="text-decoration: none; color: inherit;">
-                <div class="team-avatar">☁️</div>
-                <h3>Bulut 
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
-                    </svg>
-                </h3>
-                <p class="team-role">UI/UX Tasarım & Frontend Developer</p>
-                <p class="team-desc">Projelerin görsel dilini, arayüz akışlarını ve dinamik modern tasarımlarını hayata geçiren kreatif güç.</p>
-                <div class="tags" style="justify-content: center;">
-                    <span class="tag">UI/UX Design</span>
-                    <span class="tag">Frontend</span>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- Devlog Section -->
-    <section class="container" id="devlog">
-        <h2 class="section-title reveal">
-            <span class="number">06</span> Devlog: Çözümler & Notlar
-        </h2>
-        <div class="grid">
-            <div class="card reveal-skew delay-1">
-                <span class="badge dev">🐧 İşletim Sistemi</span>
-                <h3>Custom Linux (Hyprland) Modifikasyonları</h3>
-                <p>Özelleştirilmiş dotfile yapılandırmaları, donanım sürücülerinin optimizasyonu ve WM yapıları üzerine blog notlarım.</p>
-                <a onclick="openDetailModal('devlog_arch')" class="card-link card-link-sec">Özeti Oku</a>
-            </div>
-            <div class="card reveal-blur delay-2">
-                <span class="badge success">⚡ Backend</span>
-                <h3>WebSocket & SocketIO Mimarisi</h3>
-                <p>Gerçek zamanlı sunucu-istemci veri transferinde Polling yönteminden Socket.io'ya geçiş süreci ve performans analizi.</p>
-                <a onclick="openDetailModal('devlog_socket')" class="card-link card-link-sec">Özeti Oku</a>
-            </div>
-        </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="container" id="contact">
-        <h2 class="section-title reveal">
-            <span class="number">07</span> İletişim & Bağlantı
-        </h2>
-        <div class="contact-wrapper reveal delay-1">
-            <div class="contact-info">
-                <h3>Nebula İletişim Protokolü</h3>
-                <p>
-                    Projelerim hakkında konuşmak, yeni bir fikir geliştirmek veya Nebula Team ekosistemine dahil olmak için bana ulaşın.
-                </p>
-                <div class="contact-details-list">
-                    <div class="contact-detail-item">
-                        <span class="detail-icon">📧</span>
-                        <div class="detail-text">
-                            <h4>E-posta</h4>
-                            <p>ali-turan-@outlook.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-detail-item">
-                        <span class="detail-icon">🌐</span>
-                        <div class="detail-text">
-                            <h4>GitHub</h4>
-                            <a href="https://github.com/Alttrest" target="_blank" style="color: var(--arch-cyan); text-decoration: none; font-family: var(--font-mono);">github.com/Alttrest</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <form class="contact-form" id="contact-form-el" onsubmit="handleFormSubmit(event)">
-                <input type="hidden" name="access_key" value="cbadadce-65e4-4430-a85a-6aef0ca05bf3">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="form-name">Ad Soyad</label>
-                        <input type="text" id="form-name" name="name" required placeholder="Geliştirici / Misafir">
-                    </div>
-                    <div class="form-group">
-                        <label for="form-email">E-posta</label>
-                        <input type="email" id="form-email" name="email" required placeholder="geliştirici@nebula.team">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="form-subject">Konu</label>
-                    <input type="text" id="form-subject" name="subject" required placeholder="Proje entegrasyonu hakkında...">
-                </div>
-                <div class="form-group">
-                    <label for="form-message">Mesaj</label>
-                    <textarea id="form-message" name="message" required rows="5" placeholder="Mesajınızı buraya yazın..."></textarea>
-                </div>
-                <button type="submit" class="card-link" style="width: 100%; border: none;">
-                    Gönder (Secure Signal)
-                </button>
-            </form>
+    <section class="section contact" id="iletisim" aria-label="İletişim">
+      <div class="section__inner">
+        <h2 class="section__heading">İletişim</h2>
+        <p class="contact__message">Proje fikriniz mi var? Birlikte çalışalım.</p>
+        <div class="contact__links">
+          <a href="mailto:ali-turan-@outlook.com" class="contact__link" aria-label="E-posta gönder">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13L2 4"/></svg>
+            <span>ali-turan-@outlook.com</span>
+          </a>
+          <a href="https://github.com/Alttrest" target="_blank" rel="noopener noreferrer" class="contact__link" aria-label="GitHub profili (yeni sekmede açılır)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>github.com/Alttrest</span>
+          </a>
         </div>
+        <p class="contact__location">📍 Alanya / Antalya</p>
+      </div>
     </section>
 
-    <!-- Footer with /uses trigger (CDO Necati focus) -->
-    <footer onclick="openUsesModal()" title="Çalışma ve Test Donanım Sistemlerimi Görmek İçin Tıklayın!">
-        <div class="footer-glow"></div>
-        <div class="footer-cat-badge" style="background-image: url('assets/necati.png')"></div>
-        <p>Built with <span style="color: var(--arch-cyan);">💻</span> on Custom Linux (Hyprland) by Alttre</p>
-    </footer>
+  </main>
 
-    <!-- Uses Workspace Hardware Spec Modal -->
-    <div id="uses-modal" class="modal-backdrop">
-        <div class="modal-box">
-            <button class="close-btn" onclick="closeUsesModal(event)">✕</button>
-
-            <div style="text-align: center; margin-bottom: 25px;">
-                <!-- Cyberpunk Cat CDO profile image -->
-                <div style="
-                    width: 100px; height: 100px; 
-                    margin: 0 auto 12px; 
-                    border-radius: 50%; 
-                    border: 3px solid var(--arch-cyan); 
-                    background-image: url('assets/necati.png'); 
-                    background-size: cover; 
-                    background-position: center;
-                    box-shadow: 0 0 20px var(--arch-cyan-glow);
-                "></div>
-                <h3 style="color: var(--text-white); font-size: 1.4rem; margin-bottom: 4px;">Necati</h3>
-                <p style="color: var(--arch-cyan); font-family: var(--font-mono); font-size: 0.82rem;">Chief Debugging Officer (CDO)</p>
-            </div>
-
-            <!-- Setup selection tabs -->
-            <div class="setup-toggle-bar">
-                <div class="setup-tab active" id="tab-setup1" onclick="switchSetupTab(1)">Setup 1 (Mobile Ar-Ge)</div>
-                <div class="setup-tab" id="tab-setup2" onclick="switchSetupTab(2)">Setup 2 (Battlestation Desktop)</div>
-            </div>
-
-            <!-- Setup 1 Specs (Original PopOS Mobile Setup) -->
-            <div class="hardware-list active" id="specs-setup1">
-                <div class="uses-item">
-                    <div class="uses-icon">💻</div>
-                    <div class="uses-details">
-                        <h4>İşlemci (CPU)</h4>
-                        <p>Intel Core i5-8300H @ 2.30GHz (8 Çekirdek)</p>
-                    </div>
-                </div>
-                <div class="uses-item">
-                    <div class="uses-icon">🎮</div>
-                    <div class="uses-details">
-                        <h4>Ekran Kartı (GPU)</h4>
-                        <p>NVIDIA GeForce GTX 1050 Ti Mobile + Intel UHD 630</p>
-                    </div>
-                </div>
-                <div class="uses-item">
-                    <div class="uses-icon">🧠</div>
-                    <div class="uses-details">
-                        <h4>Bellek (RAM)</h4>
-                        <p>16 GB DDR4 Dual-Channel</p>
-                    </div>
-                </div>
-                <div class="uses-item">
-                    <div class="uses-icon">🐧</div>
-                    <div class="uses-details">
-                        <h4>İşletim Sistemi</h4>
-                        <p>Pop!_OS 24.04 LTS (Artemis Environment)</p>
-                    </div>
-                </div>
-                <div class="uses-item">
-                    <div class="uses-icon">🎧</div>
-                    <div class="uses-details">
-                        <h4>Çevre Birimleri</h4>
-                        <p>Razer BlackShark V2 Pro & SteelSeries Arctis Nova 3</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Setup 2 Specs (Ryzen 7 7600 + RTX 5060 Arch Setup) -->
-            <div class="hardware-list" id="specs-setup2">
-                <div class="uses-item">
-                    <div class="uses-icon">🖥️</div>
-                    <div class="uses-details">
-                        <h4>İşlemci (CPU)</h4>
-                        <p>AMD Ryzen 7 7600 @ 3.8GHz (12 Threads)</p>
-                    </div>
-                </div>
-                <div class="uses-item">
-                    <div class="uses-icon">⚡</div>
-                    <div class="uses-details">
-                        <h4>Ekran Kartı (GPU)</h4>
-                        <p>NVIDIA GeForce RTX 5060 Desktop 8GB</p>
-                    </div>
-                </div>
-                <div class="uses-item">
-                    <div class="uses-icon">🧠</div>
-                    <div class="uses-details">
-                        <h4>Bellek (RAM)</h4>
-                        <p>32 GB DDR5 High-Speed Dual-Channel</p>
-                    </div>
-                </div>
-                <div class="uses-item">
-                    <div class="uses-icon">🐧</div>
-                    <div class="uses-details">
-                        <h4>İşletim Sistemi</h4>
-                        <p>Custom Linux (Hyprland Tiling Window Manager)</p>
-                    </div>
-                </div>
-                <div class="uses-item">
-                    <div class="uses-icon">🛠️</div>
-                    <div class="uses-details">
-                        <h4>Klavye / Mouse</h4>
-                        <p>Custom Hot-swappable Mechanical Keyboard & Razer Viper</p>
-                    </div>
-                </div>
-            </div>
-
-            <p style="margin-top: 25px; color: var(--arch-cyan); font-size: 0.85rem; font-family: var(--font-mono); text-align: center; opacity: 0.8;">
-                > CDO Necati approves this setup for daily code compilation.
-            </p>
-        </div>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p class="site-footer__copy">Ali Turan &copy; 2025</p>
+      <button class="back-to-top" aria-label="Sayfanın başına dön" type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
+      </button>
     </div>
+  </footer>
 
-    <!-- Generic Interactive Detailed Modal -->
-    <div id="detail-modal" class="modal-backdrop">
-        <div class="modal-box">
-            <button class="close-btn" onclick="closeDetailModal()">✕</button>
-            <div id="modal-header" class="detail-header">Proje Detayı</div>
-            
-            <div id="modal-summary" class="detail-summary">Açıklamalar...</div>
-            
-            <!-- Custom Micro Widgets Holder (Inserted dynamically via JS) -->
-            <div id="modal-interactive-widget"></div>
-
-            <div style="font-family: var(--font-mono); color: var(--text-muted); margin: 20px 0 10px 0; font-size: 0.82rem;">$ cat sources.txt</div>
-            <div id="modal-sources" class="source-links"></div>
-        </div>
-    </div>
-
-    <!-- Floating Cursor Picker Side Panel -->
-    <div id="cursor-selector-panel" class="cursor-panel-collapsed">
-        <button id="cursor-panel-toggle" title="İmleç Logo Seçici">🎨</button>
-        <div class="cursor-panel-content">
-            <h4>İmleç Logosu</h4>
-            <div class="cursor-grid">
-                <button class="cursor-choice-btn" onclick="selectCursorLogo('🚀')">🚀</button>
-                <button class="cursor-choice-btn" onclick="selectCursorLogo('👾')">👾</button>
-                <button class="cursor-choice-btn" onclick="selectCursorLogo('☁️')">☁️</button>
-                <button class="cursor-choice-btn" onclick="selectCursorLogo('🐈')">🐈</button>
-                <button class="cursor-choice-btn" onclick="selectCursorLogo('💻')">💻</button>
-                <button class="cursor-choice-btn" onclick="selectCursorLogo('🧠')">🧠</button>
-                <button class="cursor-choice-btn" onclick="selectCursorLogo('⚙️')">⚙️</button>
-                <button class="cursor-choice-btn reset-btn" onclick="selectCursorLogo('reset')" title="Varsayılan İmleç">✕</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Scroll to Top Button with Circular Progress -->
-    <button id="scroll-to-top" class="scroll-to-top-btn" title="Yukarı Çık">
-        <svg class="progress-ring" width="48" height="48">
-            <circle class="progress-ring-circle" cx="24" cy="24" r="23"/>
-        </svg>
-        <span class="arrow-icon">▲</span>
-    </button>
-
-    <!-- Custom Cursor Follower Element -->
-    <div id="custom-cursor-follower" style="display: none;">🚀</div>
-
-    <!-- App Logic Script -->
-    <script src="app.js?v=1.2.0"></script>
+  <script src="script.js"></script>
 </body>
 </html>

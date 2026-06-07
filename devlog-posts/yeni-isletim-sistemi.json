@@ -1,7 +1,0 @@
-{
-    "title": "Flux Mobile",
-    "badge": "🐧 Sistem Modu",
-    "badgeClass": "dev",
-    "summary": "Custom Linux ortamında Hyprland Wayland derlemesini v0.42.0 sürümüne yükselttim ve ekran yırtılmalarını sıfıra indirdim.",
-    "content": "Custom Linux dağıtımım üzerinde yaptığım son optimizasyonlarda:<br><br>1. <b>Hyprland WM</b> kararlı Wayland paket derlemesini sıfırdan derleyip v0.42.0 sürümüne güncelledim.<br>2. Çift ekran kartlı hibrit kurulumda (RTX 5060 & Intel UHD) Wayland çevre değişkenlerini (env variables) Nvidia optimus kurallarına göre yeniden yapılandırarak yırtılmaları sıfıra indirdim.<br>3. <b>Waybar</b> batarya tüketim göstergelerine ve RAM durumlarına custom python dinleyicileri bağladım.<br><br>Sistem yükü boşta %1.2 seviyesinde çalışmaktadır."
-}
