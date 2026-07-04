@@ -1,371 +1,173 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ali Turan (Alttre) — Bilişim Teknolojileri Öğrencisi, Geliştirici ve Maker. Yazılımdan donanıma, yapay zekadan robotiğe.">
-  <meta name="theme-color" content="#111318">
-  <title>Ali Turan — Geliştirici & Maker</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali Turan (Alttre) | Portfolyo</title>
+    <meta name="description" content="Ali Turan (Alttre) - Bilişim Teknolojileri Öğrencisi, Nebula Team Kurucusu & AI ve Donanım Geliştiricisi Portfolyosu.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Crect width='24' height='24' rx='5' fill='%231E1B18'/%3E%3Cpath d='M6 18L12 4l6 14' stroke='%23FAF6EE' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='3' y1='18' x2='21' y2='18' stroke='%23DA291C' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
 </head>
 <body>
-  <a href="#main-content" class="skip-link">İçeriğe geç</a>
 
-  <!-- Navigation -->
-  <header class="site-header" id="site-header">
-    <nav class="nav" aria-label="Ana navigasyon">
-      <div class="nav__inner">
-        <a href="#hero" class="nav__logo" aria-label="Ana sayfa">
-          <span class="nav__logo-name">Alttre</span>
-        </a>
-        <button class="nav__toggle" aria-label="Menüyü aç" aria-expanded="false" aria-controls="nav-menu" type="button">
-          <span class="nav__toggle-bar"></span>
-          <span class="nav__toggle-bar"></span>
-          <span class="nav__toggle-bar"></span>
-        </button>
-        <ul class="nav__menu" id="nav-menu" role="list">
-          <li><a href="#projeler" class="nav__link">Projeler</a></li>
-          <li><a href="#vitrin" class="nav__link">Vitrin</a></li>
-          <li><a href="#yetenekler" class="nav__link">Yetenekler</a></li>
-          <li><a href="#ekip" class="nav__link">Ekip</a></li>
-          <li><a href="#iletisim" class="nav__link">İletişim</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
+    <div class="custom-cursor-dot" id="customCursorDot"></div>
 
-  <!-- Mobile menu overlay -->
-  <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+    <!-- Ambient Canvas Background -->
+    <canvas id="ambientGlowCanvas" class="ambient-glow-canvas"></canvas>
 
-  <main id="main-content">
+    <!-- App Container -->
+    <div class="app-container">
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero" aria-label="Tanıtım">
-      <div class="hero__canvas" aria-hidden="true">
-        <div class="hero__grid-lines"></div>
-        <div class="hero__glow"></div>
-      </div>
-      <div class="hero__content">
-        <div class="hero__intro">
-          <p class="hero__greeting">Merhaba, ben</p>
-          <h1 class="hero__name">Ali Turan</h1>
-          <p class="hero__alias">/ Alttre</p>
-        </div>
-        <p class="hero__title">Bilişim Teknolojileri Öğrencisi, Geliştirici & Maker</p>
-        <p class="hero__tagline">Yazılımdan donanıma, yapay zekadan robotiğe: fikirlerimi çalışan sistemlere dönüştürüyorum.</p>
-        <div class="hero__actions">
-          <a href="#projeler" class="btn btn--primary">Projelerimi Gör</a>
-          <a href="#iletisim" class="btn btn--ghost">İletişime Geç</a>
-        </div>
-        <div class="hero__badge">
-          <span class="hero__badge-icon">🐱</span>
-          <span class="hero__badge-text">Necati — Chief Debugging Officer</span>
-        </div>
-      </div>
-      <div class="hero__scroll-hint" aria-hidden="true">
-        <span class="hero__scroll-line"></span>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="section projects" id="projeler" aria-label="Projeler">
-      <div class="section__inner">
-        <h2 class="section__heading">Projeler</h2>
-        <p class="section__subtext">Fikir aşamasından çalışan sisteme kadar uçtan uca geliştirdiğim projeler.</p>
-
-        <div class="projects__grid" id="projects-grid">
-          <!-- Project 1: FluxMobile — Featured -->
-          <article class="project project--featured js-reveal">
-            <div class="project__image-wrap">
-              <img src="images/venus-ai.png" alt="FluxMobile yapay zeka asistanı" class="project__image" loading="lazy">
+        <!-- ========== INTRO SECTION ========== -->
+        <section id="introSection" class="intro-section active">
+            <div class="intro-content">
+                <div class="typewriter-container">
+                    <span class="typewriter-prompt">></span>
+                    <span id="typewriterText" class="typewriter-text"></span>
+                    <span class="typewriter-cursor">|</span>
+                </div>
+                <div class="intro-action-container">
+                    <button id="exploreBtn" class="explore-btn">Keşfet &rarr;</button>
+                </div>
             </div>
-            <div class="project__body">
-              <h3 class="project__title">FluxMobile (NexusAI-PhoneAgent)</h3>
-              <p class="project__desc">React Native ve Expo tabanlı mobil yapay zeka asistanı. Cepten erişilebilir otonom yapay zeka gücü.</p>
-              <ul class="project__tags" role="list">
-                <li>React Native</li><li>Expo</li><li>AI</li><li>Mobile</li>
-              </ul>
+            <div class="intro-scroll-prompt" id="introScrollPrompt">
+                <span class="mouse-icon-vertical">
+                    <span class="mouse-wheel-vertical"></span>
+                </span>
+                <span class="scroll-text">Geçmek için Aşağı Kaydır</span>
             </div>
-          </article>
+            <div class="intro-bg-badge">ALTTRE // 2026</div>
+        </section>
 
-          <!-- Project 2: AI-POST Ekosistemi — Featured -->
-          <article class="project project--featured js-reveal">
-            <div class="project__image-wrap">
-              <img src="images/postx.png" alt="AI-POST sosyal medya otomasyonu" class="project__image" loading="lazy">
-            </div>
-            <div class="project__body">
-              <h3 class="project__title">AI-POST Ekosistemi</h3>
-              <p class="project__desc">Yapay zeka destekli sosyal medya gönderi, otomasyon ve yönetim araçları bütünü.</p>
-              <ul class="project__tags" role="list">
-                <li>AI</li><li>Automation</li><li>Social Media</li><li>Bot</li>
-              </ul>
-            </div>
-          </article>
+        <!-- ========== PORTFOLIO SECTION ========== -->
+        <section id="portfolioSection" class="portfolio-section">
+            <header class="portfolio-header">
+                <div class="brand">
+                    <span class="brand-logo" title="Alttre Logo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#FAF6EE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 20L12 4l6 16" stroke="#FAF6EE"></path>
+                            <line x1="3" y1="20" x2="21" y2="20" stroke="#DA291C" stroke-width="3"></line>
+                        </svg>
+                    </span>
+                    <div class="brand-text">
+                        <span class="brand-name">Ali Turan</span>
+                        <span class="brand-tag">@Alttre</span>
+                    </div>
+                </div>
+                <nav class="portfolio-nav">
+                    <button class="nav-btn active" id="navProjectsBtn">Projeler</button>
+                    <button class="nav-btn" id="navSkillsBtn">Yetenekler</button>
+                    <button class="nav-btn" id="navSetupBtn">Setup</button>
+                    <a href="mailto:ali-turan-@outlook.com" class="nav-contact-btn">İletişim</a>
+                </nav>
+            </header>
 
-          <!-- Project 3: NexusAI-Agent -->
-          <article class="project js-reveal">
-            <div class="project__body" style="padding: var(--space-xl) var(--space-lg);">
-              <h3 class="project__title">NexusAI-Agent</h3>
-              <p class="project__desc">Electron ve React tabanlı gelişmiş masaüstü yapay zeka operatörü. Flux-Agent serisinin en güncel evrimi.</p>
-              <ul class="project__tags" role="list">
-                <li>Electron</li><li>React</li><li>Desktop App</li><li>AI</li>
-              </ul>
-            </div>
-          </article>
+            <div class="portfolio-content">
+                <div class="deck-container-wrapper">
+                    <div class="section-title-area">
+                        <h2 class="section-subtitle">KÜRATÖRÜ OLDUĞUM İŞLER</h2>
+                        <h1 class="section-title">Ben Yaptım.</h1>
+                        <p class="section-desc">Sıfırdan kodlanan yapay zeka ajanları, donanım projeleri ve interaktif web deneyimleri. Göz atmak için <strong>mouse tekerleğini kaydırın</strong>.</p>
+                    </div>
 
-          <!-- Project 4: Ven-s-Finder -->
-          <article class="project js-reveal">
-            <div class="project__body" style="padding: var(--space-xl) var(--space-lg);">
-              <h3 class="project__title">Ven-s-Finder</h3>
-              <p class="project__desc">Groq AI ve DuckDuckGo arama API'sini kullanan akıllı ve hızlı kişi arama motoru.</p>
-              <ul class="project__tags" role="list">
-                <li>Groq AI</li><li>DuckDuckGo</li><li>Search Engine</li><li>Python</li>
-              </ul>
-            </div>
-          </article>
+                    <div class="deck-outer-container">
+                        <div class="deck-container" id="projectDeck"></div>
+                    </div>
 
-          <!-- Project 5: FBMTAL Chat & AlttreHub — Featured -->
-          <article class="project project--featured js-reveal">
-            <div class="project__image-wrap">
-              <img src="images/alttrehub.png" alt="Gerçek zamanlı sohbet altyapısı" class="project__image" loading="lazy">
+                    <div class="project-indicator-panel">
+                        <div class="scroll-instruction">
+                            <span class="mouse-icon"><span class="mouse-wheel"></span></span>
+                            <span>Scroll veya Sürükle</span>
+                        </div>
+                        <div class="deck-bullets" id="deckBullets"></div>
+                        <div class="active-project-tagline" id="projectTagline">Yükleniyor...</div>
+                    </div>
+                </div>
             </div>
-            <div class="project__body">
-              <h3 class="project__title">FBMTAL Chat & AlttreHub</h3>
-              <p class="project__desc">Okul veya belirli bir topluluk için geliştirilmiş gerçek zamanlı sohbet altyapıları ve iletişim kanalı platformu.</p>
-              <ul class="project__tags" role="list">
-                <li>WebSockets</li><li>Socket.io</li><li>Flask</li><li>Real-time</li>
-              </ul>
+        </section>
+
+        <!-- ========== PROJECT DETAILS MODAL ========== -->
+        <div id="projectDetailsModal" class="details-modal">
+            <div class="modal-overlay" id="modalOverlay"></div>
+            <div class="modal-content-wrapper">
+                <button class="modal-close-btn" id="modalCloseBtn">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
+                    </svg>
+                </button>
+                <div class="modal-content" id="modalContent"></div>
             </div>
-          </article>
-
-          <!-- Project 6: Mini Sumo Robot -->
-          <article class="project js-reveal">
-            <div class="project__body" style="padding: var(--space-xl) var(--space-lg);">
-              <h3 class="project__title">Mini Sumo Robot</h3>
-              <p class="project__desc">Fibonacci Robot Yarışması'nda Jüri Özel Ödülü alan, C ile yazılmış otonom mini sumo robotu. Sensör füzyonu ve strateji algoritmaları.</p>
-              <ul class="project__tags" role="list">
-                <li>Arduino</li><li>C</li><li>Robotik</li><li>🏆 Ödüllü</li>
-              </ul>
-            </div>
-          </article>
-
-          <!-- Project 7: Hype-NEWS -->
-          <article class="project js-reveal">
-            <div class="project__body" style="padding: var(--space-xl) var(--space-lg);">
-              <h3 class="project__title">Hype-NEWS</h3>
-              <p class="project__desc">İnteraktif ve yapay zeka destekli haber istasyonu platformu.</p>
-              <ul class="project__tags" role="list">
-                <li>AI</li><li>News</li><li>Interactive</li><li>Web</li>
-              </ul>
-            </div>
-          </article>
-
-          <!-- Project 8: Teknofest VTOL İHA — Featured -->
-          <article class="project project--featured js-reveal">
-            <div class="project__image-wrap">
-              <img src="images/vtol-drone.png" alt="Teknofest VTOL İHA prototipi" class="project__image" loading="lazy">
-            </div>
-            <div class="project__body">
-              <h3 class="project__title">Teknofest VTOL İHA</h3>
-              <p class="project__desc">Pixhawk ve ArduPilot tabanlı dikey kalkışlı insansız hava aracı prototipi.</p>
-              <ul class="project__tags" role="list">
-                <li>Pixhawk</li><li>ArduPilot</li><li>VTOL</li><li>Teknofest</li>
-                <li style="background: oklch(0.20 0.04 165); color: var(--accent); border: 1px solid var(--accent-dim);">⏳ Gelecekte</li>
-              </ul>
-            </div>
-          </article>
-
-          <!-- Project 9: Donanım Laboratuvarı -->
-          <article class="project js-reveal">
-            <div class="project__image-wrap">
-              <img src="images/hardware-mod.png" alt="Donanım laboratuvarı" class="project__image" loading="lazy">
-            </div>
-            <div class="project__body">
-              <h3 class="project__title">Donanım Laboratuvarı</h3>
-              <p class="project__desc">Standart cihazları Type-C ve Li-Po pillerle güncelleme. Arduino tabanlı özel devre tasarımları.</p>
-              <ul class="project__tags" role="list">
-                <li>Hardware</li><li>Type-C</li><li>Li-Po</li><li>Maker</li>
-              </ul>
-            </div>
-          </article>
-
-          <!-- Project 10: Nebula & Web Müşteri İşleri -->
-          <article class="project js-reveal">
-            <div class="project__body" style="padding: var(--space-xl) var(--space-lg);">
-              <h3 class="project__title">Web, Portfolyo ve Ekip İşleri</h3>
-              <p class="project__desc">Nebula Team Ekosistemi (ekip portfolyoları) ve müşteri/bağımsız web projeleri (Fatma-Turan-Website, freela-website, honeyflow-admin).</p>
-              <ul class="project__tags" role="list">
-                <li>Frontend</li><li>UI/UX</li><li>CMS</li><li>Freelance</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Showcase Section -->
-    <section class="section showcase" id="vitrin" aria-label="Vitrin">
-      <div class="section__inner">
-        <h2 class="section__heading">Vitrin</h2>
-        <p class="section__subtext">Canlı projelere göz atın.</p>
-        <div class="showcase__grid">
-
-          <a href="https://sefa-muhendislik.vercel.app/" target="_blank" rel="noopener noreferrer" class="showcase__card js-reveal" aria-label="Sefa Mühendislik web sitesini aç (yeni sekmede)">
-            <div class="showcase__card-header">
-              <span class="showcase__type">Kurumsal Web Sitesi</span>
-              <svg class="showcase__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-            </div>
-            <h3 class="showcase__title">Sefa Mühendislik</h3>
-            <p class="showcase__desc">Profesyonel mühendislik firması için tasarlanan kurumsal web sitesi.</p>
-          </a>
-
-          <a href="https://3dprof.netlify.app/" target="_blank" rel="noopener noreferrer" class="showcase__card showcase__card--accent js-reveal" aria-label="3DProf web deneyimini aç (yeni sekmede)">
-            <div class="showcase__card-header">
-              <span class="showcase__type">3D Web Deneyimi</span>
-              <svg class="showcase__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-            </div>
-            <h3 class="showcase__title">3DProf</h3>
-            <p class="showcase__desc">İnteraktif 3D deneyim sunan yenilikçi web uygulaması.</p>
-          </a>
-
-          <a href="https://www.instagram.com/net.postx/" target="_blank" rel="noopener noreferrer" class="showcase__card js-reveal" aria-label="PostX Instagram sayfasını aç (yeni sekmede)">
-            <div class="showcase__card-header">
-              <div style="display: flex; gap: 8px; align-items: center;">
-                <span class="showcase__type">Otomasyon Aracı</span>
-                <span style="font-size: var(--text-xs); color: oklch(0.65 0.15 20); background: oklch(0.20 0.05 20); padding: 2px 8px; border-radius: var(--radius-pill); font-weight: 600;">Devre Dışı</span>
-              </div>
-              <svg class="showcase__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-            </div>
-            <h3 class="showcase__title">PostX</h3>
-            <p class="showcase__desc">Otomatik Instagram post zamanlayıcı ve göndericisi. İçerik planlaması ve toplu paylaşım sistemi.</p>
-            <img src="images/postx.png" alt="PostX otomasyon dashboard arayüzü" class="showcase__preview" loading="lazy">
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="section skills" id="yetenekler" aria-label="Yetenekler">
-      <div class="section__inner">
-        <h2 class="section__heading">Yetenekler</h2>
-        <div class="skills__layout">
-
-          <div class="skills__group js-reveal">
-            <h3 class="skills__label">Diller</h3>
-            <div class="skills__items">
-              <span>Python</span><span>C++</span><span>JavaScript</span><span>HTML5</span><span>CSS3</span><span>Bash/Zsh</span>
-            </div>
-          </div>
-
-          <div class="skills__group js-reveal">
-            <h3 class="skills__label">Framework & Kütüphaneler</h3>
-            <div class="skills__items">
-              <span>Flask</span><span>Socket.io</span><span>WebSockets</span><span>Playwright</span>
-            </div>
-          </div>
-
-          <div class="skills__group js-reveal">
-            <h3 class="skills__label">Yapay Zeka</h3>
-            <div class="skills__items">
-              <span>LLM API (Gemini, Qwen, Llama)</span><span>Prompt Mühendisliği</span><span>ReAct Ajan Mimarileri</span>
-            </div>
-          </div>
-
-          <div class="skills__group js-reveal">
-            <h3 class="skills__label">Donanım & Elektronik</h3>
-            <div class="skills__items">
-              <span>Arduino</span><span>Devre Tasarımı</span><span>Lehimleme</span><span>Li-Po & Type-C</span>
-            </div>
-          </div>
-
-          <div class="skills__group js-reveal">
-            <h3 class="skills__label">Araçlar & Sistem</h3>
-            <div class="skills__items">
-              <span>Git / GitHub</span><span>Linux (Hyprland)</span><span>Docker</span><span>zsh</span>
-            </div>
-          </div>
-
         </div>
 
-        <!-- Setup Cards -->
-        <div class="setup" id="setup">
-          <h3 class="setup__heading">Çalışma Ortamı</h3>
-          <div class="setup__grid">
-            <div class="setup__card js-reveal">
-              <span class="setup__card-label">Mobil Setup</span>
-              <p class="setup__card-specs">Intel i5-8300H · 16 GB DDR4 · GTX 1050 Ti Mobile</p>
-              <p class="setup__card-os">Pop!_OS 24.04 LTS</p>
+        <!-- ========== SKILLS PANEL ========== -->
+        <div id="skillsPanel" class="info-panel-modal">
+            <div class="info-panel-overlay" id="skillsOverlay"></div>
+            <div class="info-panel-content">
+                <button class="info-panel-close-btn" id="skillsCloseBtn">&times;</button>
+                <div class="panel-header">
+                    <h2>YETENEKLER & TEKNOLOJİLER</h2>
+                    <p>Sıfırdan kodlamaya ve donanım entegrasyonlarına odaklanan yetkinlik alanlarım.</p>
+                </div>
+                <div class="canvas-graph-container">
+                    <canvas id="skillsGraphCanvas"></canvas>
+                    <div class="graph-legend">
+                        <div class="legend-item"><span class="legend-dot" style="background:#DA291C;"></span> Merkez</div>
+                        <div class="legend-item"><span class="legend-dot" style="background:#5E7060;"></span> Kategori</div>
+                        <div class="legend-item"><span class="legend-dot" style="background:#1E1B18;"></span> Yetenek</div>
+                        <div class="legend-hint">* Düğümleri sürükleyebilirsiniz.</div>
+                    </div>
+                </div>
             </div>
-            <div class="setup__card js-reveal">
-              <span class="setup__card-label">Masaüstü Setup</span>
-              <p class="setup__card-specs">Ryzen 7 7600 · 32 GB DDR5 · RTX 5060 8GB</p>
-              <p class="setup__card-os">Custom Linux · Hyprland WM</p>
+        </div>
+
+        <!-- ========== SETUP PANEL ========== -->
+        <div id="setupPanel" class="info-panel-modal">
+            <div class="info-panel-overlay" id="setupOverlay"></div>
+            <div class="info-panel-content">
+                <button class="info-panel-close-btn" id="setupCloseBtn">&times;</button>
+                <div class="panel-header">
+                    <h2>ÇALIŞMA ORTAMI & SETUP</h2>
+                    <p>Fikirlerin gerçeğe dönüştüğü donanım ve yazılım kurulumları.</p>
+                </div>
+                <div class="setup-container">
+                    <div class="setup-box">
+                        <h3>Masaüstü Sistem</h3>
+                        <div class="setup-spec"><strong>İşlemci:</strong> AMD Ryzen 7 7600</div>
+                        <div class="setup-spec"><strong>Bellek:</strong> 32 GB DDR5 RAM</div>
+                        <div class="setup-spec"><strong>Ekran Kartı:</strong> NVIDIA RTX 5060 8GB</div>
+                        <div class="setup-spec"><strong>İşletim Sistemi:</strong> Custom Linux (Hyprland WM)</div>
+                        <p class="setup-description">Hyprland'ın pencere yöneticisi esnekliğiyle birleşen, yüksek performanslı yapay zeka ajanı çalıştırma ve geliştirme merkezi.</p>
+                    </div>
+                    <div class="setup-box">
+                        <h3>Mobil Sistem</h3>
+                        <div class="setup-spec"><strong>İşlemci:</strong> Intel Core i5-8300H</div>
+                        <div class="setup-spec"><strong>Bellek:</strong> 16 GB DDR4 RAM</div>
+                        <div class="setup-spec"><strong>Ekran Kartı:</strong> NVIDIA GTX 1050 Ti Mobile</div>
+                        <div class="setup-spec"><strong>İşletim Sistemi:</strong> Pop!_OS 24.04 LTS</div>
+                        <p class="setup-description">Sahada, okulda ve laboratuvarda robotik kodlama ile donanım yazılımlarını derlemek için kullanılan mobil ünite.</p>
+                    </div>
+                </div>
+                <div class="setup-details-extra">
+                    <h3>Geliştirici Alışkanlıkları</h3>
+                    <div class="habits-list">
+                        <div class="habit-item">
+                            <strong>Sıfırdan Kodlama:</strong> Hazır sürükle-bırak sistemler yerine JavaScript, TypeScript ve Python ile her projeyi temelinden kendim yazmayı tercih ederim.
+                        </div>
+                        <div class="habit-item">
+                            <strong>Görsel Mekanik:</strong> Ağır fizik motorları yerine CSS 3D transformasyonları ve tekerlek (scroll) tabanlı arayüz çakıştırmalarını severim.
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Team Section -->
-    <section class="section team" id="ekip" aria-label="Ekip">
-      <div class="section__inner">
-        <h2 class="section__heading">Nebula Team</h2>
-        <p class="section__subtext">Birlikte inşa ediyoruz.</p>
-        <div class="team__grid">
-          <div class="team__member js-reveal">
-            <div class="team__avatar team__avatar--ali">AT</div>
-            <h3 class="team__name">Ali Turan</h3>
-            <p class="team__role">Ar-Ge & Python</p>
-            <span class="team__badge">Kurucu Üye</span>
-          </div>
-          <div class="team__member js-reveal">
-            <div class="team__avatar team__avatar--nezbat">NZ</div>
-            <h3 class="team__name">Nezbat</h3>
-            <p class="team__role">Game Design & Backend</p>
-          </div>
-          <div class="team__member js-reveal">
-            <div class="team__avatar team__avatar--bulut">BL</div>
-            <h3 class="team__name">Bulut</h3>
-            <p class="team__role">UI/UX & Frontend</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    </div><!-- .app-container -->
 
-    <!-- Contact Section -->
-    <section class="section contact" id="iletisim" aria-label="İletişim">
-      <div class="section__inner">
-        <h2 class="section__heading">İletişim</h2>
-        <p class="contact__message">Proje fikriniz mi var? Birlikte çalışalım.</p>
-        <div class="contact__links">
-          <a href="mailto:ali-turan-@outlook.com" class="contact__link" aria-label="E-posta gönder">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13L2 4"/></svg>
-            <span>ali-turan-@outlook.com</span>
-          </a>
-          <a href="https://github.com/Alttrest" target="_blank" rel="noopener noreferrer" class="contact__link" aria-label="GitHub profili (yeni sekmede açılır)">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            <span>github.com/Alttrest</span>
-          </a>
-        </div>
-        <p class="contact__location">📍 Alanya / Antalya</p>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="site-footer__inner">
-      <p class="site-footer__copy">Ali Turan &copy; 2025</p>
-      <button class="back-to-top" aria-label="Sayfanın başına dön" type="button">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
-      </button>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
