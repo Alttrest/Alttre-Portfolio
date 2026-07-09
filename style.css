@@ -1825,3 +1825,193 @@ button, a {
         gap: 1.2rem;
     }
 }
+
+/* ================= SOCIAL LINKS GRID ================= */
+.social-links-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.social-link-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 1.2rem;
+    border-radius: 8px;
+    background-color: var(--bg-cream-primary);
+    border: 1px solid var(--border-medium);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.social-link-icon {
+    font-size: 1.5rem;
+}
+
+.social-link-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.social-link-name {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.social-link-handle {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+}
+
+/* Hover effects for social links */
+.social-link-card.instagram:hover {
+    border-color: #E1306C;
+    box-shadow: 0 0 15px rgba(225, 48, 108, 0.1);
+    transform: translateY(-2px);
+}
+
+.social-link-card.linkedin:hover {
+    border-color: #0077B5;
+    box-shadow: 0 0 15px rgba(0, 119, 181, 0.1);
+    transform: translateY(-2px);
+}
+
+.social-link-card.github:hover {
+    border-color: #24292e;
+    box-shadow: 0 0 15px rgba(36, 41, 46, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Form Status Message */
+.contact-status-message {
+    padding: 0.6rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.88rem;
+    display: none;
+}
+
+.contact-status-message.success {
+    display: block;
+    background-color: rgba(94, 112, 96, 0.12);
+    color: var(--accent-sage);
+    border: 1px solid rgba(94, 112, 96, 0.3);
+}
+
+.contact-status-message.error {
+    display: block;
+    background-color: rgba(218, 41, 28, 0.12);
+    color: var(--accent-red);
+    border: 1px solid rgba(218, 41, 28, 0.3);
+}
+
+.contact-status-message.sending {
+    display: block;
+    background-color: var(--bg-cream-tertiary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-medium);
+}
+
+/* Nav wrapping adjust for smaller heights/widths to avoid nav buttons running off */
+@media (max-width: 1024px) {
+    .portfolio-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 95%;
+        gap: 0.6rem;
+    }
+}
+
+/* ================= CONVERSATIONAL SENTENCE FORM ================= */
+.conversational-contact-form {
+    padding: 1.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+.conversational-sentence {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    line-height: 2.2;
+    color: var(--text-primary);
+    font-weight: 400;
+    text-align: left;
+    word-break: break-word;
+}
+
+.inline-input {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid var(--border-medium) !important;
+    border-radius: 0 !important;
+    outline: none !important;
+    padding: 0px 8px !important;
+    color: var(--accent-red) !important;
+    font-weight: 600 !important;
+    font-size: 1.25rem !important;
+    width: auto !important;
+    min-width: 170px;
+    max-width: 100%;
+    text-align: center;
+    transition: var(--transition-fast) !important;
+    display: inline-block !important;
+}
+
+.inline-input::placeholder {
+    color: var(--text-muted);
+    font-weight: 400;
+    font-size: 1rem;
+    opacity: 0.7;
+}
+
+.inline-input:focus {
+    border-bottom-color: var(--accent-red) !important;
+    background-color: rgba(218, 41, 28, 0.03) !important;
+    box-shadow: none !important;
+}
+
+.textarea-inline-wrapper {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.inline-textarea {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid var(--border-medium) !important;
+    border-radius: 0 !important;
+    outline: none !important;
+    padding: 2px 8px !important;
+    color: var(--accent-red) !important;
+    font-weight: 600 !important;
+    font-size: 1.2rem !important;
+    width: 100% !important;
+    height: 42px;
+    min-height: 42px;
+    resize: none !important;
+    overflow-y: hidden !important;
+    transition: var(--transition-fast) !important;
+    vertical-align: bottom !important;
+}
+
+.inline-textarea::placeholder {
+    color: var(--text-muted);
+    font-weight: 400;
+    font-size: 1rem;
+    opacity: 0.7;
+}
+
+.inline-textarea:focus {
+    border-bottom-color: var(--accent-red) !important;
+    background-color: rgba(218, 41, 28, 0.03) !important;
+    box-shadow: none !important;
+}
+
+.conversational-footer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+}

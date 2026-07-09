@@ -60,10 +60,11 @@
                     </div>
                 </div>
                 <nav class="portfolio-nav" id="portfolioNav">
+                    <button class="nav-btn" id="navHomeBtn">Giriş / Intro</button>
                     <button class="nav-btn active" id="navProjectsBtn">Projects</button>
                     <button class="nav-btn" id="navSkillsBtn">Skills</button>
                     <button class="nav-btn" id="navSetupBtn">Ben Kimim</button>
-                    <a href="mailto:ali-turan-@outlook.com" class="nav-contact-btn">Contact</a>
+                    <button class="nav-contact-btn" id="navContactBtn">İletişim / Contact</button>
                 </nav>
             </header>
 
@@ -317,7 +318,71 @@
                 <div id="passcodeErrorMessage" class="passcode-error-message">Şifre hatalı / Incorrect passcode</div>
             </div>
         </div>
-
+ 
+        <!-- ========== CONTACT PANEL (İLETİŞİM) ========== -->
+        <div id="contactPanel" class="info-panel-modal">
+            <div class="info-panel-overlay" id="contactOverlay"></div>
+            <div class="info-panel-content">
+                <button class="info-panel-close-btn" id="contactCloseBtn">&times;</button>
+                <div class="panel-header">
+                    <h2>İLETİŞİM / CONTACT</h2>
+                    <p>Benimle iletişime geçin veya sosyal ağlarımdan ulaşın.</p>
+                </div>
+                
+                <div class="setup-container">
+                    <!-- Web3Forms AJAX Form -->
+                    <div class="setup-box">
+                        <h3>Mesaj Gönder / Send Message</h3>
+                        <form id="contactForm" class="conversational-contact-form">
+                            <!-- Web3Forms Access Key -->
+                            <input type="hidden" name="access_key" value="c9211ea9-3542-461e-9d15-ecbc3a9f5a33">
+                            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                            
+                            <p class="conversational-sentence">
+                                Merhaba, benim adım <input type="text" name="name" id="contactName" required placeholder="adınız / your name" class="inline-input">. 
+                                Bana <input type="email" name="email" id="contactEmail" required placeholder="e-postanız / email" class="inline-input"> adresinden ulaşabilirsiniz. 
+                                Sizinle <span class="textarea-inline-wrapper"><textarea name="message" id="contactMessage" required placeholder="görüşmek istediğiniz konu / your message" class="inline-textarea"></textarea></span> hakkında görüşmek istiyorum.
+                            </p>
+                            
+                            <div class="conversational-footer">
+                                <button type="submit" class="admin-submit-btn" id="contactSubmitBtn">Mesajı Uçur / Send Message &rarr;</button>
+                                <div id="contactFormStatus" class="contact-status-message" style="margin-top: 15px; font-weight: 500; font-size: 0.9rem;"></div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Social Media Links Section -->
+                    <div class="setup-box">
+                        <h3>Sosyal Medya / Social Accounts</h3>
+                        <p class="setup-description" style="margin-top: 0; margin-bottom: 1.2rem;">Aşağıdaki platformlar üzerinden beni takip edebilir veya iletişime geçebilirsiniz.</p>
+                        <div class="social-links-grid">
+                            <a href="https://instagram.com" target="_blank" class="social-link-card instagram" id="socialInstagram">
+                                <div class="social-link-icon">📸</div>
+                                <div class="social-link-details">
+                                    <span class="social-link-name">Instagram</span>
+                                    <span class="social-link-handle">@Alttre</span>
+                                </div>
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" class="social-link-card linkedin" id="socialLinkedin">
+                                <div class="social-link-icon">🔗</div>
+                                <div class="social-link-details">
+                                    <span class="social-link-name">LinkedIn</span>
+                                    <span class="social-link-handle">Ali Turan</span>
+                                </div>
+                            </a>
+                            <a href="https://github.com/Alttrest" target="_blank" class="social-link-card github" id="socialGithub">
+                                <div class="social-link-icon">🐙</div>
+                                <div class="social-link-details">
+                                    <span class="social-link-name">GitHub</span>
+                                    <span class="social-link-handle">@Alttrest</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+ 
     </div><!-- .app-container -->
 
     <script src="app.js"></script>

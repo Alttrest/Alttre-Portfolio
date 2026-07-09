@@ -252,11 +252,12 @@ window.addEventListener("mouseup", () => {
 
 
 const introLines = [
-    "Hello, I'm Ali Turan (Alttre).",
-    "I'm an Information Technology student in Vocational and Technical High School.",
+    "Hello, I'm Ali Turan (Alttre) / Merhaba, Ben Ali Turan (Alttre).",
+    "Information Technology student & Developer / Bilişim Teknolojileri öğrencisi ve geliştirici.",
     "I build from-scratch web systems, custom hardware projects, and AI agents.",
-    "I'm also a co-founder of Nebula Team.",
-    "Ready to explore my projects? Scroll down or use your mouse wheel..."
+    "Sıfırdan web sistemleri, donanım projeleri ve yapay zeka ajanları geliştiriyorum.",
+    "I'm also a co-founder of Nebula Team / Aynı zamanda Nebula Team'in kurucu ortağıyım.",
+    "Ready to explore? Scroll down or click Explore... / Keşfetmek için kaydırın veya tıklayın..."
 ];
 
 const typewriterText = document.getElementById("typewriterText");
@@ -483,6 +484,8 @@ function handleWheelEvent(e) {
     if (document.getElementById("projectDetailsModal").classList.contains("active")) return;
     if (document.getElementById("skillsPanel").classList.contains("active")) return;
     if (document.getElementById("setupPanel").classList.contains("active")) return;
+    if (document.getElementById("adminPanel") && document.getElementById("adminPanel").classList.contains("active")) return;
+    if (document.getElementById("contactPanel") && document.getElementById("contactPanel").classList.contains("active")) return;
     
     e.preventDefault();
     
@@ -529,6 +532,8 @@ window.addEventListener("touchend", (e) => {
     if (document.getElementById("projectDetailsModal").classList.contains("active")) return;
     if (document.getElementById("skillsPanel").classList.contains("active")) return;
     if (document.getElementById("setupPanel").classList.contains("active")) return;
+    if (document.getElementById("adminPanel") && document.getElementById("adminPanel").classList.contains("active")) return;
+    if (document.getElementById("contactPanel") && document.getElementById("contactPanel").classList.contains("active")) return;
     
     const endTouchY = e.changedTouches[0].clientY;
     const diffY = startTouchY - endTouchY;
@@ -731,14 +736,17 @@ function handleModalParallax(e) {
 }
 
 
-// ================= INFO SUB-PANELS (SKILLS, SETUP, ADMIN) ================= //
+// ================= INFO SUB-PANELS (SKILLS, SETUP, ADMIN, CONTACT) ================= //
 const skillsPanel = document.getElementById("skillsPanel");
 const setupPanel = document.getElementById("setupPanel");
 const adminPanel = document.getElementById("adminPanel");
+const contactPanel = document.getElementById("contactPanel");
 
 const navSkillsBtn = document.getElementById("navSkillsBtn");
 const navSetupBtn = document.getElementById("navSetupBtn");
 const navProjectsBtn = document.getElementById("navProjectsBtn");
+const navContactBtn = document.getElementById("navContactBtn");
+const navHomeBtn = document.getElementById("navHomeBtn");
 
 const skillsCloseBtn = document.getElementById("skillsCloseBtn");
 const setupCloseBtn = document.getElementById("setupCloseBtn");
@@ -748,10 +756,45 @@ const setupOverlay = document.getElementById("setupOverlay");
 const adminCloseBtn = document.getElementById("adminCloseBtn");
 const adminOverlay = document.getElementById("adminOverlay");
 
+const contactCloseBtn = document.getElementById("contactCloseBtn");
+const contactOverlay = document.getElementById("contactOverlay");
+
+// Home/Intro Transition
+if (navHomeBtn) {
+    navHomeBtn.addEventListener("click", () => {
+        goBackToIntro();
+    });
+}
+
+function goBackToIntro() {
+    closeSkillsPanel();
+    closeSetupPanel();
+    closeAdminPanel();
+    closeContactPanel();
+    closeProjectDetails();
+    stopSkillsGraph();
+    
+    localStorage.removeItem("portfolio_transitioned");
+    
+    portfolioSection.classList.remove("active");
+    introSection.classList.remove("dismissed");
+    
+    // Reset Typewriter Animation
+    currentLineIndex = 0;
+    currentCharIndex = 0;
+    typewriterBuffer = "";
+    typewriterText.textContent = "";
+    introActionContainer.classList.remove("visible");
+    if (introScrollPrompt) introScrollPrompt.classList.remove("visible");
+    
+    setTimeout(typeNextChar, 1000);
+}
+
 // Skills Panel Actions
 navSkillsBtn.addEventListener("click", () => {
     closeSetupPanel(); // Close setup first
     closeAdminPanel(); // Close admin panel
+    closeContactPanel(); // Close contact panel
     closeProjectDetails();
     
     skillsPanel.classList.add("active");
@@ -777,6 +820,7 @@ function closeSkillsPanel() {
 navSetupBtn.addEventListener("click", () => {
     closeSkillsPanel(); // Close skills first
     closeAdminPanel(); // Close admin panel
+    closeContactPanel(); // Close contact panel
     closeProjectDetails();
     stopSkillsGraph();
     
@@ -789,6 +833,30 @@ setupOverlay.addEventListener("click", closeSetupPanel);
 
 function closeSetupPanel() {
     setupPanel.classList.remove("active");
+    resetActiveNav();
+}
+
+// Contact Panel Actions
+if (navContactBtn) {
+    navContactBtn.addEventListener("click", () => {
+        closeSkillsPanel();
+        closeSetupPanel();
+        closeAdminPanel();
+        closeProjectDetails();
+        stopSkillsGraph();
+        
+        contactPanel.classList.add("active");
+        setActiveNav(navContactBtn);
+    });
+}
+
+if (contactCloseBtn) contactCloseBtn.addEventListener("click", closeContactPanel);
+if (contactOverlay) contactOverlay.addEventListener("click", closeContactPanel);
+
+function closeContactPanel() {
+    if (contactPanel) {
+        contactPanel.classList.remove("active");
+    }
     resetActiveNav();
 }
 
@@ -807,12 +875,13 @@ navProjectsBtn.addEventListener("click", () => {
     closeSkillsPanel();
     closeSetupPanel();
     closeAdminPanel();
+    closeContactPanel();
     stopSkillsGraph();
     setActiveNav(navProjectsBtn);
 });
 
 function setActiveNav(activeBtn) {
-    document.querySelectorAll(".nav-btn").forEach(btn => {
+    document.querySelectorAll("#portfolioNav .nav-btn, #portfolioNav .nav-contact-btn").forEach(btn => {
         btn.classList.remove("active");
     });
     if (activeBtn) activeBtn.classList.add("active");
@@ -823,8 +892,9 @@ function resetActiveNav() {
     const isSkillsActive = skillsPanel && skillsPanel.classList.contains("active");
     const isSetupActive = setupPanel && setupPanel.classList.contains("active");
     const isAdminActive = adminPanel && adminPanel.classList.contains("active");
+    const isContactActive = contactPanel && contactPanel.classList.contains("active");
     
-    if (!isSkillsActive && !isSetupActive && !isAdminActive) {
+    if (!isSkillsActive && !isSetupActive && !isAdminActive && !isContactActive) {
         setActiveNav(navProjectsBtn);
     }
 }
@@ -1702,4 +1772,68 @@ if (adminRevokeBtn) {
             alert("Yetki kaldırıldı. / Authorization revoked.");
         }
     });
+}
+
+// ================= CONTACT FORM SUBMISSION (WEB3FORMS AJAX) ================= //
+const contactForm = document.getElementById("contactForm");
+const contactFormStatus = document.getElementById("contactFormStatus");
+
+if (contactForm && contactFormStatus) {
+    contactForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+        
+        contactFormStatus.className = "contact-status-message sending";
+        contactFormStatus.textContent = "Gönderiliyor... / Sending...";
+        
+        const formData = new FormData(contactForm);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+        
+        fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: json
+        })
+        .then(async (response) => {
+            let res = await response.json();
+            if (response.status == 200) {
+                contactFormStatus.className = "contact-status-message success";
+                contactFormStatus.textContent = "Mesajınız başarıyla gönderildi! / Message sent successfully!";
+                contactForm.reset();
+            } else {
+                console.log(response);
+                contactFormStatus.className = "contact-status-message error";
+                contactFormStatus.textContent = res.message || "Bir hata oluştu! / An error occurred!";
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            contactFormStatus.className = "contact-status-message error";
+            contactFormStatus.textContent = "Bağlantı hatası! / Network error!";
+        })
+        .then(() => {
+            setTimeout(() => {
+                contactFormStatus.style.display = "none";
+            }, 6000);
+        });
+    });
+}
+
+// Auto-grow inline textarea dynamically
+function initAutogrowTextareas() {
+    const inlineTxs = document.getElementsByClassName("inline-textarea");
+    for (let i = 0; i < inlineTxs.length; i++) {
+        inlineTxs[i].addEventListener("input", function() {
+            this.style.height = "auto";
+            this.style.height = this.scrollHeight + "px";
+        });
+    }
+}
+if (document.readyState === "loading") {
+    window.addEventListener("DOMContentLoaded", initAutogrowTextareas);
+} else {
+    initAutogrowTextareas();
 }
