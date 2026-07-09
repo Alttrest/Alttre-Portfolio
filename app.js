@@ -252,12 +252,11 @@ window.addEventListener("mouseup", () => {
 
 
 const introLines = [
-    "Hello, I'm Ali Turan (Alttre) / Merhaba, Ben Ali Turan (Alttre).",
-    "Information Technology student & Developer / Bilişim Teknolojileri öğrencisi ve geliştirici.",
-    "I build from-scratch web systems, custom hardware projects, and AI agents.",
-    "Sıfırdan web sistemleri, donanım projeleri ve yapay zeka ajanları geliştiriyorum.",
-    "I'm also a co-founder of Nebula Team / Aynı zamanda Nebula Team'in kurucu ortağıyım.",
-    "Ready to explore? Scroll down or click Explore... / Keşfetmek için kaydırın veya tıklayın..."
+    "Hello, I'm Ali Turan (Alttre).",
+    "I'm an Information Technology student and software developer.",
+    "I build web systems from scratch, custom embedded hardware, and AI agents.",
+    "I am also the co-founder of Nebula Team.",
+    "Ready to explore? Scroll down or click Explore..."
 ];
 
 const typewriterText = document.getElementById("typewriterText");
@@ -1678,7 +1677,7 @@ if (adminAddProjectForm) {
         updateDeckLayout();
         renderAdminProjectsList();
         
-        alert("Proje başarıyla eklendi! / Project added successfully!");
+        alert("Project added successfully!");
     });
 }
 
@@ -1690,7 +1689,7 @@ function renderAdminProjectsList() {
     listContainer.innerHTML = "";
     
     if (projects.length === 0) {
-        listContainer.innerHTML = `<div style="font-size:0.9rem; color:var(--text-muted); font-style:italic;">Gösterilecek proje yok / No projects to display.</div>`;
+        listContainer.innerHTML = `<div style="font-size:0.9rem; color:var(--text-muted); font-style:italic;">No projects to display.</div>`;
         return;
     }
     
@@ -1706,13 +1705,13 @@ function renderAdminProjectsList() {
                     <div class="admin-proj-cat">${proj.category}</div>
                 </div>
             </div>
-            <button class="admin-proj-delete-btn" data-index="${idx}">Sil / Delete</button>
+            <button class="admin-proj-delete-btn" data-index="${idx}">Delete</button>
         `;
         
         const delBtn = item.querySelector(".admin-proj-delete-btn");
         delBtn.addEventListener("click", () => {
             const index = parseInt(delBtn.dataset.index);
-            if (confirm(`"${projects[index].title}" projesini silmek istediğinize emin misiniz? / Are you sure you want to delete this project?`)) {
+            if (confirm(`Are you sure you want to delete "${projects[index].title}"?`)) {
                 projects.splice(index, 1);
                 saveProjects();
                 
@@ -1750,7 +1749,7 @@ if (adminExportBtn) {
 
 if (adminResetBtn) {
     adminResetBtn.addEventListener("click", () => {
-        if (confirm("Tüm projeleri varsayılan listeye sıfırlamak istiyor musunuz? / Reset all projects to defaults?")) {
+        if (confirm("Are you sure you want to reset all projects to defaults?")) {
             projects = [...DEFAULT_PROJECTS];
             saveProjects();
             
@@ -1758,18 +1757,18 @@ if (adminResetBtn) {
             renderDeck();
             updateDeckLayout();
             renderAdminProjectsList();
-            alert("Projeler sıfırlandı! / Projects reset successfully!");
+            alert("Projects reset successfully!");
         }
     });
 }
 
 if (adminRevokeBtn) {
     adminRevokeBtn.addEventListener("click", () => {
-        if (confirm("Bu cihazın yönetici yetkisini kaldırmak istiyor musunuz? / Revoke admin authorization on this device?")) {
+        if (confirm("Are you sure you want to revoke admin authorization on this device?")) {
             localStorage.removeItem("alttre_admin_authorized");
             updateAdminNavButton();
             closeAdminPanel();
-            alert("Yetki kaldırıldı. / Authorization revoked.");
+            alert("Authorization revoked.");
         }
     });
 }
@@ -1783,7 +1782,7 @@ if (contactForm && contactFormStatus) {
         e.preventDefault();
         
         contactFormStatus.className = "contact-status-message sending";
-        contactFormStatus.textContent = "Gönderiliyor... / Sending...";
+        contactFormStatus.textContent = "Sending...";
         
         const formData = new FormData(contactForm);
         const object = Object.fromEntries(formData);
@@ -1801,18 +1800,18 @@ if (contactForm && contactFormStatus) {
             let res = await response.json();
             if (response.status == 200) {
                 contactFormStatus.className = "contact-status-message success";
-                contactFormStatus.textContent = "Mesajınız başarıyla gönderildi! / Message sent successfully!";
+                contactFormStatus.textContent = "Message sent successfully!";
                 contactForm.reset();
             } else {
                 console.log(response);
                 contactFormStatus.className = "contact-status-message error";
-                contactFormStatus.textContent = res.message || "Bir hata oluştu! / An error occurred!";
+                contactFormStatus.textContent = res.message || "An error occurred!";
             }
         })
         .catch(error => {
             console.log(error);
             contactFormStatus.className = "contact-status-message error";
-            contactFormStatus.textContent = "Bağlantı hatası! / Network error!";
+            contactFormStatus.textContent = "Network error! Please try again.";
         })
         .then(() => {
             setTimeout(() => {

@@ -1886,6 +1886,12 @@ button, a {
     transform: translateY(-2px);
 }
 
+.social-link-card.email:hover {
+    border-color: var(--accent-red);
+    box-shadow: 0 0 15px rgba(218, 41, 28, 0.1);
+    transform: translateY(-2px);
+}
+
 /* Form Status Message */
 .contact-status-message {
     padding: 0.6rem 0.8rem;
