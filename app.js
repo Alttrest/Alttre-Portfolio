@@ -1,12 +1,12 @@
 // ================= PROJECT DATA ================= //
-const projects = [
+const DEFAULT_PROJECTS = [
     {
         id: 1,
         title: "NexusAI-PhoneAgent",
-        category: "Mobil Yapay Zeka",
-        tag: "Yeni / Aktif",
-        shortDesc: "React Native ve Expo tabanlı mobil yapay zeka asistanı.",
-        description: "NexusAI-PhoneAgent, akıllı telefonunuzda çalışan gelişmiş bir yapay zeka asistanıdır. React Native ve Expo ile geliştirilmiş olan bu sistem, kullanıcının cihaz üzerindeki işlemlerini koordine eder ve arka planda LLM (Büyük Dil Modeli) entegrasyonuyla kişiselleştirilmiş bir mobil operasyon deneyimi sunar.",
+        category: "Mobile AI",
+        tag: "New / Active",
+        shortDesc: "React Native and Expo based mobile AI assistant.",
+        description: "NexusAI-PhoneAgent is an advanced artificial intelligence assistant running on your smartphone. Developed with React Native and Expo, this system coordinates user operations on the device and offers a personalized mobile experience with background LLM integration.",
         technologies: ["React Native", "Expo", "TypeScript", "LLM APIs", "JSON-RPC"],
         gradient: "linear-gradient(135deg, #e6dcc4 0%, #d46a43 100%)",
         icon: "📱",
@@ -16,11 +16,11 @@ const projects = [
     },
     {
         id: 2,
-        title: "AI-POST Ekosistemi",
-        category: "Yapay Zeka Otomasyon",
-        tag: "Otonom",
-        shortDesc: "Yapay zeka destekli sosyal medya otomasyon, gönderi ve yönetim araçları bütünü.",
-        description: "AI-POST, sosyal medya platformlarında içerik planlama, görsel ve metin üretimi ile otomatik paylaşım süreçlerini uçtan uca yöneten akıllı bir ajan ekosistemidir. API entegrasyonları sayesinde insan müdahalesi olmadan trendleri analiz eder ve içerik üretir.",
+        title: "AI-POST Ecosystem",
+        category: "AI Automation",
+        tag: "Autonomous",
+        shortDesc: "AI-powered social media automation, posting, and management tool suite.",
+        description: "AI-POST is an autonomous agent ecosystem that manages social media content planning, image and text generation, and automatic posting workflows end-to-end. Powered by API integrations, it analyzes trends and creates content without human intervention.",
         technologies: ["Python", "Flask", "Gemini API", "Playwright", "Docker"],
         gradient: "linear-gradient(135deg, #FAF6EE 0%, #5e7060 100%)",
         icon: "🤖",
@@ -31,10 +31,10 @@ const projects = [
     {
         id: 3,
         title: "NexusAI-Agent",
-        category: "Masaüstü Yapay Zeka",
-        tag: "Gelişmiş",
-        shortDesc: "Electron ve React tabanlı masaüstü yapay zeka operatörü (Flux-Agent serisi).",
-        description: "NexusAI-Agent, bilgisayarınızda yerel veya bulut tabanlı çalışan, işletim sistemi seviyesindeki görevleri otomatikleştirebilen gelişmiş bir masaüstü yapay zeka asistanıdır. ReAct (Reasoning and Acting) mimarisini kullanarak kullanıcının yerine dosya yönetebilir, tarayıcı işlemlerini gerçekleştirebilir.",
+        category: "Desktop AI",
+        tag: "Advanced",
+        shortDesc: "Electron and React based desktop AI operator (Flux-Agent series).",
+        description: "NexusAI-Agent is an advanced desktop AI assistant that runs locally or in the cloud to automate operating system-level tasks. Using ReAct (Reasoning and Acting) architecture, it can manage files, execute terminal actions, and navigate the web on behalf of the user.",
         technologies: ["Electron", "React", "Node.js", "Python", "ReAct Framework"],
         gradient: "linear-gradient(135deg, #f3ece0 0%, #1e1b18 100%)",
         icon: "🧠",
@@ -45,10 +45,10 @@ const projects = [
     {
         id: 4,
         title: "Ven-s-Finder",
-        category: "Siber İstihbarat & OSINT",
-        tag: "Hızlı",
-        shortDesc: "Groq AI ve DuckDuckGo arama API'sini kullanan Python tabanlı kişi arama motoru.",
-        description: "Ven-s-Finder, açık kaynak kodlu istihbarat (OSINT) yöntemleriyle internet üzerindeki genel bilgileri tarayıp analiz eden bir kişi/veri arama motorudur. DuckDuckGo API'si ile topladığı verileri Groq AI üzerinden geçirerek anlamlandırılmış bir profil raporu oluşturur.",
+        category: "Cyber Intel & OSINT",
+        tag: "Fast",
+        shortDesc: "Python-based person search engine using Groq AI and DuckDuckGo search API.",
+        description: "Ven-s-Finder is a query-driven open source intelligence (OSINT) tool that searches and analyzes public information on the web. It queries DuckDuckGo APIs and processes retrieved data using Groq AI to build structured profiles and reports.",
         technologies: ["Python", "Groq AI", "DuckDuckGo API", "BeautifulSoup"],
         gradient: "linear-gradient(135deg, #e8dec9 0%, #8e8274 100%)",
         icon: "🔍",
@@ -59,10 +59,10 @@ const projects = [
     {
         id: 5,
         title: "FBMTAL Chat & AlttreHub",
-        category: "Gerçek Zamanlı İletişim",
+        category: "Real-Time Comms",
         tag: "WebSockets",
-        shortDesc: "WebSockets, Socket.io ve Flask tabanlı gerçek zamanlı sohbet altyapısı.",
-        description: "FBMTAL Chat, okul ortamında veya yerel ağlarda güvenli ve yüksek hızlı mesajlaşma sağlamak üzere kurgulanmış, Socket.io tabanlı gerçek zamanlı bir sohbet uygulamasıdır. Kullanıcı yönetimi, odalar ve anlık bildirimler Flask backend'i ile yönetilir.",
+        shortDesc: "WebSockets, Socket.io, and Flask based real-time chat infrastructure.",
+        description: "FBMTAL Chat is a secure, high-speed instant messaging platform designed for local school networks using Socket.io. Chat rooms, user accounts, and real-time push notifications are fully managed by a robust Flask backend.",
         technologies: ["Flask", "Socket.io", "WebSockets", "JavaScript", "HTML/CSS"],
         gradient: "linear-gradient(135deg, #f3ece0 0%, #5e7060 100%)",
         icon: "💬",
@@ -73,11 +73,11 @@ const projects = [
     {
         id: 6,
         title: "Mini Sumo Robot",
-        category: "Robotik & Gömülü Sistem",
-        tag: "Ödüllü 🏆",
-        shortDesc: "Fibonacci Robot Yarışması Jüri Özel Ödüllü otonom robot projesi.",
-        description: "Fibonacci Robot Yarışması'nda Jüri Özel Ödülü kazanan, otonom kararlar verebilen mini sumo robotu. Arduino mimarisi üzerine C++ ile yazılmış olan kod, kızılötesi ve mesafe sensörlerinden gelen verileri saniyede yüzlerce kez işleyerek (sensör füzyonu) rakibini ring dışına itecek motor tork stratejilerini belirler.",
-        technologies: ["C/C++", "Arduino", "Sensör Füzyonu", "Motor Sürücüler", "Li-Po Güç"],
+        category: "Robotics & Embedded",
+        tag: "Award Winning 🏆",
+        shortDesc: "Autonomous mini sumo robot project, winner of the Fibonacci Robot Cup Jury Special Award.",
+        description: "An autonomous decision-making mini sumo robot that won the Jury Special Award at the Fibonacci Robotics Tournament. Built using C++ on Arduino architecture, the code processes infrared and distance sensor data hundreds of times per second (sensor fusion) to calculate optimal motor torque and tactical push strategies to defeat opponents.",
+        technologies: ["C/C++", "Arduino", "Sensor Fusion", "Motor Drivers", "Li-Po Power"],
         gradient: "linear-gradient(135deg, #FAF6EE 0%, #DA291C 100%)",
         icon: "⚙️",
         image: "assets/sumo_robot.png",
@@ -87,10 +87,10 @@ const projects = [
     {
         id: 7,
         title: "Hype-NEWS",
-        category: "Yapay Zeka Medya",
-        tag: "Dinamik",
-        shortDesc: "Yapay zeka destekli interaktif haber istasyonu platformu.",
-        description: "Hype-NEWS, internet üzerindeki gelişmeleri tarayarak, yapay zeka algoritmalarıyla tarafsız, özetlenmiş ve interaktif haber akışları oluşturan yenilikçi bir web portalıdır. Kullanıcılar haberleri kendi ilgi alanlarına göre yapay zekaya yeniden yazdırabilirler.",
+        category: "AI Media",
+        tag: "Dynamic",
+        shortDesc: "AI-powered interactive news station platform.",
+        description: "Hype-NEWS is an innovative web portal that parses global internet feeds and uses AI models to generate unbiased, summarized, and interactive news. Users can prompt the AI to rewrite articles based on custom tones or topics.",
         technologies: ["JavaScript", "Flask", "Gemini API", "HTML5", "CSS Grid"],
         gradient: "linear-gradient(135deg, #e6dcc4 0%, #D46A43 100%)",
         icon: "📰",
@@ -101,10 +101,10 @@ const projects = [
     {
         id: 8,
         title: "StartupCMD",
-        category: "Masaüstü Araç",
-        tag: "Yeni",
-        shortDesc: "Windows başlangıç uygulamalarını listeleyen, açıklayan ve yöneten Electron uygulaması.",
-        description: "StartupCMD, Windows işletim sisteminde başlangıçta otomatik olarak çalışan komut satırı araçlarını, script dosyalarını ve uygulamaları tarayan, yapay zeka desteğiyle açıklayan ve yöneten profesyonel bir masaüstü uygulamasıdır.",
+        category: "Desktop Utility",
+        tag: "New",
+        shortDesc: "Electron application to list, document, and manage Windows startup processes.",
+        description: "StartupCMD is a professional desktop tool that scans command line arguments, scripts, and applications starting automatically with Windows. It explains startup impacts using AI assistance and manages startup behavior via PowerShell integrations.",
         technologies: ["Electron", "JavaScript", "HTML/CSS", "PowerShell API"],
         gradient: "linear-gradient(135deg, #f3ece0 0%, #1e1b18 100%)",
         icon: "⚙️",
@@ -115,10 +115,10 @@ const projects = [
     {
         id: 9,
         title: "Web OS",
-        category: "Web Uygulaması",
-        tag: "Dinamik",
-        shortDesc: "JavaScript ile yazılmış, tarayıcıda çalışan otonom web işletim sistemi arayüzü.",
-        description: "Web OS, tarayıcı üzerinde zengin masaüstü pencereleri, görev çubuğu ve çeşitli araçları barındıran tam teşekküllü bir simülatör web uygulamasıdır. İçerisinde özel terminal uygulamaları ve dosya sistemleri barındırır.",
+        category: "Web Application",
+        tag: "Dynamic",
+        shortDesc: "Browser-based autonomous web operating system simulator written in JavaScript.",
+        description: "Web OS is a full-featured browser-based OS simulator featuring drag-and-drop windows, custom terminal utilities, web apps, and virtual filesystem controllers.",
         technologies: ["JavaScript", "HTML5", "CSS3", "Vite"],
         gradient: "linear-gradient(135deg, #e8dec9 0%, #5e7060 100%)",
         icon: "🌐",
@@ -129,10 +129,10 @@ const projects = [
     {
         id: 10,
         title: "scroll-animation",
-        category: "Web Animasyon",
-        tag: "Görsel",
-        shortDesc: "Tarayıcı kaydırma tekerleği hareketlerine duyarlı modern web animasyon kütüphanesi.",
-        description: "Scroll Animation, web sayfalarında ağır fizik kütüphaneleri yerine hafif CSS 3D transformasyonları kullanan, tamamen performansa odaklı scroll tetiklemeli animasyon modülüdür.",
+        category: "Web Animation",
+        tag: "Visual",
+        shortDesc: "High-performance web scroll animation library reactive to viewport scroll inputs.",
+        description: "Scroll Animation is an ultra-lightweight scroll-driven web layout engine built using CSS 3D transforms instead of heavy JavaScript physics engines.",
         technologies: ["JavaScript", "HTML5", "CSS3", "Scroll Handling"],
         gradient: "linear-gradient(135deg, #e6dcc4 0%, #d46a43 100%)",
         icon: "✨",
@@ -142,11 +142,11 @@ const projects = [
     },
     {
         id: 11,
-        title: "Sefa Mühendislik",
-        category: "Kurumsal Vitrin",
-        tag: "Tamamlandı",
-        shortDesc: "Sefa Mühendislik için tasarlanan modern ve minimalist kurumsal web sitesi.",
-        description: "Sefa Mühendislik firması için özel olarak sıfırdan tasarlanan ve geliştirilen modern, minimalist kurumsal web sitesi projesi. Hızlı yüklenme süreleri, SEO uyumluluğu ve temiz bir arayüz ile kurumsal kimliği yansıtacak şekilde kurgulanmıştır.",
+        title: "Sefa Engineering",
+        category: "Corporate Showcase",
+        tag: "Completed",
+        shortDesc: "Modern, minimalist corporate website designed for Sefa Mühendislik.",
+        description: "A fast, SEO-friendly, and modern showcase site built from scratch to represent Sefa Mühendislik's corporate brand. Focuses on responsiveness, accessibility, and high performance.",
         technologies: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
         gradient: "linear-gradient(135deg, #f3ece0 0%, #8e8274 100%)",
         icon: "🏗️",
@@ -157,18 +157,38 @@ const projects = [
     {
         id: 12,
         title: "ar-furniture-viewer (3D-Furniture)",
-        category: "Artırılmış Gerçeklik (AR)",
-        tag: "Yeni / Public",
-        shortDesc: "Kullanıcıların mobilyayı almadan yaşam alanlarında 3D/AR ile görmesini sağlayan uygulama.",
-        description: "ar-furniture-viewer, web tabanlı artırılmış gerçeklik (WebXR) kullanarak, kullanıcıların mobilyaları satın almadan önce kendi odalarında gerçek boyutlarıyla 3D olarak konumlandırıp görüntülemesini sağlayan modern ve public bir uygulamadır.",
+        category: "Augmented Reality (AR)",
+        tag: "New / Public",
+        shortDesc: "Immersive WebXR furniture visualizer enabling users to view 3D models in their space before buying.",
+        description: "ar-furniture-viewer is a web-based augmented reality (WebXR) app that allows users to place and view real-scale 3D furniture models inside their rooms prior to purchasing.",
         technologies: ["Three.js", "WebXR", "Model-Viewer", "JavaScript", "HTML/CSS"],
         gradient: "linear-gradient(135deg, #e8dec9 0%, #d46a43 100%)",
         icon: "🛋️",
         image: "assets/ar_furniture.png",
         github: "https://github.com/Alttrest/ar-furniture-viewer",
         live: "https://3d-furniture-viewer.vercel.app"
+    },
+    {
+        id: 13,
+        title: "İş-Bul (Job-Finder)",
+        category: "Jobs & Careers",
+        tag: "Istanbul · Active",
+        shortDesc: "Modern job matching and career tracker application developed for job seekers.",
+        description: "İş-Bul is a modern platform connecting job seekers with recruiters, featuring smart filter queries and job tracking boards. Developed with Istanbul-focused scope. I am actively seeking internships and career opportunities in software development — feel free to reach out!",
+        technologies: ["JavaScript", "HTML5", "CSS3", "Vercel"],
+        gradient: "linear-gradient(135deg, #EEF2FF 0%, #3B4DC8 100%)",
+        icon: "💼",
+        image: "assets/isbul.png",
+        github: "https://github.com/Alttrest",
+        live: "https://is-bul.vercel.app"
     }
 ];
+
+let projects = JSON.parse(localStorage.getItem("portfolio_projects")) || [...DEFAULT_PROJECTS];
+
+function saveProjects() {
+    localStorage.setItem("portfolio_projects", JSON.stringify(projects));
+}
 
 // ================= GLOBAL STATE ================= //
 let activeIndex = 0;
@@ -231,13 +251,12 @@ window.addEventListener("mouseup", () => {
 });
 
 
-// ================= TYPEWRITER EFFECT ================= //
 const introLines = [
-    "Merhaba, ben Ali Turan (Alttre).",
-    "Bilişim Teknolojileri alanında Mesleki ve Teknik Anadolu Lisesi öğrencisiyim.",
-    "Yapay zeka ajanları, donanım projeleri ve sıfırdan web sistemleri geliştiriyorum.",
-    "Aynı zamanda Nebula Team kurucu üyesiyim.",
-    "Projelerimi mouse tekerleğiyle kaydırarak incelemek için hazır mısın?.."
+    "Hello, I'm Ali Turan (Alttre).",
+    "I'm an Information Technology student in Vocational and Technical High School.",
+    "I build from-scratch web systems, custom hardware projects, and AI agents.",
+    "I'm also a co-founder of Nebula Team.",
+    "Ready to explore my projects? Scroll down or use your mouse wheel..."
 ];
 
 const typewriterText = document.getElementById("typewriterText");
@@ -296,6 +315,7 @@ function triggerTransition() {
 
 // Start typewriter on load or restore transitioned state
 function initPortfolio() {
+    updateAdminNavButton();
     const transitioned = localStorage.getItem("portfolio_transitioned");
     if (transitioned === "true") {
         // Skip typewriter animation
@@ -344,14 +364,12 @@ function renderDeck() {
         card.dataset.index = index;
         
         const tagClass = proj.tag.includes("Ödüllü") || proj.tag.includes("Yeni") ? "card-tag highlight" : "card-tag";
-        const cardVisualContent = proj.image 
-            ? `<img src="${proj.image}" alt="${proj.title}" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 1;">`
-            : `<div class="card-graphic" style="position: relative; z-index: 2;">${proj.icon}</div>`;
         
         card.innerHTML = `
             <div class="card-visual" style="background: ${proj.gradient}">
                 <span class="card-tag ${tagClass}">${proj.tag}</span>
-                ${cardVisualContent}
+                ${proj.image ? `<img class="card-img" src="${proj.image}" alt="${proj.title}">` : ''}
+                <div class="card-graphic card-img-fallback" style="display: ${proj.image ? 'none' : 'flex'};">${proj.icon}</div>
             </div>
             <div class="card-details">
                 <div>
@@ -367,6 +385,18 @@ function renderDeck() {
                 </div>
             </div>
         `;
+        
+        // Programmatic image fallback (reliable across all browsers)
+        if (proj.image) {
+            const imgEl = card.querySelector(".card-img");
+            const fallbackEl = card.querySelector(".card-img-fallback");
+            if (imgEl && fallbackEl) {
+                imgEl.addEventListener("error", () => {
+                    imgEl.style.display = "none";
+                    fallbackEl.style.display = "flex";
+                });
+            }
+        }
         
         card.addEventListener("click", () => {
             if (index === activeIndex) {
@@ -622,11 +652,12 @@ function openProjectDetails(project) {
     closeSetupPanel();
     
     const liveLinkMarkup = project.live 
-        ? `<a href="${project.live}" target="_blank" class="modal-link-btn">Canlı Proje &nearr;</a>`
+        ? `<a href="${project.live}" target="_blank" class="modal-link-btn">Live Project &nearr;</a>`
         : "";
     
     const heroVisualContent = project.image
-        ? `<img src="${project.image}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 1;">`
+        ? `<img src="${project.image}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 1;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+           <div class="modal-hero-graphic" id="modalHeroGraphic" style="position: relative; z-index: 2; display: none;">${project.icon}</div>`
         : `<div class="modal-hero-graphic" id="modalHeroGraphic" style="position: relative; z-index: 2;">${project.icon}</div>`;
         
     modalContent.innerHTML = `
@@ -642,25 +673,25 @@ function openProjectDetails(project) {
                 </div>
                 <div class="modal-links">
                     ${liveLinkMarkup}
-                    <a href="${project.github}" target="_blank" class="modal-link-btn secondary-link">GitHub Kodları &nearr;</a>
+                    <a href="${project.github}" target="_blank" class="modal-link-btn secondary-link">GitHub Source &nearr;</a>
                 </div>
             </div>
             
             <div class="modal-section-grid">
                 <div class="modal-desc-panel" id="modalParallaxDesc">
-                    <h3 class="modal-section-title">Proje Detayları</h3>
+                    <h3 class="modal-section-title">Project Details</h3>
                     <p class="modal-text">${project.description}</p>
                 </div>
                 <div class="modal-sidebar">
                     <div class="sidebar-box">
-                        <h4>Kullanılan Teknolojiler</h4>
+                        <h4>Technologies Used</h4>
                         <div class="tech-tags">
                             ${project.technologies.map(t => `<span class="tech-tag">${t}</span>`).join("")}
                         </div>
                     </div>
                     <div class="sidebar-box">
-                        <h4>Geliştirici İmzası</h4>
-                        <p class="modal-text" style="font-size: 0.85rem; color: var(--text-muted);">Bu proje Alttre tarafından sıfırdan kodlanmış ve geliştirilmiştir.</p>
+                        <h4>Developer Signature</h4>
+                        <p class="modal-text" style="font-size: 0.85rem; color: var(--text-muted);">This project has been designed and built from scratch by Alttre.</p>
                     </div>
                 </div>
             </div>
@@ -700,9 +731,10 @@ function handleModalParallax(e) {
 }
 
 
-// ================= INFO SUB-PANELS (SKILLS, SETUP) ================= //
+// ================= INFO SUB-PANELS (SKILLS, SETUP, ADMIN) ================= //
 const skillsPanel = document.getElementById("skillsPanel");
 const setupPanel = document.getElementById("setupPanel");
+const adminPanel = document.getElementById("adminPanel");
 
 const navSkillsBtn = document.getElementById("navSkillsBtn");
 const navSetupBtn = document.getElementById("navSetupBtn");
@@ -713,9 +745,13 @@ const setupCloseBtn = document.getElementById("setupCloseBtn");
 const skillsOverlay = document.getElementById("skillsOverlay");
 const setupOverlay = document.getElementById("setupOverlay");
 
+const adminCloseBtn = document.getElementById("adminCloseBtn");
+const adminOverlay = document.getElementById("adminOverlay");
+
 // Skills Panel Actions
 navSkillsBtn.addEventListener("click", () => {
     closeSetupPanel(); // Close setup first
+    closeAdminPanel(); // Close admin panel
     closeProjectDetails();
     
     skillsPanel.classList.add("active");
@@ -740,6 +776,7 @@ function closeSkillsPanel() {
 // Setup Panel Actions
 navSetupBtn.addEventListener("click", () => {
     closeSkillsPanel(); // Close skills first
+    closeAdminPanel(); // Close admin panel
     closeProjectDetails();
     stopSkillsGraph();
     
@@ -755,9 +792,21 @@ function closeSetupPanel() {
     resetActiveNav();
 }
 
+// Admin Panel Actions
+if (adminCloseBtn) adminCloseBtn.addEventListener("click", closeAdminPanel);
+if (adminOverlay) adminOverlay.addEventListener("click", closeAdminPanel);
+
+function closeAdminPanel() {
+    if (adminPanel) {
+        adminPanel.classList.remove("active");
+    }
+    resetActiveNav();
+}
+
 navProjectsBtn.addEventListener("click", () => {
     closeSkillsPanel();
     closeSetupPanel();
+    closeAdminPanel();
     stopSkillsGraph();
     setActiveNav(navProjectsBtn);
 });
@@ -766,12 +815,16 @@ function setActiveNav(activeBtn) {
     document.querySelectorAll(".nav-btn").forEach(btn => {
         btn.classList.remove("active");
     });
-    activeBtn.classList.add("active");
+    if (activeBtn) activeBtn.classList.add("active");
     setupCursorHovers();
 }
 
 function resetActiveNav() {
-    if (!skillsPanel.classList.contains("active") && !setupPanel.classList.contains("active")) {
+    const isSkillsActive = skillsPanel && skillsPanel.classList.contains("active");
+    const isSetupActive = setupPanel && setupPanel.classList.contains("active");
+    const isAdminActive = adminPanel && adminPanel.classList.contains("active");
+    
+    if (!isSkillsActive && !isSetupActive && !isAdminActive) {
         setActiveNav(navProjectsBtn);
     }
 }
@@ -792,11 +845,11 @@ const skillNodesData = [
     { id: "root", label: "Ali Turan (Alttre)", type: "root", size: 14 },
     
     // Category Nodes
-    { id: "cat-lang", label: "Programlama Dilleri", type: "category", size: 10 },
+    { id: "cat-lang", label: "Programming Languages", type: "category", size: 10 },
     { id: "cat-ai", label: "Yapay Zeka (AI)", type: "category", size: 10 },
     { id: "cat-framework", label: "Framework & Server", type: "category", size: 10 },
-    { id: "cat-hardware", label: "Donanım & Lab", type: "category", size: 10 },
-    { id: "cat-system", label: "Sistem & Araçlar", type: "category", size: 10 },
+    { id: "cat-hardware", label: "Hardware & Lab", type: "category", size: 10 },
+    { id: "cat-system", label: "Systems & Utilities", type: "category", size: 10 },
     
     // Languages
     { id: "python", label: "Python", type: "skill", size: 7 },
@@ -807,8 +860,8 @@ const skillNodesData = [
     
     // AI
     { id: "llm", label: "LLM API", type: "skill", size: 7 },
-    { id: "prompt", label: "Prompt Mühendisliği", type: "skill", size: 7 },
-    { id: "agents", label: "ReAct Ajanları", type: "skill", size: 7 },
+    { id: "prompt", label: "Prompt Engineering", type: "skill", size: 7 },
+    { id: "agents", label: "ReAct Agents", type: "skill", size: 7 },
     { id: "playwright", label: "Playwright", type: "skill", size: 6 },
     
     // Frameworks
@@ -820,8 +873,8 @@ const skillNodesData = [
     // Hardware
     { id: "arduino", label: "Arduino", type: "skill", size: 7 },
     { id: "pixhawk", label: "Pixhawk / ArduPilot", type: "skill", size: 7 },
-    { id: "circuit", label: "Devre Tasarımı", type: "skill", size: 6 },
-    { id: "soldering", label: "Lehimleme", type: "skill", size: 6 },
+    { id: "circuit", label: "Circuit Design", type: "skill", size: 6 },
+    { id: "soldering", label: "Soldering", type: "skill", size: 6 },
     { id: "power", label: "Li-Po & Type-C", type: "skill", size: 6 },
     
     // System
@@ -1234,40 +1287,53 @@ async function fetchGithubProjects() {
             
             if (!exists && !repo.fork) {
                 const lang = repo.language || "JavaScript";
-                let category = "GitHub Deposu";
+                let category = "GitHub Repository";
                 let icon = "📦";
                 let gradient = "linear-gradient(135deg, #e8dec9 0%, #8e8274 100%)";
                 
                 if (lang.toLowerCase() === "python") {
-                    category = "Python Projesi";
+                    category = "Python Project";
                     icon = "🐍";
                     gradient = "linear-gradient(135deg, #e8dec9 0%, #5e7060 100%)";
                 } else if (lang.toLowerCase() === "javascript" || lang.toLowerCase() === "typescript") {
-                    category = "JavaScript Projesi";
+                    category = "JavaScript Project";
                     icon = "🟨";
                     gradient = "linear-gradient(135deg, #FAF6EE 0%, #D46A43 100%)";
                 } else if (lang.toLowerCase() === "c++" || lang.toLowerCase() === "c") {
-                    category = "Sistem / Gömülü";
+                    category = "Systems / Embedded";
                     icon = "⚙️";
                     gradient = "linear-gradient(135deg, #f3ece0 0%, #1e1b18 100%)";
                 } else if (lang.toLowerCase() === "html" || lang.toLowerCase() === "css") {
-                    category = "Arayüz Tasarımı";
+                    category = "UI Design";
                     icon = "🌐";
                     gradient = "linear-gradient(135deg, #e6dcc4 0%, #d46a43 100%)";
                 }
                 
-                // Formulate preview image URL. Drop portfolio-preview.png in the main/master branch root to auto-load!
-                const previewImgUrl = `https://raw.githubusercontent.com/Alttrest/${repo.name}/main/portfolio-preview.png`;
+                // Map of known repositories to their pre-generated minimalist logos
+                const repoLogos = {
+                    "Alttre-Portfolio": "assets/alttre_portfolio.png",
+                    "3D-furniture": "assets/3d_furniture.png",
+                    "Excel": "assets/excel_python.png",
+                    "ifbmtalchat": "assets/ifbmtal_chat.png",
+                    "ifbmtalchatsite": "assets/ifbmtal_chat.png",
+                    "Alttrest": "assets/alttre_profile.png"
+                };
+                
+                const previewImgUrl = repoLogos[repo.name] || `https://raw.githubusercontent.com/Alttrest/${repo.name}/main/portfolio-preview.png`;
+                
+                // Create a unique star count & fork based seed for gradient variation
+                const seedHue = ((repo.stargazers_count || 0) * 37 + (repo.id || 0)) % 360;
+                const uniqueGradient = `linear-gradient(${120 + (repo.id % 120)}deg, hsl(${seedHue},18%,92%) 0%, hsl(${(seedHue+120)%360},32%,42%) 100%)`;
                 
                 const newProj = {
                     id: projects.length + 1,
                     title: repo.name,
                     category: category,
-                    tag: "GitHub Otonom",
-                    shortDesc: repo.description || "GitHub üzerinden otomatik yüklenen public yazılım projesi.",
-                    description: `${repo.description || "Bu depo, GitHub üzerinde public olarak paylaşılan bir kod tabanı projesidir."} Geliştirilen kodları, kullanılan algoritmaları ve commit geçmişini incelemek için aşağıdaki bağlantılardan GitHub reposunu ziyaret edebilirsiniz.`,
+                    tag: "GitHub Autonomous",
+                    shortDesc: repo.description || "Autonomous public software repository synced from GitHub.",
+                    description: `${repo.description || "This repository hosts a public codebase project synced from GitHub."} You can inspect the source code, implementation algorithms, and commit history by visiting the repository links below.`,
                     technologies: [lang, "Git", "GitHub API"],
-                    gradient: gradient,
+                    gradient: uniqueGradient,
                     icon: icon,
                     image: previewImgUrl,
                     github: repo.html_url,
@@ -1280,10 +1346,360 @@ async function fetchGithubProjects() {
         });
         
         if (newProjectsAdded) {
+            saveProjects();
             renderDeck();
             updateDeckLayout();
         }
     } catch (err) {
         console.warn("GitHub dynamic sync error:", err);
     }
+}
+
+
+// ================= ADMIN SECURITY & MANAGEMENT SYSTEM ================= //
+const adminPasscodeModal = document.getElementById("adminPasscodeModal");
+const adminPasscodeField = document.getElementById("adminPasscodeField");
+const adminPasscodeSubmitBtn = document.getElementById("adminPasscodeSubmitBtn");
+const passcodeCloseBtn = document.getElementById("passcodeCloseBtn");
+const passcodeErrorMessage = document.getElementById("passcodeErrorMessage");
+
+// Track brand logo clicks for triple-click trigger
+let brandLogoClicks = 0;
+let brandLogoTimer;
+const brandLogo = document.querySelector(".brand-logo");
+
+if (brandLogo) {
+    brandLogo.addEventListener("click", () => {
+        brandLogoClicks++;
+        clearTimeout(brandLogoTimer);
+        brandLogoTimer = setTimeout(() => {
+            brandLogoClicks = 0;
+        }, 1000);
+        
+        if (brandLogoClicks === 3) {
+            brandLogoClicks = 0;
+            openPasscodeModal();
+        }
+    });
+}
+
+// Track key shortcut Ctrl + Shift + A
+window.addEventListener("keydown", (e) => {
+    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "a") {
+        e.preventDefault();
+        openPasscodeModal();
+    }
+});
+
+// Passcode Modal Control
+function openPasscodeModal() {
+    if (adminPasscodeModal) {
+        adminPasscodeModal.classList.add("active");
+        passcodeErrorMessage.style.display = "none";
+        adminPasscodeField.value = "";
+        adminPasscodeField.focus();
+    }
+}
+
+function closePasscodeModal() {
+    if (adminPasscodeModal) {
+        adminPasscodeModal.classList.remove("active");
+    }
+}
+
+if (passcodeCloseBtn) passcodeCloseBtn.addEventListener("click", closePasscodeModal);
+const passcodeOverlay = document.getElementById("passcodeOverlay");
+if (passcodeOverlay) passcodeOverlay.addEventListener("click", closePasscodeModal);
+
+// Submit Passcode
+if (adminPasscodeSubmitBtn) {
+    adminPasscodeSubmitBtn.addEventListener("click", verifyAdminPasscode);
+}
+if (adminPasscodeField) {
+    adminPasscodeField.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") verifyAdminPasscode();
+    });
+}
+
+function verifyAdminPasscode() {
+    const entered = adminPasscodeField.value;
+    if (entered === "alttre2026") {
+        localStorage.setItem("alttre_admin_authorized", "true");
+        closePasscodeModal();
+        updateAdminNavButton();
+        
+        // Auto open admin panel
+        setTimeout(() => {
+            closeSetupPanel();
+            closeSkillsPanel();
+            closeProjectDetails();
+            stopSkillsGraph();
+            document.getElementById("adminPanel").classList.add("active");
+            const adminBtn = document.getElementById("navAdminBtn");
+            if (adminBtn) setActiveNav(adminBtn);
+            renderAdminProjectsList();
+        }, 300);
+    } else {
+        passcodeErrorMessage.style.display = "block";
+        const content = adminPasscodeModal.querySelector(".passcode-content");
+        if (content) {
+            content.style.animation = "none";
+            // trigger reflow
+            void content.offsetWidth;
+            content.style.animation = "shake 0.3s ease";
+        }
+    }
+}
+
+// Nav Button Dynamic Management
+function updateAdminNavButton() {
+    const nav = document.getElementById("portfolioNav");
+    if (!nav) return;
+    
+    let adminBtn = document.getElementById("navAdminBtn");
+    const isAuthorized = localStorage.getItem("alttre_admin_authorized") === "true";
+    
+    if (isAuthorized) {
+        if (!adminBtn) {
+            adminBtn = document.createElement("button");
+            adminBtn.className = "nav-btn";
+            adminBtn.id = "navAdminBtn";
+            adminBtn.textContent = "Admin";
+            
+            const contactBtn = nav.querySelector(".nav-contact-btn");
+            if (contactBtn) {
+                nav.insertBefore(adminBtn, contactBtn);
+            } else {
+                nav.appendChild(adminBtn);
+            }
+            
+            adminBtn.addEventListener("click", () => {
+                closeSetupPanel();
+                closeSkillsPanel();
+                closeProjectDetails();
+                stopSkillsGraph();
+                
+                document.getElementById("adminPanel").classList.add("active");
+                setActiveNav(adminBtn);
+                renderAdminProjectsList();
+            });
+        }
+    } else {
+        if (adminBtn) {
+            adminBtn.remove();
+        }
+    }
+}
+
+// Custom Gradient Visibility
+const projGradientSelect = document.getElementById("projGradientSelect");
+const customGradientInputs = document.getElementById("customGradientInputs");
+
+if (projGradientSelect && customGradientInputs) {
+    projGradientSelect.addEventListener("change", () => {
+        if (projGradientSelect.value === "custom") {
+            customGradientInputs.style.display = "flex";
+        } else {
+            customGradientInputs.style.display = "none";
+        }
+    });
+}
+
+// Photo Upload / URL Handling
+const projImageFile = document.getElementById("projImageFile");
+const projImageUrl = document.getElementById("projImageUrl");
+const imagePreviewContainer = document.getElementById("imagePreviewContainer");
+const imagePreview = document.getElementById("imagePreview");
+const removeImageBtn = document.getElementById("removeImageBtn");
+
+let currentUploadedImageBase64 = null;
+
+if (projImageFile) {
+    projImageFile.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                currentUploadedImageBase64 = event.target.result;
+                imagePreview.src = currentUploadedImageBase64;
+                imagePreviewContainer.style.display = "block";
+                projImageUrl.value = ""; // Clear URL input
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+}
+
+if (projImageUrl) {
+    projImageUrl.addEventListener("input", () => {
+        if (projImageUrl.value.trim() !== "") {
+            currentUploadedImageBase64 = projImageUrl.value.trim();
+            imagePreview.src = currentUploadedImageBase64;
+            imagePreviewContainer.style.display = "block";
+            projImageFile.value = ""; // Clear file selector
+        } else {
+            clearPreviewImage();
+        }
+    });
+}
+
+if (removeImageBtn) {
+    removeImageBtn.addEventListener("click", clearPreviewImage);
+}
+
+function clearPreviewImage() {
+    currentUploadedImageBase64 = null;
+    if (projImageFile) projImageFile.value = "";
+    if (projImageUrl) projImageUrl.value = "";
+    if (imagePreview) imagePreview.src = "";
+    if (imagePreviewContainer) imagePreviewContainer.style.display = "none";
+}
+
+// Project Creation Logic
+const adminAddProjectForm = document.getElementById("adminAddProjectForm");
+if (adminAddProjectForm) {
+    adminAddProjectForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        
+        const title = document.getElementById("projTitle").value.trim();
+        const category = document.getElementById("projCategory").value.trim();
+        const tag = document.getElementById("projTag").value.trim();
+        const shortDesc = document.getElementById("projShortDesc").value.trim();
+        const description = document.getElementById("projDesc").value.trim();
+        const techInput = document.getElementById("projTechs").value.trim();
+        const techs = techInput.split(",").map(t => t.trim()).filter(Boolean);
+        const icon = document.getElementById("projIcon").value.trim() || "📁";
+        const github = document.getElementById("projGithub").value.trim() || "https://github.com/Alttrest";
+        const live = document.getElementById("projLive").value.trim() || null;
+        
+        const gradSelect = projGradientSelect.value;
+        let gradient = gradSelect;
+        if (gradSelect === "custom") {
+            const col1 = document.getElementById("gradColor1").value;
+            const col2 = document.getElementById("gradColor2").value;
+            gradient = `linear-gradient(135deg, ${col1} 0%, ${col2} 100%)`;
+        }
+        
+        const newProj = {
+            id: Date.now(),
+            title,
+            category,
+            tag,
+            shortDesc,
+            description,
+            technologies: techs,
+            gradient,
+            icon,
+            image: currentUploadedImageBase64,
+            github,
+            live
+        };
+        
+        projects.push(newProj);
+        saveProjects();
+        
+        // Reset form & state
+        adminAddProjectForm.reset();
+        clearPreviewImage();
+        if (customGradientInputs) customGradientInputs.style.display = "none";
+        
+        // Re-render components
+        renderDeck();
+        updateDeckLayout();
+        renderAdminProjectsList();
+        
+        alert("Proje başarıyla eklendi! / Project added successfully!");
+    });
+}
+
+// Admin Projects Listing & Deletion
+function renderAdminProjectsList() {
+    const listContainer = document.getElementById("adminProjectsList");
+    if (!listContainer) return;
+    
+    listContainer.innerHTML = "";
+    
+    if (projects.length === 0) {
+        listContainer.innerHTML = `<div style="font-size:0.9rem; color:var(--text-muted); font-style:italic;">Gösterilecek proje yok / No projects to display.</div>`;
+        return;
+    }
+    
+    projects.forEach((proj, idx) => {
+        const item = document.createElement("div");
+        item.className = "admin-project-item";
+        
+        item.innerHTML = `
+            <div class="admin-proj-info">
+                <span class="admin-proj-icon">${proj.icon}</span>
+                <div>
+                    <div class="admin-proj-title">${proj.title}</div>
+                    <div class="admin-proj-cat">${proj.category}</div>
+                </div>
+            </div>
+            <button class="admin-proj-delete-btn" data-index="${idx}">Sil / Delete</button>
+        `;
+        
+        const delBtn = item.querySelector(".admin-proj-delete-btn");
+        delBtn.addEventListener("click", () => {
+            const index = parseInt(delBtn.dataset.index);
+            if (confirm(`"${projects[index].title}" projesini silmek istediğinize emin misiniz? / Are you sure you want to delete this project?`)) {
+                projects.splice(index, 1);
+                saveProjects();
+                
+                // Re-render
+                renderDeck();
+                // Ensure active index is within bounds
+                if (activeIndex >= projects.length) {
+                    activeIndex = Math.max(0, projects.length - 1);
+                }
+                updateDeckLayout();
+                renderAdminProjectsList();
+            }
+        });
+        
+        listContainer.appendChild(item);
+    });
+    
+    setupCursorHovers();
+}
+
+// Admin System Controls Actions
+const adminExportBtn = document.getElementById("adminExportBtn");
+const adminResetBtn = document.getElementById("adminResetBtn");
+const adminRevokeBtn = document.getElementById("adminRevokeBtn");
+
+if (adminExportBtn) {
+    adminExportBtn.addEventListener("click", () => {
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(projects, null, 4));
+        const dlAnchorElem = document.createElement('a');
+        dlAnchorElem.setAttribute("href", dataStr);
+        dlAnchorElem.setAttribute("download", "projects.json");
+        dlAnchorElem.click();
+    });
+}
+
+if (adminResetBtn) {
+    adminResetBtn.addEventListener("click", () => {
+        if (confirm("Tüm projeleri varsayılan listeye sıfırlamak istiyor musunuz? / Reset all projects to defaults?")) {
+            projects = [...DEFAULT_PROJECTS];
+            saveProjects();
+            
+            activeIndex = 0;
+            renderDeck();
+            updateDeckLayout();
+            renderAdminProjectsList();
+            alert("Projeler sıfırlandı! / Projects reset successfully!");
+        }
+    });
+}
+
+if (adminRevokeBtn) {
+    adminRevokeBtn.addEventListener("click", () => {
+        if (confirm("Bu cihazın yönetici yetkisini kaldırmak istiyor musunuz? / Revoke admin authorization on this device?")) {
+            localStorage.removeItem("alttre_admin_authorized");
+            updateAdminNavButton();
+            closeAdminPanel();
+            alert("Yetki kaldırıldı. / Authorization revoked.");
+        }
+    });
 }

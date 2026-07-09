@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ali Turan (Alttre) | Portfolyo</title>
-    <meta name="description" content="Ali Turan (Alttre) - Bilişim Teknolojileri Öğrencisi, Nebula Team Kurucusu & AI ve Donanım Geliştiricisi Portfolyosu.">
+    <title>Ali Turan (Alttre) | Portfolio</title>
+    <meta name="description" content="Ali Turan (Alttre) - Information Technology Student, Founder of Nebula Team & AI and Hardware Developer Portfolio.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -32,14 +32,14 @@
                     <span class="typewriter-cursor">|</span>
                 </div>
                 <div class="intro-action-container">
-                    <button id="exploreBtn" class="explore-btn">Keşfet &rarr;</button>
+                    <button id="exploreBtn" class="explore-btn">Explore &rarr;</button>
                 </div>
             </div>
             <div class="intro-scroll-prompt" id="introScrollPrompt">
                 <span class="mouse-icon-vertical">
                     <span class="mouse-wheel-vertical"></span>
                 </span>
-                <span class="scroll-text">Geçmek için Aşağı Kaydır</span>
+                <span class="scroll-text">Scroll Down to Enter</span>
             </div>
             <div class="intro-bg-badge">ALTTRE // 2026</div>
         </section>
@@ -59,20 +59,20 @@
                         <span class="brand-tag">@Alttre</span>
                     </div>
                 </div>
-                <nav class="portfolio-nav">
-                    <button class="nav-btn active" id="navProjectsBtn">Projeler</button>
-                    <button class="nav-btn" id="navSkillsBtn">Yetenekler</button>
-                    <button class="nav-btn" id="navSetupBtn">Setup</button>
-                    <a href="mailto:ali-turan-@outlook.com" class="nav-contact-btn">İletişim</a>
+                <nav class="portfolio-nav" id="portfolioNav">
+                    <button class="nav-btn active" id="navProjectsBtn">Projects</button>
+                    <button class="nav-btn" id="navSkillsBtn">Skills</button>
+                    <button class="nav-btn" id="navSetupBtn">Ben Kimim</button>
+                    <a href="mailto:ali-turan-@outlook.com" class="nav-contact-btn">Contact</a>
                 </nav>
             </header>
 
             <div class="portfolio-content">
                 <div class="deck-container-wrapper">
                     <div class="section-title-area">
-                        <h2 class="section-subtitle">KÜRATÖRÜ OLDUĞUM İŞLER</h2>
-                        <h1 class="section-title">Ben Yaptım.</h1>
-                        <p class="section-desc">Sıfırdan kodlanan yapay zeka ajanları, donanım projeleri ve interaktif web deneyimleri. Göz atmak için <strong>mouse tekerleğini kaydırın</strong>.</p>
+                        <h2 class="section-subtitle">PROJECTS & WORKS I CURATED</h2>
+                        <h1 class="section-title">I Built This.</h1>
+                        <p class="section-desc">From-scratch AI agents, hardware prototypes, and immersive web experiences. <strong>Scroll your mouse wheel</strong> to explore.</p>
                     </div>
 
                     <div class="deck-outer-container">
@@ -82,10 +82,10 @@
                     <div class="project-indicator-panel">
                         <div class="scroll-instruction">
                             <span class="mouse-icon"><span class="mouse-wheel"></span></span>
-                            <span>Scroll veya Sürükle</span>
+                            <span>Scroll or Drag</span>
                         </div>
                         <div class="deck-bullets" id="deckBullets"></div>
-                        <div class="active-project-tagline" id="projectTagline">Yükleniyor...</div>
+                        <div class="active-project-tagline" id="projectTagline">Loading...</div>
                     </div>
                 </div>
             </div>
@@ -110,59 +110,211 @@
             <div class="info-panel-content">
                 <button class="info-panel-close-btn" id="skillsCloseBtn">&times;</button>
                 <div class="panel-header">
-                    <h2>YETENEKLER & TEKNOLOJİLER</h2>
-                    <p>Sıfırdan kodlamaya ve donanım entegrasyonlarına odaklanan yetkinlik alanlarım.</p>
+                    <h2>SKILLS & TECHNOLOGIES</h2>
+                    <p>Competency areas focused on from-scratch coding and hardware integrations.</p>
                 </div>
                 <div class="canvas-graph-container">
                     <canvas id="skillsGraphCanvas"></canvas>
                     <div class="graph-legend">
-                        <div class="legend-item"><span class="legend-dot" style="background:#DA291C;"></span> Merkez</div>
-                        <div class="legend-item"><span class="legend-dot" style="background:#5E7060;"></span> Kategori</div>
-                        <div class="legend-item"><span class="legend-dot" style="background:#1E1B18;"></span> Yetenek</div>
-                        <div class="legend-hint">* Düğümleri sürükleyebilirsiniz.</div>
+                        <div class="legend-item"><span class="legend-dot" style="background:#DA291C;"></span> Center</div>
+                        <div class="legend-item"><span class="legend-dot" style="background:#5E7060;"></span> Category</div>
+                        <div class="legend-item"><span class="legend-dot" style="background:#1E1B18;"></span> Skill</div>
+                        <div class="legend-hint">* You can drag nodes around.</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ========== SETUP PANEL ========== -->
+        <!-- ========== BEN KIMIM (ABOUT ME) PANEL ========== -->
         <div id="setupPanel" class="info-panel-modal">
             <div class="info-panel-overlay" id="setupOverlay"></div>
             <div class="info-panel-content">
                 <button class="info-panel-close-btn" id="setupCloseBtn">&times;</button>
                 <div class="panel-header">
-                    <h2>ÇALIŞMA ORTAMI & SETUP</h2>
-                    <p>Fikirlerin gerçeğe dönüştüğü donanım ve yazılım kurulumları.</p>
+                    <h2>BEN KİMİM / ABOUT ME</h2>
+                    <p>Yapay zeka, donanım entegrasyonları ve sıfırdan web çözümleri geliştiren bilişim öğrencisi.</p>
                 </div>
                 <div class="setup-container">
                     <div class="setup-box">
-                        <h3>Masaüstü Sistem</h3>
-                        <div class="setup-spec"><strong>İşlemci:</strong> AMD Ryzen 7 7600</div>
-                        <div class="setup-spec"><strong>Bellek:</strong> 32 GB DDR5 RAM</div>
-                        <div class="setup-spec"><strong>Ekran Kartı:</strong> NVIDIA RTX 5060 8GB</div>
-                        <div class="setup-spec"><strong>İşletim Sistemi:</strong> Custom Linux (Hyprland WM)</div>
-                        <p class="setup-description">Hyprland'ın pencere yöneticisi esnekliğiyle birleşen, yüksek performanslı yapay zeka ajanı çalıştırma ve geliştirme merkezi.</p>
+                        <h3>Profil / Developer Identity</h3>
+                        <p class="setup-description" style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.5; margin-top: 0;">
+                            Ben <strong>Ali Turan (Alttre)</strong>. Mesleki ve Teknik Anadolu Lisesi Bilişim Teknolojileri alanı öğrencisiyim. 
+                            Sıfırdan web sistemleri, özel gömülü donanım projeleri ve yapay zeka ajanları (AI Agents) üzerine çalışıyorum. 
+                            Aynı zamanda <strong>Nebula Team</strong> kurucu ortağıyım.
+                        </p>
+                        <p class="setup-description" style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.4; font-style: italic; margin-top: 0.8rem;">
+                            I am <strong>Ali Turan (Alttre)</strong>, an Information Technology student in Vocational and Technical High School. I specialize in building from-scratch web systems, custom hardware prototypes, and autonomous AI agents. I am also the co-founder of <strong>Nebula Team</strong>.
+                        </p>
+                    </div>
+                    
+                    <div class="setup-box">
+                        <h3>Çalışma Alanım / Hardware & Desktop System</h3>
+                        <div class="setup-spec"><strong>İşlemci / CPU:</strong> AMD Ryzen 7 7600</div>
+                        <div class="setup-spec"><strong>Bellek / RAM:</strong> 32 GB DDR5 RAM</div>
+                        <div class="setup-spec"><strong>Ekran Kartı / GPU:</strong> NVIDIA RTX 5060 8GB</div>
+                        <div class="setup-spec"><strong>İşletim Sistemi / OS:</strong> Custom Linux (Hyprland WM)</div>
+                        <p class="setup-description">Yüksek performanslı yapay zeka ajanı prototipleme ve yazılım geliştirme bilgisayarım. Hyprland ile optimize edilmiş dinamik pencere yöneticisi ve temiz bir çalışma alanı sunar.</p>
                     </div>
                     <div class="setup-box">
-                        <h3>Mobil Sistem</h3>
-                        <div class="setup-spec"><strong>İşlemci:</strong> Intel Core i5-8300H</div>
-                        <div class="setup-spec"><strong>Bellek:</strong> 16 GB DDR4 RAM</div>
-                        <div class="setup-spec"><strong>Ekran Kartı:</strong> NVIDIA GTX 1050 Ti Mobile</div>
-                        <div class="setup-spec"><strong>İşletim Sistemi:</strong> Pop!_OS 24.04 LTS</div>
-                        <p class="setup-description">Sahada, okulda ve laboratuvarda robotik kodlama ile donanım yazılımlarını derlemek için kullanılan mobil ünite.</p>
+                        <h3>Mobil Lab / Mobile Setup</h3>
+                        <div class="setup-spec"><strong>İşlemci / CPU:</strong> Intel Core i5-8300H</div>
+                        <div class="setup-spec"><strong>Bellek / RAM:</strong> 16 GB DDR4 RAM</div>
+                        <div class="setup-spec"><strong>Ekran Kartı / GPU:</strong> NVIDIA GTX 1050 Ti Mobile</div>
+                        <div class="setup-spec"><strong>İşletim Sistemi / OS:</strong> Pop!_OS 24.04 LTS</div>
+                        <p class="setup-description">Gömülü sistem yazılımları yükleme, saha testleri ve hareket halinde çalışma ortamı hata ayıklama için kullandığım taşınabilir yol arkadaşım.</p>
                     </div>
                 </div>
                 <div class="setup-details-extra">
-                    <h3>Geliştirici Alışkanlıkları</h3>
+                    <h3>Geliştirici Felsefem / Philosophy</h3>
                     <div class="habits-list">
                         <div class="habit-item">
-                            <strong>Sıfırdan Kodlama:</strong> Hazır sürükle-bırak sistemler yerine JavaScript, TypeScript ve Python ile her projeyi temelinden kendim yazmayı tercih ederim.
+                            <strong>Sıfırdan Kodlama (From-Scratch):</strong>
+                            Hazır şablonlar kullanmak yerine JavaScript, TypeScript ve Python dillerinde sistem altyapılarını sıfırdan yazmayı tercih ediyorum.
                         </div>
                         <div class="habit-item">
-                            <strong>Görsel Mekanik:</strong> Ağır fizik motorları yerine CSS 3D transformasyonları ve tekerlek (scroll) tabanlı arayüz çakıştırmalarını severim.
+                            <strong>Görsel Mekanik (Visual Mechanics):</strong>
+                            Büyük grafik motorları kullanmak yerine hafif ve performansı yüksek CSS 3D dönüşümleri ve tekerlek tabanlı animasyonları tercih ediyorum.
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- ========== ADMIN PANEL ========== -->
+        <div id="adminPanel" class="info-panel-modal">
+            <div class="info-panel-overlay" id="adminOverlay"></div>
+            <div class="info-panel-content">
+                <button class="info-panel-close-btn" id="adminCloseBtn">&times;</button>
+                <div class="panel-header">
+                    <h2>YÖNETİCİ PANELİ / ADMIN</h2>
+                    <p>Portföy projelerini yönetin, fotoğraf ekleyin ve silin.</p>
+                </div>
+                
+                <!-- Add Project Form -->
+                <div class="setup-box">
+                    <h3>Yeni Proje Ekle / Add Project</h3>
+                    <form id="adminAddProjectForm" class="admin-form">
+                        <div class="form-group">
+                            <label for="projTitle">Proje Başlığı / Title</label>
+                            <input type="text" id="projTitle" required placeholder="Örn: NexusAI-PhoneAgent">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="projCategory">Kategori / Category</label>
+                                <input type="text" id="projCategory" required placeholder="Örn: Mobile AI">
+                            </div>
+                            <div class="form-group">
+                                <label for="projTag">Etiket / Tag</label>
+                                <input type="text" id="projTag" required placeholder="Örn: Yeni / Active">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="projShortDesc">Kısa Açıklama / Short Desc</label>
+                            <input type="text" id="projShortDesc" required placeholder="Kart üzerinde görünecek kısa metin">
+                        </div>
+                        <div class="form-group">
+                            <label for="projDesc">Detaylı Açıklama / Full Description</label>
+                            <textarea id="projDesc" required rows="4" placeholder="Projenin detaylı açıklaması..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="projTechs">Kullanılan Teknolojiler / Technologies</label>
+                            <input type="text" id="projTechs" required placeholder="Virgülle ayırın (Örn: React Native, Expo, TypeScript)">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="projIcon">Emoji İkonu / Icon Emoji</label>
+                                <input type="text" id="projIcon" required placeholder="Örn: 📱 veya ⚙️" style="font-size: 1.2rem;">
+                            </div>
+                            <div class="form-group">
+                                <label for="projGradientSelect">Renk Teması / Gradient Accent</label>
+                                <select id="projGradientSelect">
+                                    <option value="linear-gradient(135deg, #e6dcc4 0%, #d46a43 100%)">Warm Rust & Sand</option>
+                                    <option value="linear-gradient(135deg, #FAF6EE 0%, #5e7060 100%)">Sage & Cream</option>
+                                    <option value="linear-gradient(135deg, #f3ece0 0%, #1e1b18 100%)">Ebony & Gold</option>
+                                    <option value="linear-gradient(135deg, #e8dec9 0%, #8e8274 100%)">Ochre & Clay</option>
+                                    <option value="linear-gradient(135deg, #FAF6EE 0%, #DA291C 100%)">TrackPoint Red & Cream</option>
+                                    <option value="custom">Özel Renk / Custom Gradient</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div id="customGradientInputs" class="form-row" style="display: none; margin-top: -10px; margin-bottom: 10px;">
+                            <div class="form-group">
+                                <label for="gradColor1">Renk 1 / Color 1</label>
+                                <input type="color" id="gradColor1" value="#FAF6EE">
+                            </div>
+                            <div class="form-group">
+                                <label for="gradColor2">Renk 2 / Color 2</label>
+                                <input type="color" id="gradColor2" value="#DA291C">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Proje Görseli / Project Image</label>
+                            <div class="image-upload-wrapper">
+                                <div class="upload-options">
+                                    <label class="file-upload-btn" for="projImageFile">
+                                        📁 Dosya Seç / Upload Photo
+                                    </label>
+                                    <input type="file" id="projImageFile" accept="image/*" style="display:none;">
+                                    <span class="or-separator">veya / or</span>
+                                    <input type="url" id="projImageUrl" placeholder="Görsel URL'si girin / Paste URL">
+                                </div>
+                                <div id="imagePreviewContainer" class="image-preview-container" style="display:none;">
+                                    <img id="imagePreview" src="" alt="Image Preview">
+                                    <button type="button" id="removeImageBtn" class="remove-img-btn">&times;</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="projGithub">GitHub Link</label>
+                                <input type="url" id="projGithub" placeholder="https://github.com/Alttrest/repo">
+                            </div>
+                            <div class="form-group">
+                                <label for="projLive">Live Link (İsteğe Bağlı)</label>
+                                <input type="url" id="projLive" placeholder="https://...">
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="admin-submit-btn">Projeyi Kaydet / Save Project</button>
+                    </form>
+                </div>
+                
+                <!-- Manage Projects List -->
+                <div class="setup-box">
+                    <h3>Projeleri Yönet & Sil / Manage & Delete Projects</h3>
+                    <div id="adminProjectsList" class="admin-projects-list">
+                        <!-- Filled dynamically by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- System Configuration / Backup -->
+                <div class="setup-box">
+                    <h3>Sistem Kontrolleri / System Controls</h3>
+                    <div class="admin-controls-buttons">
+                        <button id="adminExportBtn" class="control-btn accent">Konfigürasyonu Dışa Aktar (JSON)</button>
+                        <button id="adminResetBtn" class="control-btn warning">Varsayılanlara Sıfırla</button>
+                        <button id="adminRevokeBtn" class="control-btn danger">Yetkiyi Kaldır</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== ADMIN PASSCODE MODAL ========== -->
+        <div id="adminPasscodeModal" class="passcode-modal">
+            <div class="passcode-overlay" id="passcodeOverlay"></div>
+            <div class="passcode-content">
+                <button class="passcode-close-btn" id="passcodeCloseBtn">&times;</button>
+                <h3>Yönetici Girişi / Admin Login</h3>
+                <p>Bu cihazda yönetici panelini etkinleştirmek için şifreyi giriniz.</p>
+                <div class="passcode-input-container">
+                    <input type="password" id="adminPasscodeField" placeholder="••••••••" autocomplete="current-password">
+                    <button id="adminPasscodeSubmitBtn" class="passcode-submit-btn">Doğrula</button>
+                </div>
+                <div id="passcodeErrorMessage" class="passcode-error-message">Şifre hatalı / Incorrect passcode</div>
             </div>
         </div>
 

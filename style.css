@@ -1337,3 +1337,491 @@ button, a {
     }
 }
 
+/* ================= CARD IMAGE STYLES ================= */
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.card-img-fallback {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+}
+
+/* ================= ADMIN PASSCODE MODAL ================= */
+.passcode-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.passcode-modal.active {
+    display: flex;
+}
+
+.passcode-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 27, 24, 0.4);
+    backdrop-filter: blur(10px);
+    transition: var(--transition-smooth);
+}
+
+.passcode-content {
+    position: relative;
+    z-index: 10;
+    background-color: var(--bg-cream-primary);
+    border: 1px solid var(--border-medium);
+    border-radius: 12px;
+    padding: 3rem 2.5rem;
+    max-width: 420px;
+    width: 90%;
+    box-shadow: var(--shadow-premium);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    animation: passcode-fade-in 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@keyframes passcode-fade-in {
+    from { opacity: 0; transform: scale(0.92) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.passcode-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    line-height: 1;
+    color: var(--text-muted);
+}
+
+.passcode-close-btn:hover {
+    color: var(--accent-red);
+    transform: rotate(90deg);
+    transition: var(--transition-fast);
+}
+
+.passcode-content h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+}
+
+.passcode-content p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+}
+
+.passcode-input-container {
+    display: flex;
+    gap: 0.6rem;
+    width: 100%;
+}
+
+#adminPasscodeField {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    background-color: var(--bg-cream-secondary);
+    border: 1px solid var(--border-medium);
+    border-radius: 6px;
+    color: var(--text-primary);
+    outline: none;
+    transition: var(--transition-fast);
+}
+
+#adminPasscodeField:focus {
+    border-color: var(--accent-red);
+    box-shadow: 0 0 0 3px rgba(218, 41, 28, 0.15);
+}
+
+.passcode-submit-btn {
+    background-color: var(--text-primary);
+    color: var(--bg-cream-primary);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    border-radius: 6px;
+    transition: var(--transition-fast);
+}
+
+.passcode-submit-btn:hover {
+    background-color: var(--accent-red);
+}
+
+.passcode-error-message {
+    color: var(--accent-red);
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: none;
+    animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+}
+
+/* ================= ADMIN FORM & CONTROLS ================= */
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.02em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="url"],
+.form-group textarea,
+.form-group select {
+    padding: 0.75rem 0.9rem;
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    background-color: var(--bg-cream-primary);
+    border: 1px solid var(--border-medium);
+    border-radius: 6px;
+    color: var(--text-primary);
+    outline: none;
+    transition: var(--transition-fast);
+    width: 100%;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--accent-red);
+    box-shadow: 0 0 0 3px rgba(218, 41, 28, 0.1);
+}
+
+/* Image Upload Styling */
+.image-upload-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    background-color: var(--bg-cream-primary);
+    border: 1px solid var(--border-light);
+    padding: 1rem;
+    border-radius: 6px;
+}
+
+.upload-options {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.file-upload-btn {
+    background-color: var(--bg-cream-tertiary);
+    color: var(--text-primary);
+    padding: 0.6rem 1rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid var(--border-medium);
+    transition: var(--transition-fast);
+    cursor: none;
+}
+
+.file-upload-btn:hover {
+    background-color: var(--text-primary);
+    color: var(--bg-cream-primary);
+}
+
+.or-separator {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+}
+
+.image-preview-container {
+    position: relative;
+    width: 100%;
+    max-height: 160px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border-medium);
+}
+
+.image-preview-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.remove-img-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: rgba(30, 27, 24, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: none;
+}
+
+.remove-img-btn:hover {
+    background: var(--accent-red);
+}
+
+/* Gradient Color Pickers */
+#customGradientInputs input[type="color"] {
+    padding: 0;
+    height: 40px;
+    border: 1px solid var(--border-medium);
+    border-radius: 6px;
+    background: none;
+}
+
+/* Submit and Controls */
+.admin-submit-btn {
+    background-color: var(--accent-red);
+    color: white;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 1rem;
+    border: none;
+    border-radius: 6px;
+    transition: var(--transition-fast);
+    margin-top: 0.5rem;
+}
+
+.admin-submit-btn:hover {
+    background-color: var(--accent-red-hover);
+    transform: translateY(-2px);
+}
+
+/* Manage List */
+.admin-projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.admin-project-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-cream-primary);
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-light);
+}
+
+.admin-proj-info {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.admin-proj-icon {
+    font-size: 1.2rem;
+}
+
+.admin-proj-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.admin-proj-cat {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.admin-proj-delete-btn {
+    background: none;
+    border: 1px solid rgba(218, 41, 28, 0.3);
+    color: var(--accent-red);
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    transition: var(--transition-fast);
+}
+
+.admin-proj-delete-btn:hover {
+    background-color: var(--accent-red);
+    color: white;
+    border-color: var(--accent-red);
+}
+
+/* System Controls */
+.admin-controls-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.control-btn {
+    border: none;
+    padding: 0.8rem 1.2rem;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    transition: var(--transition-fast);
+}
+
+.control-btn.accent {
+    background-color: var(--text-primary);
+    color: var(--bg-cream-primary);
+}
+
+.control-btn.accent:hover {
+    background-color: var(--accent-sage);
+}
+
+.control-btn.warning {
+    background-color: var(--bg-cream-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-medium);
+}
+
+.control-btn.warning:hover {
+    background-color: var(--text-secondary);
+    color: var(--bg-cream-primary);
+}
+
+.control-btn.danger {
+    background: none;
+    border: 1px solid var(--accent-red);
+    color: var(--accent-red);
+}
+
+.control-btn.danger:hover {
+    background-color: var(--accent-red);
+    color: white;
+}
+
+/* ================= RESPONSIVE ADJUSTMENTS ================= */
+/* Large screens (4K & UltraWide support) */
+@media (min-width: 1920px) {
+    .deck-container-wrapper {
+        max-width: 1600px;
+        gap: 3rem;
+    }
+    
+    .section-title {
+        font-size: 4.5rem;
+    }
+    
+    .deck-outer-container {
+        height: 480px;
+    }
+    
+    .deck-container, .project-card {
+        width: 380px;
+        height: 410px;
+    }
+    
+    .card-visual {
+        height: 210px;
+    }
+    
+    .info-panel-content {
+        max-width: 700px;
+        padding: 5rem 4rem;
+    }
+}
+
+/* Mid size viewport heights */
+@media (max-height: 800px) and (min-width: 1025px) {
+    .deck-container-wrapper {
+        gap: 1rem;
+    }
+    .section-title {
+        font-size: 2.8rem;
+        margin-bottom: 0.4rem;
+    }
+    .section-title-area {
+        margin-bottom: 0px;
+    }
+    .deck-outer-container {
+        height: 330px;
+    }
+    .deck-container, .project-card {
+        width: 290px;
+        height: 310px;
+    }
+    .card-visual {
+        height: 140px;
+    }
+}
+
+/* Small mobile heights/widths scaling */
+@media (max-width: 480px) {
+    .form-row {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+}
